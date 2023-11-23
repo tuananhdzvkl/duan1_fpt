@@ -6,7 +6,7 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <a class="btn btn-primary" href="?act=addsp">Thêm Thêm Sản Phẩm <i class="bi bi-plus-circle"></i></a>
+      <a class="btn btn-primary" href="?act=addsp">Thêm Sản Phẩm <i class="bi bi-plus-circle"></i></a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -45,7 +45,7 @@
                   <td><?= $value['view'] ?></td>
                   <td><?php
                       if ($value['gioi_tinh'] == '0') {
-                        echo "Nam/Nữ";
+                        echo "Unisex";
                       } else if ($value["gioi_tinh"] == "1") {
                         echo "Nam";
                       } else {

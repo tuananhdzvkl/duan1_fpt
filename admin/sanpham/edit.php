@@ -56,7 +56,7 @@
                     <label for="exampleInputPassword1" class="form-label">Giới Tính</label>
                     <select class="form-control" aria-label="Default select example" name="gt">
                         <option selected>-------- Chọn Giới Tính --------</option>
-                        <option value="0" <?= ($sanpham['gioi_tinh']) == 0 ? 'selected' : '' ?>>Nam/Nữ</option>
+                        <option value="0" <?= ($sanpham['gioi_tinh']) == 0 ? 'selected' : '' ?>>Unisex</option>
                         <option value="1" <?= ($sanpham['gioi_tinh']) == 1 ? 'selected' : '' ?>>Nam</option>
                         <option value="2" <?= ($sanpham['gioi_tinh']) == 2 ? 'selected' : '' ?>>Nữ</option>
 

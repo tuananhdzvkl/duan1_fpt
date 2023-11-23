@@ -47,7 +47,7 @@
                     <label for="exampleInputPassword1" class="form-label">Giới Tính</label>
                     <select class="form-control" aria-label="Default select example" name="gt">
                         <option selected>-------- Chọn Giới Tính --------</option>
-                        <option value="0">Nam/Nữ</option>
+                        <option value="0">Unisex</option>
                         <option value="1">Nam</option>
                         <option value="2">Nữ</option>
 

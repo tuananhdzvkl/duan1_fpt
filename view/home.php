@@ -3,88 +3,27 @@
     <section class="home-slider-area">
       <div class="swiper-container home-slider-container default-slider-container">
         <div class="swiper-wrapper home-slider-wrapper slider-default">
+          
           <div class="swiper-slide">
             <div class="slider-content-area" data-bg-img="assets/img/shape/1.webp">
-              <div class="container">
-                <div class="slider-container">
-                  <div class="row justify-content-between align-items-center">
-                    <div class="col-sm-6 col-md-5">
-                      <div class="slider-content">
-                        <div class="content">
-                          <div class="title-box">
-                            <h2 class="title">Giày mới độc quyền</h2>
-                          </div>
-                          <div class="desc-box">
-                            <p class="desc">Giảm giá tới 30% cho tất cả giày và sản phẩm</p>
-                          </div>
-                          <div class="btn-box">
-                            <a class="btn-slider" href="shop.html">Mua ngay</a>
-                          </div>
-                        </div>
-                      </div>
+              <video autoplay muted playsinline loop>
+                  <source src="../assets/img/video/banner.mp4" type="video/mp4">
+              </video>
+              <div class="slider-content">
+                  <div class="content">
+                    <!-- Your video element -->
+                      
+                    <!-- Your other content goes here -->
+                    <div class="title-box">
+                    <h2 class="title">The Holiday Season with Louis Vuitton</h2>
                     </div>
-                    <div class="col-sm-6 col-md-6">
-                      <div class="slider-thumb">
-                        <div class="thumb scene">
-                          <span class="scene-layer" data-depth=".3"><img src="assets/img/slider/slider-01.webp" width="461" height="489" alt="Image-HasTech"></span>
-                        </div>
-                        <div class="shape-group mousemove">
-                          <div class="shape-group-one mousemove-layer" data-speed=".8" data-bg-img="assets/img/shape/2.webp"></div>
-                          <div class="shape-group-two scene"><span class="scene-layer" data-depth=".6"><img src="assets/img/shape/3.webp" width="471" height="462" alt="Image-HasTech"></span></div>
-                        </div>
-                      </div>
+                    
+                    <div class="btn-box" style="text-align:center;">
+                      <a class="btn-slider" href="shop.php">Fashion Collection</a>
                     </div>
                   </div>
-                </div>
               </div>
-              <h2 class="slider-text-shape" style="margin-left: 20px;">New 2023</h2>
             </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="slider-content-area" data-bg-img="assets/img/shape/1.webp">
-              <div class="container">
-                <div class="slider-container">
-                  <div class="row justify-content-between align-items-center">
-                    <div class="col-sm-6 col-md-5">
-                      <div class="slider-content">
-                        <div class="content">
-                          <div class="title-box">
-                            <h2 class="title">Giày mới độc quyền</h2>
-                          </div>
-                          <div class="desc-box">
-                            <p class="desc">Giảm giá tới 30% cho tất cả giày và sản phẩm</p>
-                          </div>
-                          <div class="btn-box">
-                            <a class="btn-slider" href="shop.html">Mua ngay</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                      <div class="slider-thumb">
-                        <div class="thumb scene">
-                          <span class="scene-layer" data-depth=".3"><img src="assets/img/slider/slider-03.webp" width="548" height="649" alt="Image-HasTech"></span>
-                        </div>
-                        <div class="shape-group mousemove">
-                          <div class="shape-group-one mousemove-layer" data-speed=".8" data-bg-img="assets/img/shape/2.webp"></div>
-                          <div class="shape-group-two scene"><span class="scene-layer" data-depth=".6"><img src="assets/img/shape/3.webp" width="471" height="462" alt="Image-HasTech"></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="slider-text-shape">Mới nhất 2023</h2>
-            </div>
-          </div>
-
-        </div>
-        <div class="swiper-btn-wrap">
-          <div class="swiper-btn-prev">
-            <i class="pe-7s-angle-left"></i>
-          </div>
-          <div class="swiper-btn-next">
-            <i class="pe-7s-angle-right"></i>
           </div>
         </div>
       </div>
@@ -101,10 +40,10 @@
               <div class="inner-content">
                 <div class="product-collection-content">
                   <div class="content">
-                    <h1>alo</h1>
+                    <h1>NAM </h1>
                   </div>
                 </div>
-                <a class="banner-link-overlay" href="shop.html"></a>
+                <a class="banner-link-overlay" href="shop.php"></a>
               </div>
             </div>
             <!--== End Product Collection Item ==-->
@@ -115,10 +54,10 @@
               <div class="inner-content">
                 <div class="product-collection-content">
                   <div class="content">
-                    <h1>alo</h1>
+                    <h1>NỮ</h1>
                   </div>
                 </div>
-                <a class="banner-link-overlay" href="shop.html"></a>
+                <a class="banner-link-overlay" href="shop.php"></a>
               </div>
             </div>
             
@@ -130,10 +69,10 @@
               <div class="inner-content">
                 <div class="product-collection-content">
                   <div class="content">
-                    <h1>aalo</h1>
+                    <h1>Unisex</h1>
                   </div>
                 </div>
-                <a class="banner-link-overlay" href="shop.html"></a>
+                <a class="banner-link-overlay" href="shop.php"></a>
               </div>
             </div> 
             
@@ -180,21 +119,21 @@
                     </ul>
                   </div>
                   <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
+                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
                     <button type="button" class="btn-product-quick-view-open">
                       <i class="fa fa-arrows"></i>
                     </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
                   </div>
-                  <a class="banner-link-overlay" href="shop.html"></a>
+                  <a class="banner-link-overlay" href="shop.php"></a>
                 </div>
                 <div class="product-info">
                   <div class="category">
                     <ul>
-                      <li><a href="shop.html">Nam</a></li>
+                      <li><a href="shop.php">Nam</a></li>
                       <li class="sep">/</li>
-                      <li><a href="shop.html">Nữ</a></li>
+                      <li><a href="shop.php">Nữ</a></li>
                     </ul>
                   </div>
                   <h4 class="title"><a href="index.php?act=chitietSP">Dép da nam</a></h4>
@@ -222,7 +161,7 @@
               <h4 class="sub-title">Tiết kiệm 50%</h4>
               <h2 class="title">Tất cả cửa hàng trực tuyến</h2>
               <p class="desc">Ưu đãi có sẵn cho tất cả giày và sản phẩm</p>
-              <a class="btn-theme" href="shop.html">Mua ngay</a>
+              <a class="btn-theme" href="shop.php">Mua ngay</a>
             </div>
           </div>
         </div>
@@ -265,21 +204,21 @@
                             </ul>
                           </div>
                           <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
+                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
                     <button type="button" class="btn-product-quick-view-open">
                       <i class="fa fa-arrows"></i>
                     </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
                   </div>
-                          <a class="banner-link-overlay" href="shop.html"></a>
+                          <a class="banner-link-overlay" href="shop.php"></a>
                         </div>
                         <div class="product-info">
                           <div class="category">
                     <ul>
-                      <li><a href="shop.html">Nam</a></li>
+                      <li><a href="shop.php">Nam</a></li>
                               <li class="sep">/</li>
-                              <li><a href="shop.html">Nữ</a></li>
+                              <li><a href="shop.php">Nữ</a></li>
                             </ul>
                           </div>
                           <h4 class="title"><a href="index.php?act=chitietSP">Giày thông minh hiện đại</a></h4>
@@ -302,21 +241,21 @@
                             <img src="assets/img/shop/7.webp" width="270" height="274" alt="Image-HasTech">
                           </a>
                           <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
+                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
                     <button type="button" class="btn-product-quick-view-open">
                       <i class="fa fa-arrows"></i>
                     </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
                   </div>
-                          <a class="banner-link-overlay" href="shop.html"></a>
+                          <a class="banner-link-overlay" href="shop.php"></a>
                         </div>
                         <div class="product-info">
                           <div class="category">
                     <ul>
-                      <li><a href="shop.html">nam</a></li>
+                      <li><a href="shop.php">nam</a></li>
                               <li class="sep">/</li>
-                              <li><a href="shop.html">Nữ</a></li>
+                              <li><a href="shop.php">Nữ</a></li>
                             </ul>
                           </div>
                           <h4 class="title"><a href="index.php?act=chitietSP">Quickiin Mens shoes</a></h4>
@@ -342,21 +281,21 @@
                             </ul>
                           </div>
                           <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
+                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
                     <button type="button" class="btn-product-quick-view-open">
                       <i class="fa fa-arrows"></i>
                     </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
                   </div>
-                          <a class="banner-link-overlay" href="shop.html"></a>
+                          <a class="banner-link-overlay" href="shop.php"></a>
                         </div>
                         <div class="product-info">
                           <div class="category">
                     <ul>
-                      <li><a href="shop.html">Men</a></li>
+                      <li><a href="shop.php">Men</a></li>
                               <li class="sep">/</li>
-                              <li><a href="shop.html">Nữ</a></li>
+                              <li><a href="shop.php">Nữ</a></li>
                             </ul>
                           </div>
                           <h4 class="title"><a href="index.php?act=chitietSP">Rexpo Nữs shoes</a></h4>
@@ -379,21 +318,21 @@
                             <img src="assets/img/shop/4.webp" width="270" height="274" alt="Image-HasTech">
                           </a>
                           <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
+                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
                     <button type="button" class="btn-product-quick-view-open">
                       <i class="fa fa-arrows"></i>
                     </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
                   </div>
-                          <a class="banner-link-overlay" href="shop.html"></a>
+                          <a class="banner-link-overlay" href="shop.php"></a>
                         </div>
                         <div class="product-info">
                           <div class="category">
                     <ul>
-                      <li><a href="shop.html">Men</a></li>
+                      <li><a href="shop.php">Men</a></li>
                               <li class="sep">/</li>
-                              <li><a href="shop.html">Nữ</a></li>
+                              <li><a href="shop.php">Nữ</a></li>
                             </ul>
                           </div>
                           <h4 class="title"><a href="index.php?act=chitietSP">Leather Mens Slipper</a></h4>
@@ -414,21 +353,21 @@
                             <img src="assets/img/shop/5.webp" width="270" height="274" alt="Image-HasTech">
                           </a>
                           <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
+                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
                     <button type="button" class="btn-product-quick-view-open">
                       <i class="fa fa-arrows"></i>
                     </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
                   </div>
-                          <a class="banner-link-overlay" href="shop.html"></a>
+                          <a class="banner-link-overlay" href="shop.php"></a>
                         </div>
                         <div class="product-info">
                           <div class="category">
                     <ul>
-                      <li><a href="shop.html">Men</a></li>
+                      <li><a href="shop.php">Men</a></li>
                               <li class="sep">/</li>
-                              <li><a href="shop.html">Nữ</a></li>
+                              <li><a href="shop.php">Nữ</a></li>
                             </ul>
                           </div>
                           <h4 class="title"><a href="index.php?act=chitietSP">Primitive Mens shoes</a></h4>
@@ -456,21 +395,21 @@
                             </ul>
                           </div>
                           <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
+                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
                     <button type="button" class="btn-product-quick-view-open">
                       <i class="fa fa-arrows"></i>
                     </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
                   </div>
-                          <a class="banner-link-overlay" href="shop.html"></a>
+                          <a class="banner-link-overlay" href="shop.php"></a>
                         </div>
                         <div class="product-info">
                           <div class="category">
                     <ul>
-                      <li><a href="shop.html">Men</a></li>
+                      <li><a href="shop.php">Men</a></li>
                               <li class="sep">/</li>
-                              <li><a href="shop.html">Nữ</a></li>
+                              <li><a href="shop.php">Nữ</a></li>
                             </ul>
                           </div>
                           <h4 class="title"><a href="index.php?act=chitietSP">Simple Fabric Shoe</a></h4>
@@ -509,21 +448,21 @@
           <div class="col-lg-6">
             <div class="divider-thumb-content">
               <div class="thumb">
-                <a href="shop.html">
+                <a href="shop.php">
                   <img src="assets/img/shop/banner/1.webp" width="570" height="350" alt="Image-HasTech">
                 </a>
               </div>
               <div class="content">
                 <h2 class="title">Sports Shoes</h2>
                 <p class="desc">Up To 30% Off All Shoes & Products</p>
-                <a class="btn-theme" href="shop.html">Shop Now</a>
+                <a class="btn-theme" href="shop.php">Shop Now</a>
               </div>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="divider-thumb-content">
               <div class="thumb">
-                <a href="shop.html">
+                <a href="shop.php">
                   <img src="assets/img/shop/banner/2.webp" width="570" height="700" alt="Image-HasTech">
                 </a>
               </div>
@@ -562,7 +501,7 @@
                         <p>Lorem ipsum dolor sit amel adipiscing elit, sed do eiusll tempor incididunt ut laborj et dolore magna.</p>
                         <div class="testi-author">
                           <div class="testi-info">
-                            <span class="name"><a href="about-us.html">Jaren Hammer</a></span>
+                            <span class="name"><a href="about-us.php">Jaren Hammer</a></span>
                           </div>
                         </div>
                         <div class="testi-quote"><img src="assets/img/icons/quote1.webp" width="62" height="44" alt="Image-HasTech"></div>
@@ -582,7 +521,7 @@
                         <p>Lorem ipsum dolor sit amel adipiscing elit, sed do eiusll tempor incididunt ut laborj et dolore magna.</p>
                         <div class="testi-author">
                           <div class="testi-info">
-                            <span class="name"><a href="about-us.html">Dorian Cordova</a></span>
+                            <span class="name"><a href="about-us.php">Dorian Cordova</a></span>
                           </div>
                         </div>
                         <div class="testi-quote"><img src="assets/img/icons/quote1.webp" width="62" height="44" alt="Image-HasTech"></div>
@@ -599,3 +538,5 @@
     </section>
     <!--== End Blog Area Wrapper ==-->
   </main>
+
+  

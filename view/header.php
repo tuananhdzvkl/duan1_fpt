@@ -6,14 +6,14 @@
             <div class="header-top-align">
               <div class="header-top-align-start">
                 <div class="desc">
-                  <p>World Wide Completely Free Returns and Free Shipping</p>
+                <marquee>"Xin chào! Bạn đã đặt chân đến ASCENSION - Nơi Sự Lựa Chọn Đúng Đắn Bắt Đầu."</marquee>
                 </div>
               </div>
               <div class="header-top-align-end">
                 <div class="header-info-items">
                   <div class="info-items">
                     <ul>
-                      <li class="number"><i class="fa fa-phone"></i><a href="tel://0123456789">+00 123 456 789</a></li>
+                      <li class="number"><i class="fa fa-phone"></i><a href="tel://0123456789">+84 123 456 789</a></li>
                       <li class="email"><i class="fa fa-envelope"></i><a href="mailto://demo@example.com">demo@example.com</a></li>
                       <li class="account"><i class="fa fa-user"></i><a href="index.php?act=login">Tài khoản</a></li>
                     </ul>
@@ -76,45 +76,63 @@
     </div>
     <div class="header-area header-default">
       <div class="container">
-        <div class="row no-gutter align-items-center position-relative">
-          <div class="col-12">
-            <div class="header-align">
-              <div class="header-navigation-area position-relative">
-                <ul class="main-menu nav">
-                  <li class="has-submenu1"><a href="index.php?act=home"><span>Trang Chủ</span></a>
-                  </li>
-                  <li class="has-submenu position-static"><a href="index.php?act=shop"><span>Danh mục</span></a> 
-                  <ul class="submenu-nav submenu-nav-mega1">
-                          <li><a href="blog.html">Nam </a></li>
-                          <li><a href="blog-left-sidebar.html">Nữ</a></li>
-                        </ul>
-                  </li>
-                  <li class="has-submenu1 position-static"><a href="index.php?act=shop"><span>Sản Phẩm</span></a> 
-                  </li>
-                  <li class="has-submenu1"><a href="index.php?act=blog"><span>Tin Tức</span></a>
-                    <!-- <ul class="submenu-nav submenu-nav-mega">
-                      <li class="mega-menu-item"><a href="" class="mega-title">Blog Layout</a>
-                        <ul>
-                          <li><a href="blog.html">Blog Grid</a></li>
-                          <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                          <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                        </ul>
-                      </li>
-                      <li class="mega-menu-item"><a href="#/" class="mega-title">Single Blog</a>
-                        <ul>
-                          <li><a href="blog-details-no-sidebar.html">Blog Details</a></li>
-                          <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
-                          <li><a href="blog-details.html">Blog Details Right Sidebar</a></li>
-                        </ul>
-                      </li>
-                    </ul> -->
-                  </li>
-                  <li><a href="index.php?act=contact"><span>Liên hệ</span></a></li>
-                </ul>
+          <div class="row no-gutter align-items-center position-relative">
+              <div class="col-12">
+                  <div class="header-align">
+                      <div class="header-navigation-area position-relative">
+                          <ul class="main-menu nav">
+                              <li class="has-submenu1"><a href="index.php?act=home"><span>Trang Chủ</span></a></li>
+
+                              <li class="has-submenu position-static">
+                                  <a href="index.php?act=shop"><span>Danh mục</span></a>
+                                  <ul class="submenu-nav submenu-nav-mega1">
+                                      <?php
+                                      // Assuming LoadAll_DM() returns an array of categories
+                                      $danhmuc = LoadAll_DM();
+
+                                      foreach ($danhmuc as $category) {
+                                          echo "<li><a href='index.php?act=shop&id={$category['id_dm']}'>{$category['name_dm']}</a></li>";
+                                      }
+                                      ?>
+                                  </ul>
+                              </li>
+                              <li class="has-submenu position-static">
+                                  <a href="index.php?act=shop"><span>Sản Phẩm</span></a>
+                                  <!-- You may populate this submenu with dynamic data if needed -->
+                                  <ul class="submenu-nav submenu-nav-mega1">
+                                      <?php
+                                      // Assuming LoadAll_DM() returns an array of categories
+                                      $sanpham = load_sanpham_all();
+
+                                      foreach ($sanpham as $product) {
+                                          $genderLabel = getGenderLabel($product['gioi_tinh']);
+                                          echo "<li><a href='index.php?act=shop&id={$product['id_sp']}'>$genderLabel</a></li>";
+                                      }
+
+                                      // Function to get the gender label
+                                      function getGenderLabel($gender)
+                                      {
+                                          switch ($gender) {
+                                              case 1:
+                                                  return 'Nam';
+                                              case 2:
+                                                  return 'Nữ';
+                                              case 0:
+                                                  return 'Unisex';
+                                              default:
+                                                  return 'Unknown';
+                                          }
+                                      }
+                                      ?>
+                                  </ul>
+                              </li>
+                              <li class="has-submenu1"><a href="index.php?act=blog"><span>Tin Tức</span></a></li>
+                              <li><a href="index.php?act=contact"><span>Liên hệ</span></a></li>
+                          </ul>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
-  </header>
+  </div>
+</header>

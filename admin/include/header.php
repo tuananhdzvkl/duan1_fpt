@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>Trang Quản trị - Dashboard</title>
+    <link rel="icon website" href="/assets/img/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <!-- Custom fonts for this template-->
     <link href="../public/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

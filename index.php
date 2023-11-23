@@ -9,10 +9,10 @@
     <meta name="keywords" content="footwear, shoes, modern, shop, store, ecommerce, responsive, e-commerce"/>
     <meta name="author" content="codecarnival"/>
 
-    <title>Shome - Shoes eCommerce Website Template</title>
+    <title>STORE ASCENSION</title>
 
     <!--== Favicon ==-->
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="icon website" href="assets/img/logo.png" type="image/x-icon" />
 
     <!--== Google Fonts ==-->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -56,9 +56,9 @@ include "view/header.php";
         if (isset($_GET['act']) &&($_GET['act'])) {
             $act = $_GET['act'];
             switch ($act) {
-                // case 'home':
-                //     include "view/home.php";
-                //     break;
+                case 'home':
+                    include "view/home.php";
+                    break;
                 case 'shop':
                     include "view/shop.php";
                     break;

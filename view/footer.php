@@ -8,8 +8,8 @@
             <div class="widget-item">
               <div class="about-widget-wrap">
                 <div class="widget-logo-area">
-                  <a href="index.html">
-                    <img class="logo-main" src="assets/img/White Brown Simple Creative Shoes Logo.png" width="80" height="34" alt="Logo" />
+                  <a href="index.php">
+                    <img class="logo-main" src="assets/img/logo.png" width="100" height="30" alt="Logo" />
                   </a>
                 </div>
                 <p class="desc">Lorem ipsum dolor sit amet consl adipisi elit, sed do eiusmod templ incididunt ut labore</p>
@@ -95,7 +95,7 @@
       <div class="container pt--0 pb--0">
         <div class="row">
           <div class="col-md-7 col-lg-6">
-            <p class="copyright">© 2023 TPT Store Made with <i class="fa fa-heart"></i> by <a target="_blank" href="https://themeforest.net/user/codecarnival/portfolio">TPT</a></p>
+            <p class="copyright">© 2023 TPT Store Made with <i class="fa fa-heart"></i> by <a target="_blank" href="https://themeforest.net/user/codecarnival/portfolio">ASCENSION</a></p>
           </div>
           <div class="col-md-5 col-lg-6">
             <div class="payment">
