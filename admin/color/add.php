@@ -16,8 +16,8 @@
                     <input class="form-control" placeholder="AUTO NUMBER" readonly>
                 </div>
                 <div class="mb-3">
-                    <label for="pwd" class="form-label">Name:</label>
-                    <input type="text" class="form-control" id="pwd" placeholder="Tên Color" name="name">
+                    <label for="pwd" class="form-label">Color:</label>
+                    <input type="color" class="form-control" id="pwd" placeholder="Tên Color" name="name">
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Thêm Mới" name="gui">

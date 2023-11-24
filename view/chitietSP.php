@@ -24,128 +24,111 @@
     <section class="product-area product-single-area">
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="product-single-item">
-              <div class="row">
-                <div class="col-xl-6">
-                  <!--== Start Product Thumbnail Area ==-->
-                  <div class="product-single-thumb">
-                    <div class="swiper-container single-product-thumb single-product-thumb-slider">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <a class="lightbox-image" data-fancybox="gallery" href="assets/img/shop/product-single/1.webp">
-                            <img src="assets/img/shop/product-single/1.webp" width="570" height="541" alt="Image-HasTech">
-                          </a>
-                        </div>
-                        <div class="swiper-slide">
-                          <a class="lightbox-image" data-fancybox="gallery" href="assets/img/shop/product-single/2.webp">
-                            <img src="assets/img/shop/product-single/2.webp" width="570" height="541" alt="Image-HasTech">
-                          </a>
-                        </div>
-                        <div class="swiper-slide">
-                          <a class="lightbox-image" data-fancybox="gallery" href="assets/img/shop/product-single/3.webp">
-                            <img src="assets/img/shop/product-single/3.webp" width="570" height="541" alt="Image-HasTech">
-                          </a>
-                        </div>
-                        <div class="swiper-slide">
-                          <a class="lightbox-image" data-fancybox="gallery" href="assets/img/shop/product-single/4.webp">
-                            <img src="assets/img/shop/product-single/4.webp" width="570" height="541" alt="Image-HasTech">
-                          </a>
-                        </div>
-                        <div class="swiper-slide">
-                          <a class="lightbox-image" data-fancybox="gallery" href="assets/img/shop/product-single/5.webp">
-                            <img src="assets/img/shop/product-single/5.webp" width="570" height="541" alt="Image-HasTech">
-                          </a>
+          <?php foreach ($sanpham as $k)  : extract($k) ?>
+            <div class="col-12">
+              <div class="product-single-item">
+                <div class="row">
+                  <div class="col-xl-6">
+                    <!--== Start Product Thumbnail Area ==-->
+                    <div class="product-single-thumb">
+                      <div class="swiper-container single-product-thumb single-product-thumb-slider">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <a class="lightbox-image" data-fancybox="gallery" href="assets/img/shop/product-single/1.webp">
+                              <img src="../public/uploads/<?= $image_sp ?>" width="570" height="541" alt="Image-HasTech">
+                            </a>
+                          </div>
+                          
                         </div>
                       </div>
+                      <div class="swiper-container single-product-nav single-product-nav-slider">
+                        <!-- <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <img src="assets/img/shop/product-single/nav-1.webp" width="127" height="127" alt="Image-HasTech">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="assets/img/shop/product-single/nav-2.webp" width="127" height="127" alt="Image-HasTech">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="assets/img/shop/product-single/nav-3.webp" width="127" height="127" alt="Image-HasTech">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="assets/img/shop/product-single/nav-4.webp" width="127" height="127" alt="Image-HasTech">
+                          </div>
+                          <div class="swiper-slide">
+                            <img src="assets/img/shop/product-single/nav-5.webp" width="127" height="127" alt="Image-HasTech">
+                          </div>
+                        </div> -->
+                      </div>
                     </div>
-                    <div class="swiper-container single-product-nav single-product-nav-slider">
-                      <!-- <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                          <img src="assets/img/shop/product-single/nav-1.webp" width="127" height="127" alt="Image-HasTech">
-                        </div>
-                        <div class="swiper-slide">
-                          <img src="assets/img/shop/product-single/nav-2.webp" width="127" height="127" alt="Image-HasTech">
-                        </div>
-                        <div class="swiper-slide">
-                          <img src="assets/img/shop/product-single/nav-3.webp" width="127" height="127" alt="Image-HasTech">
-                        </div>
-                        <div class="swiper-slide">
-                          <img src="assets/img/shop/product-single/nav-4.webp" width="127" height="127" alt="Image-HasTech">
-                        </div>
-                        <div class="swiper-slide">
-                          <img src="assets/img/shop/product-single/nav-5.webp" width="127" height="127" alt="Image-HasTech">
-                        </div>
-                      </div> -->
-                    </div>
+                    <!--== End Product Thumbnail Area ==-->
                   </div>
-                  <!--== End Product Thumbnail Area ==-->
-                </div>
-                <div class="col-xl-6">
-                  <!--== Start Product Info Area ==-->
-                  <div class="product-single-info">
-                    <h3 class="main-title">Leather Nams Slipper</h3>
-                    <div class="prices">
-                      <span class="price">$20.19</span>
-                    </div>
-                    <div class="rating-box-wrap">
-                      <div class="rating-box">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                  <div class="col-xl-6">
+                    <!--== Start Product Info Area ==-->
+                    <div class="product-single-info">
+                      <h3 class="main-title"><?=$name_sp ?></h3>
+                      <div class="prices">
+                        <span class="price"><?= number_format($k['gia'], 0, '.', ',') ?> vnđ</span>
                       </div>
-                      <div class="review-status">
-                        <a href="javascript:void(0)">(5 khách hàng đã đánh giá)</a>
-                      </div>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mill veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exet commodo consequat. Duis aute irure dolor</p>
-                    <div class="product-color">
-                      <h6 class="title">Color</h6>
-                      <ul class="color-list">
-                        <li  data-bg-color="#586882"></li>
-                        <li class="active" data-bg-color="#505050"></li>
-                        <li data-bg-color="#73707a"></li>
-                        <li data-bg-color="#c7bb9b"></li>
-                      </ul>
-                    </div>
-                    <div class="product-size">
-                      <h6 class="title">Size</h6>
-                      <ul class="size-list">
-                        <li>S</li>
-                        <li class="active">M</li>
-                        <li>L</li>
-                        <li>XL</li>
-                      </ul>
-                    </div>
-                    <div class="product-quick-action">
-                      <div class="qty-wrap">
-                        <div class="pro-qty">
-                          <input type="text" title="Quantity" value="1">
+                      <div class="rating-box-wrap">
+                        <div class="rating-box">
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                        <div class="review-status">
+                          <a href="javascript:void(0)">(5 khách hàng đã đánh giá)</a>
                         </div>
                       </div>
-                      <a class="btn-theme" href="index.php?act=thanhtoan">Thanh Toán</a>
-                    </div>
-                    <div class="product-wishlist-compare">
-                      <a href="shop-wishlist.html"><i class="pe-7s-like"></i>Thêm vào ưa thích</a>
-                      <a href="shop-compare.html"><i class="pe-7s-shuffle"></i>Thêm vào giỏ hàng</a>
-                    </div>
-                    <div class="product-info-footer">
-                      <h6 class="code"><span>Code :</span>Ch-256xl</h6>
-                      <div class="social-icons">
-                        <span>Share</span>
-                        <a href="#/"><i class="fa fa-facebook"></i></a>
-                        <a href="#/"><i class="fa fa-dribbble"></i></a>
-                        <a href="#/"><i class="fa fa-pinterest-p"></i></a>
+                      <p><?= $mo_ta ?></p>
+                      <div class="product-color">
+                        <h6 class="title">Color</h6>
+                        <ul class="color-list">
+                          <li  data-bg-color="#586882"></li>
+                          <li class="active" data-bg-color="#505050"></li>
+                          <li data-bg-color="#73707a"></li>
+                          <li data-bg-color="#c7bb9b"></li>
+                        </ul>
+                      </div>
+                      <div class="product-size">
+                        <h6 class="title">Size</h6>
+                        <ul class="size-list">
+                          <li>S</li>
+                          <li class="active">M</li>
+                          <li>L</li>
+                          <li>XL</li>
+                        </ul>
+                      </div>
+                      <div class="product-quick-action">
+                        <div class="qty-wrap">
+                          <div class="pro-qty">
+                            <input type="text" title="Quantity" value="1">
+                          </div>
+                        </div>
+                        <a class="btn-theme" href="index.php?act=thanhtoan">Thanh Toán</a>
+                      </div>
+                      <div class="product-wishlist-compare">
+                        <a href="shop-wishlist.html"><i class="pe-7s-like"></i>Thêm vào ưa thích</a>
+                        <a href="shop-compare.html"><i class="pe-7s-shuffle"></i>Thêm vào giỏ hàng</a>
+                      </div>
+                      <div class="product-info-footer">
+                        <h6 class="code"><span>Code :</span>Ch-256xl</h6>
+                        <div class="social-icons">
+                          <span>Share</span>
+                          <a href="#/"><i class="fa fa-facebook"></i></a>
+                          <a href="#/"><i class="fa fa-dribbble"></i></a>
+                          <a href="#/"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
                       </div>
                     </div>
+                    <!--== End Product Info Area ==-->
                   </div>
-                  <!--== End Product Info Area ==-->
                 </div>
               </div>
             </div>
-          </div>
+          <?php endforeach  ?>
         </div>
 
         <div class="row">

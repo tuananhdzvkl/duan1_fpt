@@ -105,7 +105,7 @@
             <div class="product-item">
               <div class="inner-content">
                 <div class="product-thumb">
-                  <a href="index.php?act=chitietSP">
+                  <a href="index.php?act=chitietSP&id=<?= $id_sp ?>">
                     <img src="assets/img/shop/<?=$image_sp?>" width="270" height="274" alt="Image-HasTech">
                   </a>
                   <div class="product-flag">
@@ -151,7 +151,7 @@
                     </ul>
                 </div>
 
-                  <h4 class="title"><a href="index.php?act=chitietSP"><?=$name_sp?></a></h4>
+                  <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
                   <div class="prices">
                     <span class="price-old">10.000 vnđ</span>
                     <span class="sep">-</span>
