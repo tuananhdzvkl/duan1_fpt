@@ -109,15 +109,13 @@
                     <img src="assets/img/shop/<?=$image_sp?>" width="270" height="274" alt="Image-HasTech">
                   </a>
                   <div class="product-flag">
-                    <ul>
-                      <li class="discount"><?php if ($giam_gia=0) {
-                         echo "";
-                      } else{
-                        echo $giam_gia."%";
-                      }
-                      ?></li>
-                    </ul>
+                      <ul>
+                          <?php if ($giam_gia > 0): ?>
+                              <li class="discount"><?= $giam_gia ?>%</li>
+                          <?php endif; ?>
+                      </ul>
                   </div>
+
                   <div class="product-action">
                     <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
                     <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
@@ -129,18 +127,35 @@
                   <a class="banner-link-overlay" href="shop.php"></a>
                 </div>
                 <div class="product-info">
-                  <div class="category">
+                <div class="category">
                     <ul>
-                      <li><a href="shop.php">Nam</a></li>
-                      <li class="sep">/</li>
-                      <li><a href="shop.php">Nữ</a></li>
+                        <li><a href="shop.php">
+                            <?php
+                            $genderName = '';
+                            switch ($gioi_tinh) {
+                                case 0:
+                                    $genderName = 'Unisex';
+                                    break;
+                                case 1:
+                                    $genderName = 'Nam';
+                                    break;
+                                case 2:
+                                    $genderName = 'Nữ';
+                                    break;
+                                default:
+                                    $genderName = 'Unknown';
+                            }
+                            echo $genderName;
+                            ?>
+                        </a></li>
                     </ul>
-                  </div>
-                  <h4 class="title"><a href="index.php?act=chitietSP">Dép da nam</a></h4>
+                </div>
+
+                  <h4 class="title"><a href="index.php?act=chitietSP"><?=$name_sp?></a></h4>
                   <div class="prices">
-                    <span class="price-old">$100</span>
+                    <span class="price-old">10.000 vnđ</span>
                     <span class="sep">-</span>
-                    <span class="price">$240.00</span>
+                    <span class="price"><?= number_format($k['gia'], 0, '.', ',') ?> vnđ</span>
                   </div>
                 </div>
               </div>
@@ -148,7 +163,7 @@
             <!--== End prPduct Item ==-->
           </div>
           <?php endforeach  ?>
-          
+        </div>
     </section>
     <!--== End Product Area Wrapper ==-->
 

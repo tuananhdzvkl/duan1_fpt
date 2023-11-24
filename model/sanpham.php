@@ -67,3 +67,10 @@ function load_sanpham_all_by_gender($gioi_tinh)
     $sp = pdo_query($sql);
     return $sp;
 }
+
+function load_sanpham_all_by_views()
+{
+    $sql = "SELECT * FROM sanpham JOIN danhmuc ON sanpham.id_dm = danhmuc.id_dm ORDER BY view DESC";
+    $sp = pdo_query($sql);
+    return $sp;
+}

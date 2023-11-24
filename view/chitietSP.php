@@ -60,7 +60,7 @@
                       </div>
                     </div>
                     <div class="swiper-container single-product-nav single-product-nav-slider">
-                      <div class="swiper-wrapper">
+                      <!-- <div class="swiper-wrapper">
                         <div class="swiper-slide">
                           <img src="assets/img/shop/product-single/nav-1.webp" width="127" height="127" alt="Image-HasTech">
                         </div>
@@ -76,7 +76,7 @@
                         <div class="swiper-slide">
                           <img src="assets/img/shop/product-single/nav-5.webp" width="127" height="127" alt="Image-HasTech">
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                   <!--== End Product Thumbnail Area ==-->
