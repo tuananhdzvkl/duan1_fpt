@@ -24,7 +24,7 @@
     <section class="product-area product-single-area">
       <div class="container">
         <div class="row">
-          <?php foreach ($sanpham as $k)  : extract($k) ?>
+          <?php extract($sp) ?>
             <div class="col-12">
               <div class="product-single-item">
                 <div class="row">
@@ -34,7 +34,7 @@
                       <div class="swiper-container single-product-thumb single-product-thumb-slider">
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
-                            <a class="lightbox-image" data-fancybox="gallery" href="assets/img/shop/product-single/1.webp">
+                            <a class="lightbox-image" data-fancybox="gallery" href="../public/uploads/<?= $image_sp ?>">
                               <img src="../public/uploads/<?= $image_sp ?>" width="570" height="541" alt="Image-HasTech">
                             </a>
                           </div>
@@ -42,23 +42,38 @@
                         </div>
                       </div>
                       <div class="swiper-container single-product-nav single-product-nav-slider">
-                        <!-- <div class="swiper-wrapper">
+                        <div class="swiper-wrapper">
+                        <?php
+                        foreach ($img_sp as $key) {
+                          extract($key);
+                          $linkimg = "../public/uploads/".$img_url
+                          ?>
                           <div class="swiper-slide">
-                            <img src="assets/img/shop/product-single/nav-1.webp" width="127" height="127" alt="Image-HasTech">
+                            <img src="<?= $linkimg ?>" width="127" height="127" alt="Product Image">
+                          </div>
+                          
+                          <?php
+                        }
+                        ?>
+                         <!-- <div class="swiper-slide">
+                            <img src="../public/uploads/" width="127" height="127" alt="Product Image">
                           </div>
                           <div class="swiper-slide">
-                            <img src="assets/img/shop/product-single/nav-2.webp" width="127" height="127" alt="Image-HasTech">
+                            <img src="../public/uploads/" width="127" height="127" alt="Product Image">
                           </div>
                           <div class="swiper-slide">
-                            <img src="assets/img/shop/product-single/nav-3.webp" width="127" height="127" alt="Image-HasTech">
+                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
                           </div>
                           <div class="swiper-slide">
-                            <img src="assets/img/shop/product-single/nav-4.webp" width="127" height="127" alt="Image-HasTech">
+                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
                           </div>
                           <div class="swiper-slide">
-                            <img src="assets/img/shop/product-single/nav-5.webp" width="127" height="127" alt="Image-HasTech">
+                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
                           </div>
-                        </div> -->
+                          <div class="swiper-slide">
+                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
+                          </div> -->
+                        </div>
                       </div>
                     </div>
                     <!--== End Product Thumbnail Area ==-->
@@ -68,7 +83,7 @@
                     <div class="product-single-info">
                       <h3 class="main-title"><?=$name_sp ?></h3>
                       <div class="prices">
-                        <span class="price"><?= number_format($k['gia'], 0, '.', ',') ?> vnđ</span>
+                        <span class="price"><?= number_format($sp['gia'], 0, '.', ',') ?> vnđ</span>
                       </div>
                       <div class="rating-box-wrap">
                         <div class="rating-box">
@@ -128,7 +143,6 @@
                 </div>
               </div>
             </div>
-          <?php endforeach  ?>
         </div>
 
         <div class="row">

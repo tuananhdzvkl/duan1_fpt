@@ -37,7 +37,7 @@ function up_sanpham($name, $id, $img, $gioitinh,  $mota, $giam_gia, $gia, $date,
 
 function load_img($id)
 {
-  $sql = " SELECT * FROM img_sp WHERE id_sp='$id'";
+  $sql = " SELECT * FROM `img_sp` WHERE id_sp = '$id'";
   $img = pdo_query($sql);
   return $img;
 }

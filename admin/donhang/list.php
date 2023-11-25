@@ -32,7 +32,7 @@
                 <td><?= $value['full_name'] ?></td>
                 <td>0<?= $value['phone'] ?></td>
                 <td><?= $value['dia_chi'] ?></td>
-                <td><?= $value['thanh_tien'] ?> Đ</td>
+                <td><?= number_format($value['thanh_tien'], 0, '.', ',') ?> vnđ</td>
                 <td><?php
                     $dateTime = new DateTime($value['thoi_gian']);
                     // Chuyển đổi sang định dạng khác (ví dụ: dd/mm/yyyy)
@@ -65,7 +65,7 @@
 
                     ?></td>
                 <td>
-                  <a href="?act=donct&idd=<?= $value['id_ctdon'] .'&trang='.$value['trang_thai'] ?>" " class=" btn btn-success">Chi Tiết</a>
+                <a href="?act=donct&idd=<?= $value['id_ctdon'] .'&trang='.$value['trang_thai'] ?>" " class=" btn btn-success">Chi Tiết</a>
                   <?php
                   if (($value['trang_thai'] == 3) || ($value['trang_thai'] == 4)) {
                     echo '<a href="?act=xoadon&idd=' . $value["id_ctdon"] . '" class="btn btn-info"> Xóa Đơn</a>';
