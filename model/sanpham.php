@@ -105,3 +105,8 @@ function load_color_ct($id)
     $sp_color = pdo_query($sql);
     return $sp_color;
 }
+function updat_view($id)
+{
+  $sql = "UPDATE `sanpham` SET view = view+1 WHERE id_sp = $id";
+   pdo_execute($sql);
+}

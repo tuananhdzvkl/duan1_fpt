@@ -1,3 +1,48 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<!-- Mirrored from template.hasthemes.com/shome/shome/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 02 Nov 2023 15:28:52 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shome - Shoes eCommerce Website Template"/>
+    <meta name="keywords" content="footwear, shoes, modern, shop, store, ecommerce, responsive, e-commerce"/>
+    <meta name="author" content="codecarnival"/>
+
+    <title>STORE ASCENSION</title>
+
+    <!--== Favicon ==-->
+    <link rel="icon website" href="assets/img/logo.png" type="image/x-icon" />
+
+    <!--== Google Fonts ==-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,500&amp;display=swap" rel="stylesheet"> 
+
+    <!--== Bootstrap CSS ==-->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--== Font Awesome Min Icon CSS ==-->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <!--== Pe7 Stroke Icon CSS ==-->
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <!--== Swiper CSS ==-->
+    <link href="assets/css/swiper.min.css" rel="stylesheet" />
+    <!--== Fancybox Min CSS ==-->
+    <link href="assets/css/fancybox.min.css" rel="stylesheet" />
+    <!--== Aos Min CSS ==-->
+    <link href="assets/css/aos.min.css" rel="stylesheet" />
+
+    <!--== Main Style CSS ==-->
+    <link href="assets/css/style1.css" rel="stylesheet" />
+
+    <!--== Main Style CSS ==-->
+    <!-- <link href="assets/css/style-login.css" rel="stylesheet" /> -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 <header class="main-header-wrapper position-relative">
     <div class="header-top">
       <div class="container pt--0 pb--0">
@@ -15,7 +60,25 @@
                     <ul>
                       <li class="number"><i class="fa fa-phone"></i><a href="tel://0123456789">+84 123 456 789</a></li>
                       <li class="email"><i class="fa fa-envelope"></i><a href="mailto://demo@example.com">demo@example.com</a></li>
-                      <li class="account"><i class="fa fa-user"></i><a href="index.php?act=login">Tài khoản</a></li>
+                      <li class="account"><i class="fa fa-user"></i>
+                        <?php
+                          if (!isset($_SESSION['username'])) {
+                            echo "<a href='?act=login'>Tài khoản</a>";
+                          } else {
+                            echo "
+                              <a type='button'  data-bs-toggle='dropdown'>
+                                Xin Chào : <spam class='text-body'>" . $_SESSION['username']['name_tk'] . "</spam>
+                              </a>
+                              <ul class='dropdown-menu'>
+                                <li><a class='dropdown-item' href='?act=thongtin'>Thông Tin Tài Khoản</a></li>
+                                <li><a class='dropdown-item' href='?act=dangxuat'>Đăng Xuất</a></li>
+                                <li><a class='dropdown-item' href='#'>Đổi Mật Khẩu</a></li>";
+                                  if ($_SESSION['username']['chucvu']== 1){
+                                    echo   "<li><a class='dropdown-item' href='admin/index.php'>Vào Trang Quản Trị</a></li> </ul>";
+                                  }
+                                }
+                        ?>
+                      </li>
                     </ul>
                   </div>
                 </div>

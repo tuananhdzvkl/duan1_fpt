@@ -31,3 +31,14 @@ function xoa_bl($id)
   $sql = "DELETE FROM binh_luan WHERE id_bl = $id";
   pdo_execute($sql);
 }
+function LoadAll_BL_user($id)
+{
+  $sql = "SELECT taikhoan.full_name , binh_luan.ngaybinhluan , comment , id_bl  FROM binh_luan JOIN taikhoan 
+  ON binh_luan.id_tk = taikhoan.id_tk where id_sp = $id  GROUP BY id_bl DESC";
+  $bl = pdo_query($sql);
+  return $bl;
+}
+function add_bl( $name ,$id_tk ,$id_sp ,$ngayGioHienTai) {
+  $sql = "INSERT INTO `binh_luan`(`comment`, `id_sp`, `id_tk`, `ngaybinhluan`) VALUES ('$name','$id_sp','$id_tk','$ngayGioHienTai')";
+  pdo_execute($sql);
+}

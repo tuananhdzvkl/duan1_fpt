@@ -1,6 +1,6 @@
 <main class="main-content">
     <!--== Start Page Header Area Wrapper ==-->
-    <div class="page-header-area" data-bg-img="assets/img/photos/slider_4.webp">
+    <div class="page-header-area" data-bg-img="assets/img/slider/1233.jpg">
       <div class="container pt--0 pb--0">
         <div class="row">
           <div class="col-12">
@@ -127,187 +127,31 @@
         </div>
 
         <div class="row">
-          <div class="col-12">
-            <div class="product-review-tabs-content">
-              <ul class="nav product-tab-nav" id="ReviewTab" role="tablist">
-                <li role="presentation">
-                  <a class="active" id="information-tab" data-bs-toggle="pill" href="#information" role="tab" aria-controls="information" aria-selected="true">Thông tin sản phẩm</a>
-                </li>
-                <li role="presentation">
-                  <a id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Đánh giá sản phẩm<span>(05)</span></a>
-                </li>
-              </ul>
-              <div class="tab-content product-tab-content" id="ReviewTabContent">
-                <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
-                  <div class="product-information">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adlo minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in tun tuni reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserun mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rel aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                  <div class="product-review-content">
-                    <div class="review-content-header">
-                      <h3>Người dùng đánh giá</h3>
-                      <div class="review-info">
-                        <ul class="review-rating">
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star-o"></li>
-                        </ul>
-                        <span class="review-caption">Dựa trên 5 đánh giá</span>
-                        <span class="review-write-btn">Viết đánh giá</span>
-                      </div>
-                    </div>
+        <div class="col-12">
+          <div class="product-review-tabs-content">
+            <ul class="nav product-tab-nav" id="ReviewTab" role="tablist">
+              <li role="presentation">
+                <a class="active" id="information-tab" data-bs-toggle="pill" href="#information" role="tab" aria-controls="information" aria-selected="true">Thông Tin Sản Phẩm</a>
+              </li>
 
-                    <!--== Start Reviews Form Item ==-->
-                    <div class="reviews-form-area">
-                      <h4 class="title">Viết đánh giá</h4>
-                      <div class="reviews-form-content">
-                        <form action="#">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="for_name">Tên</label>
-                                <input id="for_name" class="form-control" type="text" placeholder="Enter your name">
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="for_email">Địa chỉ</label>
-                                <input id="for_email" class="form-control" type="email" placeholder="john.smith@example.com">
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <span class="title">Xếp hạng</span>
-                                <ul class="review-rating">
-                                  <li class="fa fa-star-o"></li>
-                                  <li class="fa fa-star-o"></li>
-                                  <li class="fa fa-star-o"></li>
-                                  <li class="fa fa-star-o"></li>
-                                  <li class="fa fa-star-o"></li>
-                                </ul>
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="for_review-title">Đánh giá tiêu đề</label>
-                                <input id="for_review-title" class="form-control" type="text" placeholder="Give your review a title">
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="for_comNamt">Cơ quan đánh giá (1500)</label>
-                                <textarea id="for_comNamt" class="form-control" placeholder="Write your comNamts here"></textarea>
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <div class="form-submit-btn">
-                                <button type="submit" class="btn-submit">Đăng bình luận</button>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                    <!--== End Reviews Form Item ==-->
-
-                    <div class="reviews-content-body">
-                      <!--== Start Reviews Content Item ==-->
-                      <div class="review-item">
-                        <ul class="review-rating">
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                        </ul>
-                        <h3 class="title">Dịch vụ vận chuyển tuyệt vời</h3>
-                        <h5 class="sub-title"><span>Nantu Nayal</span> no <span>Sep 30, 2022</span></h5>
-                        <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <a href="#/">Báo cáo là không phù hợp</a>
-                      </div>
-                      <!--== End Reviews Content Item ==-->
-
-                      <!--== Start Reviews Content Item ==-->
-                      <div class="review-item">
-                        <ul class="review-rating">
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star-o"></li>
-                          <li class="fa fa-star-o"></li>
-                          <li class="fa fa-star-o"></li>
-                          <li class="fa fa-star-o"></li>
-                        </ul>
-                        <h3 class="title">Chất lượng thấp</h3>
-                        <h5 class="sub-title"><span>Oliv hala</span> no <span>Sep 30, 2022</span></h5>
-                        <p>My Favorite White Sneakers From Splurge To Save the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                        <a href="#/">Báo cáo là không phù hợp</a>
-                      </div>
-                      <!--== End Reviews Content Item ==-->
-
-                      <!--== Start Reviews Content Item ==-->
-                      <div class="review-item">
-                        <ul class="review-rating">
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                        </ul>
-                        <h3 class="title">Dịch vụ xuất sắc!</h3>
-                        <h5 class="sub-title"><span>Halk Marron</span> no <span>Sep 30, 2022</span></h5>
-                        <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-                        <a href="#/">Báo cáo là không phù hợp</a>
-                      </div>
-                      <!--== End Reviews Content Item ==-->
-
-                      <!--== Start Reviews Content Item ==-->
-                      <div class="review-item">
-                        <ul class="review-rating">
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star-o"></li>
-                          <li class="fa fa-star-o"></li>
-                        </ul>
-                        <h3 class="title">Giá rất cao</h3>
-                        <h5 class="sub-title"><span>Musa</span> no <span>Sep 30, 2022</span></h5>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                        <a href="#/">Báo cáo là không phù hợp</a>
-                      </div>
-                      <!--== End Reviews Content Item ==-->
-
-                      <!--== Start Reviews Content Item ==-->
-                      <div class="review-item">
-                        <ul class="review-rating">
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star"></li>
-                          <li class="fa fa-star-o"></li>
-                        </ul>
-                        <h3 class="title">Bình thường</h3>
-                        <h5 class="sub-title"><span>Muhammad</span> no <span>Sep 30, 2022</span></h5>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
-                        <a href="#/">Báo cáo là không phù hợp</a>
-                      </div>
-                      <!--== End Reviews Content Item ==-->
-                    </div>
-
-                    <!--== Start Reviews Pagination Item ==-->
-                    <div class="review-pagination">
-                      <span class="pagination-pag">1</span>
-                      <span class="pagination-pag">2</span>
-                      <span class="pagination-next">Tiếp »</span>
-                    </div>
-                    <!--== End Reviews Pagination Item ==-->
-                  </div>
+              <li role="presentation">
+                <a id="reviews-tab" data-bs-toggle="pill" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Bình Luận<span>(<?=$tong=count($binhluan)?>)</span></a>
+              </li>
+            </ul>
+            <div class="tab-content product-tab-content" id="ReviewTabContent">
+              <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
+                <div class="product-information">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adlo minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in tun tuni reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserun mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rel aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
                 </div>
               </div>
+
+              <?php include("view/binhluan/binhluan.php") ?>
+
+            
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
     <!--== End Product Single Area Wrapper ==-->

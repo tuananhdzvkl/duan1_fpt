@@ -28,8 +28,24 @@ function upload_tk($id, $name)
   $sql = "UPDATE `taikhoan` SET chucvu ='$name' WHERE id_tk = $id";
   pdo_execute($sql);
 }
-function mo_TK($id,$name)
+function mo_TK($id, $name)
 {
   $sql = "UPDATE `taikhoan` SET `lock`='$name' WHERE id_tk = $id;";
+  pdo_execute($sql);
+}
+
+
+//USER ĐĂNG NHẬP
+
+
+function dangky_TK($name, $pswd, $full_name, $email, $diachi)
+{
+  $sql = "INSERT INTO `taikhoan`(`name_tk`, `pass`, `full_name`, `email`, `dia_chi`) VALUES ('$name','$pswd',' $full_name','$email','$diachi')";
+  pdo_execute($sql);
+}
+
+function upload_tk_user($id, $sdt, $full_name, $diachi, $email, $img)
+{
+  $sql = "UPDATE `taikhoan` SET `image_tk`='$img',`full_name`='$full_name',`email`='$email',`phone`='$sdt',`dia_chi`='$diachi' WHERE id_tk = $id";
   pdo_execute($sql);
 }

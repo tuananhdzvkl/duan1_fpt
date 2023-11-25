@@ -168,21 +168,32 @@
     <!--== End Product Area Wrapper ==-->
 
     <!--== Start Divider Area Wrapper ==-->
-    <section class="bg-color-f2 position-relative z-index-1">
-      <div class="container pt--0 pb--0">
-        <div class="row divider-wrap divider-style1">
-          <div class="col-lg-6">
-            <div class="divider-content" data-title="NEW">
-              <h4 class="sub-title">Tiết kiệm 50%</h4>
-              <h2 class="title">Tất cả cửa hàng trực tuyến</h2>
-              <p class="desc">Ưu đãi có sẵn cho tất cả giày và sản phẩm</p>
-              <a class="btn-theme" href="shop.php">Mua ngay</a>
+    <section class="home-slider-area">
+      <div class="swiper-container home-slider-container default-slider-container">
+        <div class="swiper-wrapper home-slider-wrapper slider-default">
+          
+          <div class="swiper-slide">
+            <div class="slider-content-area" data-bg-img="assets/img/shape/1.webp">
+              <video autoplay muted playsinline loop>
+                  <source src="../assets/img/video/banner1.mp4" type="video/mp4">
+              </video>
+              <div class="slider-content">
+                  <div class="content">
+                    <!-- Your video element -->
+                      
+                    <!-- Your other content goes here -->
+                    <div class="title-box">
+                    <h2 class="title">Men's Spring-Summer 2024 Pre-Collection</h2>
+                    </div>
+                    
+                    <div class="btn-box" style="text-align:center;">
+                      <a class="btn-slider" href="shop.php">Exclusive Pre-Launch on LV App</a>
+                    </div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="bg-layer-wrap">
-        <div class="bg-layer-style z-index--1 parallax" data-speed="1.05" data-bg-img="assets/img/photos/bg1.webp"></div>
       </div>
     </section>
     <!--== End Divider Area Wrapper ==-->
@@ -211,7 +222,7 @@
                       <div class="inner-content">
                         <div class="product-thumb">
                           <a href="index.php?act=chitietSP">
-                            <img src="assets/img/shop/1.webp" width="270" height="274" alt="Image-HasTech">
+                            <img src="assets/img/shop/.webp" width="270" height="274" alt="Image-HasTech">
                           </a>
                           <div class="product-flag">
                             <ul>
@@ -464,7 +475,7 @@
             <div class="divider-thumb-content">
               <div class="thumb">
                 <a href="shop.php">
-                  <img src="assets/img/shop/banner/1.webp" width="570" height="350" alt="Image-HasTech">
+                  <img src="assets/img/shop/1.webp" width="570" height="350" alt="Image-HasTech">
                 </a>
               </div>
               <div class="content">
