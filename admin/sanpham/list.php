@@ -12,7 +12,7 @@
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
-            <tr>
+            <tr style="text-align:center;">
               <th>Check</th>
               <th>STT</th>
               <th>Name</th>
@@ -32,7 +32,7 @@
           <tbody>
             <form action="" method="get">
               <?php foreach ($sanpham as $key => $value) : ?>
-                <tr>
+                <tr style="text-align:center;">
                   <td><input type="checkbox"></td>
                   <td><?= $key + 1 ?></td>
                   <td><?= $value['name_sp'] ?></td>

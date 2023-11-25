@@ -55,24 +55,7 @@
                           <?php
                         }
                         ?>
-                         <!-- <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Product Image">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Product Image">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
-                          </div> -->
+                        
                         </div>
                       </div>
                     </div>
@@ -94,26 +77,24 @@
                           <i class="fa fa-star"></i>
                         </div>
                         <div class="review-status">
-                          <a href="javascript:void(0)">(5 khách hàng đã đánh giá)</a>
+                          <a href="">(<?= $view ?> Lượt Xem)</a>
                         </div>
                       </div>
                       <p><?= $mo_ta ?></p>
                       <div class="product-color">
                         <h6 class="title">Color</h6>
                         <ul class="color-list">
-                          <li  data-bg-color="#586882"></li>
-                          <li class="active" data-bg-color="#505050"></li>
-                          <li data-bg-color="#73707a"></li>
-                          <li data-bg-color="#c7bb9b"></li>
+                          <?php foreach ($load_color as $key => $value):?>
+                            <li class="active" style="background-color: <?= $value['name_color'] ?>"></li>
+                          <?php endforeach?>
                         </ul>
                       </div>
                       <div class="product-size">
                         <h6 class="title">Size</h6>
                         <ul class="size-list">
-                          <li>S</li>
-                          <li class="active">M</li>
-                          <li>L</li>
-                          <li>XL</li>
+                          <?php foreach ($load_size as $key => $value):?>
+                            <li class="active" ><?= $value['name_size']?></li>
+                          <?php endforeach?>
                         </ul>
                       </div>
                       <div class="product-quick-action">

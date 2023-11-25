@@ -67,10 +67,11 @@ include "view/header.php";
                         $id = $_GET['id'];
                         $img_sp = load_img($id);
                         $sp =  load_sanpham_one($id);
+                        $load_size = load_size_ct($id);
+                        $load_color = load_color_ct($id);
+                        include "view/chitietSP.php";
+                        break;
                     }
-                   
-                    include "view/chitietSP.php";
-                    break;
                 case 'thanhtoan':
                     include "view/thanhtoan.php";
                     break;
