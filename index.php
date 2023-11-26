@@ -12,9 +12,11 @@ include "view/include/header.php";
         $act = $_GET['act'];
         switch ($act) {
             case 'home':
-                include "view/home.php";
+                include "view/include/home.php";
                 break;
             case 'shop':
+                
+                $tong = thongke();
                 include "view/shop.php";
                 break;
             case 'chitietSP':
@@ -23,6 +25,7 @@ include "view/include/header.php";
                     $binhluan = LoadAll_BL_user($id);
                     updat_view($id);
                     $sp = load_sanpham_one($id);
+                    $sanpham =  load_sanpham_all();
                     $img_sp = load_img($id);    
                     $load_size = load_size_ct($id);
                     $load_color = load_color_ct($id);
@@ -85,54 +88,87 @@ include "view/include/header.php";
                     }
                     include "view/Taikhoan/login.php";
                     break;
-                case 'contact':
-                    include "view/contact.php";
-                    break;
-                    case 'thongtin':
-                        $id = $_SESSION['username']['id_tk'];
-                        $tk = Load_one_TK($id);
-                        include "view/Taikhoan/thongtin.php";
+                    
+                    case 'contact':
+                        include "view/contact.php";
                         break;
+
+                    case 'thongtin':
+                        if(isset($_SESSION['username']['id_tk'])) {
+                            $id = $_SESSION['username']['id_tk'];
+                            $tk = Load_one_TK($id);
+                            include "view/Taikhoan/thongtin.php";
+                        } else {
+                            // Handle the case when 'username' or 'id_tk' is not set in the $_SESSION array
+                            // You might want to redirect the user to a login page or display an error message.
+                            echo "<div style='text-align: center; color: red;'> Session data not found. Please log in.</div>";
+                        }
+                    break;        
+                        
                     case 'capnhattk':
-                        if (isset($_POST['gui']) && ($_POST['gui'] != "")) {
-        
-                            $full_name = $_POST['full-name'];
-                            $sdt = $_POST['sdt'];
-                            $diachi = $_POST['diachi'];
-                            $email = $_POST['email'];
-                            $file = $_FILES['img_tk'];
-                            $id = $_POST['id'];
-                            $img = $_POST['img_tk'];
-                            if ($file['size'] > 0) {
-                                $img = $file['name'];
-                                move_uploaded_file($file['tmp_name'], "assets/uploads/" . $img);
+                        if (isset($_POST['gui']) && !empty($_POST['gui'])) {
+                            $id = isset($_POST['id']) ? $_POST['id'] : null;
+                            $full_name = isset($_POST['full-name']) ? $_POST['full-name'] : '';
+                            $sdt = isset($_POST['sdt']) ? $_POST['sdt'] : '';
+                            $diachi = isset($_POST['diachi']) ? $_POST['diachi'] : '';
+                            $email = isset($_POST['email']) ? $_POST['email'] : '';
+                            $img = isset($_POST['img_tk']) ? $_POST['img_tk'] : '';
+                    
+                            // Check if a file was uploaded
+                            if (!empty($_FILES['img_tk']['name'])) {
+                                $file = $_FILES['img_tk'];
+                                if ($file['size'] > 0) {
+                                    $img = $file['name'];
+                                    move_uploaded_file($file['tmp_name'], "assets/uploads/" . $img);
+                                }
                             }
-        
-                            // echo $img;
-                            upload_tk_user($id, $sdt, $full_name, $diachi, $email, $img);
-                            echo '<script>alert("Cập nhật Thành Công")</script>';
-                            echo "  <script>window.location.href ='index.php'</script> ";
+                    
+                            if (!empty($id)) {
+                                // Perform the update
+                                upload_tk_user($id, $sdt, $full_name, $diachi, $email, $img);
+                    
+                                // Redirect or display a success message
+                                echo '<script>alert("Cập nhật Thành Công")</script>';
+                                echo '<script>window.location.href = "?act=thongtin"</script>';
+                            } else {
+                                // Handle the case when the ID is not set
+                                echo '<script>alert("Không thể cập nhật thông tin. Vui lòng thử lại.")</script>';
+                                echo '<script>window.location.href = "index.php"</script>';
+                            }
                         }
                         break;
+                    
                     case 'dangxuat':
                         if (isset($_SESSION["username"])) {
                             unset($_SESSION["username"]);
                         }
-                        echo "  <script>window.location.href ='index.php'</script> ";
+                        echo "  <script>window.location.href ='?act=login'</script> ";
                         break;
         
-                    case 'binhluan':
-                        if (isset($_POST['gui']) && ($_POST['gui'] != "")) {
-                            $name = $_POST['binhluan'];
-                            $id_tk = $_POST['id_tk'];
-                            $id_sp = $_POST['id'];
-                            date_default_timezone_set('Asia/Ho_Chi_Minh');
-                            $ngayGioHienTai = date('Y-m-d H:i:s');
-                            add_bl($name, $id_tk, $id_sp, $ngayGioHienTai);
-                            echo "  <script>window.location.href ='?act=chitietSP&id_sp=$id_sp'</script> ";
-                        }
-        
-                        break;
+                        case 'binhluan':
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['gui'])) {
+                                $name = htmlspecialchars($_POST['binhluan']); // Sanitize user input
+                                $id_tk = $_POST['id_tk'];
+                                $id_sp = $_POST['id'];
+                        
+                                // Ensure that the comment is not empty before adding to the database
+                                if (!empty($name)) {
+                                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+                                    $ngayGioHienTai = date('Y-m-d H:i:s');
+                        
+                                    // Add the comment to the database
+                                    add_bl($name, $id_tk, $id_sp, $ngayGioHienTai);
+                        
+                                    // Redirect the user to the product details page after submission
+                                    header("Location: ?act=chitietSP&id_sp=$id_sp");
+                                    exit(); // Ensure that no further code execution occurs after the redirect
+                                } else {
+                                    // Handle the case where the comment is empty
+                                    echo "Bình luận không được để trống.";
+                                }
+                            }
+                            break;
+                        
                     default:
                         break;
             }

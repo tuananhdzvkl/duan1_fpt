@@ -60,22 +60,36 @@
                     <ul>
                       <li class="number"><i class="fa fa-phone"></i><a href="tel://0123456789">0985670942</a></li>
                       <li class="email"><i class="fa fa-envelope"></i><a href="mailto://demo@example.com">demo@example.com</a></li>
-                      <li class="account"><i class="fa fa-user"></i>
-                        <?php
+                      <li class="account">
+                          <i class="fa fa-user"></i>
+                          <?php
                           if (!isset($_SESSION['username'])) {
-                            echo "<a href='?act=login'>Tài khoản</a>";
+                              echo "<a href='?act=login'>Tài khoản</a>";
                           } else {
-                            echo "<a type='button'  data-bs-toggle='dropdown'> Xin Chào : <spam class='text-body'>" . $_SESSION['username']['name_tk'] . "</spam> </a> 
-                              <ul class='dropdown-menu'> 
-                                <li><a class='dropdown-item' href='?act=thongtin'>Thông Tin Tài Khoản</a></li>
-                                <li><a class='dropdown-item' href='?act=dangxuat'>Đăng Xuất</a></li>
-                                <li><a class='dropdown-item' href='#'>Đổi Mật Khẩu</a></li>";
-                                  if ($_SESSION['username']['chucvu']== 1){ 
-                                    echo   "<li><a class='dropdown-item' href='admin/index.php'>Vào Trang Quản Trị</a></li> </ul>";
-                                  }
-                                                                    
+                              echo "<a type='button' data-bs-toggle='dropdown'> Xin Chào : <span class='text-body'>" . $_SESSION['username']['name_tk'] . "</span> </a> 
+                                  <div class='dropdown-menu dropdown-menu-right shadow animated--grow-in' aria-labelledby='userDropdown'>
+                                      <a class='dropdown-item' href='?act=thongtin'>
+                                          <i class='fas fa-user fa-sm fa-fw mr-2 text-gray-400'></i>
+                                          Profile
+                                      </a>";
+                                      if ($_SESSION['username']['chucvu'] == 1) {
+                                          echo "<a class='dropdown-item' href='admin/index.php'>
+                                                  <i class='fa-solid fa-flag'></i>
+                                                  Admin Page
+                                              </a>";
+                                      }
+                                      echo "<a class='dropdown-item' href='#'>
+                                              <i class='fa-solid fa-lock'></i>
+                                              Forgot Password?
+                                          </a>
+                                          <div class='dropdown-divider'></div>
+                                          <a class='dropdown-item' href='?act=dangxuat' data-toggle='modal' data-target='#logoutModal'>
+                                              <i class='fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400'></i>
+                                              Logout
+                                          </a>
+                                  </div>";
                           }
-                        ?>
+                          ?>
                       </li>
                     </ul>
                   </div>
@@ -145,7 +159,7 @@
                               <li class="has-submenu1"><a href="index.php?act=home"><span>Trang Chủ</span></a></li>
 
                               <li class="has-submenu position-static">
-                                  <a href="index.php?act=shop"><span>Danh mục</span></a>
+                                  <a href=""><span>Danh mục</span></a>
                                   <ul class="submenu-nav submenu-nav-mega1">
                                       <?php
                                       // Assuming LoadAll_DM() returns an array of categories
@@ -157,10 +171,10 @@
                                       ?>
                                   </ul>
                               </li>
-                              <li class="has-submenu position-static">
+                              <li>
                                   <a href="index.php?act=shop"><span>Sản Phẩm</span></a>
                                   <!-- You may populate this submenu with dynamic data if needed -->
-                                  <ul class="submenu-nav submenu-nav-mega1">
+                                  <!-- <ul class="submenu-nav submenu-nav-mega1">
                                       <?php
                                       // Assuming LoadAll_DM() returns an array of categories
                                       $sanpham = load_sanpham_all();
@@ -185,7 +199,7 @@
                                           }
                                       }
                                       ?>
-                                  </ul>
+                                  </ul> -->
                               </li>
                               <li class="has-submenu1"><a href="index.php?act=blog"><span>Tin Tức</span></a></li>
                               <li><a href="index.php?act=contact"><span>Liên hệ</span></a></li>

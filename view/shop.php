@@ -8,7 +8,7 @@
               <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Trang sản phẩm</h2>
               <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
                 <ul class="breadcrumb">
-                  <li><a href="index.html">Trang chủ</a></li>
+                  <li><a href="?act=home">Trang chủ</a></li>
                   <li class="breadcrumb-sep">//</li>
                   <li>Trang sản phẩm</li>
                 </ul>
@@ -29,7 +29,7 @@
               <div class="col-12">
                 <div class="shop-top-bar">
                   <div class="shop-top-left">
-                    <p class="pagination-line"><a href="shop.html">12</a> Product Found of <a href="shop.html">30</a></p>
+                    <p class="pagination-line"><a href="shop.php">12</a> Product Found of <a href="shop.php">30</a></p>
                   </div>
                   <div class="shop-top-center">
                     <nav class="product-nav">
@@ -57,468 +57,69 @@
                 <div class="tab-content" id="nav-tabContent">
                   <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
                     <div class="row">
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/1.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
+                    <?php foreach ($sanpham as $k)  : extract($k) ?>
+                        <div class="col-sm-6 col-lg-4">
+                          <!--== Start Product Item ==-->
+                          <div class="product-item">
+                            <div class="inner-content">
+                              <div class="product-thumb">
+                                <a href="index.php?act=chitietSP&id=<?= $id_sp ?>">
+                                  <img src="assets/img/shop/<?=$image_sp?>" width="270" height="274" alt="Image-HasTech">
+                                </a>
+                                <div class="product-flag">
                                 <ul>
-                                  <li class="discount">-10%</li>
+                                    <?php if ($giam_gia > 0): ?>
+                                        <li class="discount"><?= $giam_gia ?>%</li>
+                                    <?php endif; ?>
                                 </ul>
+                                </div>
+                                <div class="product-action">
+                                  <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
+                                  <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                                  <button type="button" class="btn-product-quick-view-open">
+                                    <i class="fa fa-arrows"></i>
+                                  </button>
+                                  <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                                </div>
+                                <a class="banner-link-overlay" href="shop.html"></a>
                               </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Leather Mens Slipper</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
+                              <div class="product-info">
+                                <div class="category">
+                                  <ul>
+                                      <li><a href="shop.php">
+                                          <?php
+                                          $genderName = '';
+                                          switch ($gioi_tinh) {
+                                              case 0:
+                                                  $genderName = 'Unisex';
+                                                  break;
+                                              case 1:
+                                                  $genderName = 'Nam';
+                                                  break;
+                                              case 2:
+                                                  $genderName = 'Nữ';
+                                                  break;
+                                              default:
+                                                  $genderName = 'Unknown';
+                                          }
+                                          echo $genderName;
+                                          ?>
+                                      </a></li>
+                                  </ul>
+                                </div>
+                                <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
+                                <div class="prices">
+                                  <span class="price-old">10.000 vnđ</span>
+                                  <span class="sep">-</span>
+                                  <span class="price"><?= number_format($k['gia'], 0, '.', ',') ?> vnđ</span>
+                                </div>
                               </div>
                             </div>
                           </div>
+                          <!--== End prPduct Item ==-->
                         </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/2.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Quickiin Mens shoes</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/3.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
-                                <ul>
-                                  <li class="discount">-10%</li>
-                                </ul>
-                              </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Rexpo Womens shoes</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/4.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Modern Smart Shoes</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/5.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
-                                <ul>
-                                  <li class="discount">-10%</li>
-                                </ul>
-                              </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Primitive Mens shoes</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/6.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Leather Mens Slipper</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/7.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
-                                <ul>
-                                  <li class="discount">-10%</li>
-                                </ul>
-                              </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Simple Fabric Shoe</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/8.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Primitive Men shoes</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/1.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
-                                <ul>
-                                  <li class="discount">-10%</li>
-                                </ul>
-                              </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Hollister V-Neck Knit</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/4.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">exclusive mens shoe</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/2.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
-                                <ul>
-                                  <li class="discount">-10%</li>
-                                </ul>
-                              </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">New Womens High Hills</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-sm-6 col-lg-4">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/3.webp" width="270" height="274" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Leather Mens slippers</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
+                    <?php endforeach  ?>
+                      
                       <div class="col-12">
                         <div class="pagination-items">
                           <ul class="pagination justify-content-end mb--0">
@@ -530,262 +131,84 @@
                       </div>
                     </div>
                   </div>
-                  <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item product-list-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/list-1.webp" width="322" height="360" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
-                                <ul>
-                                  <li class="discount">-10%</li>
-                                </ul>
+                  <?php foreach ($sanpham as $k)  : extract($k) ?>
+                    <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <!--== Start Product Item ==-->
+                          <div class="product-item product-list-item">
+                            <div class="inner-content">
+                              <div class="product-thumb">
+                                <a href="index.php?act=chitietSP&id=<?= $id_sp ?>">
+                                  <img src="assets/img/shop/<?=$image_sp?>" width="270" height="274" alt="Image-HasTech">
+                                </a>
+                                <div class="product-flag">
+                                  <ul>
+                                      <?php if ($giam_gia > 0): ?>
+                                          <li class="discount"><?= $giam_gia ?>%</li>
+                                      <?php endif; ?>
+                                  </ul>
+                                </div>
+                                <div class="product-action">
+                                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
+                                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
+                                    <button type="button" class="btn-product-quick-view-open">
+                                      <i class="fa fa-arrows"></i>
+                                    </button>
+                                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
+                                </div>
+                                <a class="banner-link-overlay" href="shop.php"></a>
                               </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
+                              <div class="product-info">
+                                <div class="category">
+                                    <ul>
+                                        <li><a href="shop.php">
+                                            <?php
+                                            $genderName = '';
+                                            switch ($gioi_tinh) {
+                                                case 0:
+                                                    $genderName = 'Unisex';
+                                                    break;
+                                                case 1:
+                                                    $genderName = 'Nam';
+                                                    break;
+                                                case 2:
+                                                    $genderName = 'Nữ';
+                                                    break;
+                                                default:
+                                                    $genderName = 'Unknown';
+                                            }
+                                            echo $genderName;
+                                            ?>
+                                        </a></li>
+                                    </ul>
+                                </div>
+                                <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
+                                <div class="prices">
+                                  <span class="price-old">10.000 vnđ</span>
+                                  <span class="sep">-</span>
+                                  <span class="price"><?= number_format($k['gia'], 0, '.', ',') ?> vnđ</span>
+                                </div>
+                                <p><?= $mo_ta ?></p>
+                                <a class="btn-theme btn-sm" href="shop-cart.php">Add To Cart</a>
                               </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Leather Mens Slipper</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                              <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-md-12">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item product-list-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/list-2.webp" width="322" height="360" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Quickiin Mens shoes</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                              <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
                             </div>
                           </div>
+                          <!--== End prPduct Item ==-->
                         </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-md-12">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item product-list-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/list-3.webp" width="322" height="360" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
-                                <ul>
-                                  <li class="discount">-10%</li>
-                                </ul>
-                              </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Rexpo Womens shoes</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                              <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                            </div>
+                        
+                        <div class="col-12">
+                          <div class="pagination-items">
+                            <ul class="pagination justify-content-end mb--0">
+                              <li><a class="active" href="shop.html">1</a></li>
+                              <li><a href="shop-four-columns.html">2</a></li>
+                              <li><a href="shop-three-columns.html">3</a></li>
+                            </ul>                    
                           </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-md-12">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item product-list-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/list-4.webp" width="322" height="360" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Modern Smart Shoes</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                              <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-md-12">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item product-list-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/list-5.webp" width="322" height="360" alt="Image-HasTech">
-                              </a>
-                              <div class="product-flag">
-                                <ul>
-                                  <li class="discount">-10%</li>
-                                </ul>
-                              </div>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Primitive Mens shoes</a></h4>
-                              <div class="prices">
-                                <span class="price">$240.00</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                              <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-md-12">
-                        <!--== Start Product Item ==-->
-                        <div class="product-item product-list-item">
-                          <div class="inner-content">
-                            <div class="product-thumb">
-                              <a href="index.php?act=chitietSP">
-                                <img src="assets/img/shop/list-6.webp" width="322" height="360" alt="Image-HasTech">
-                              </a>
-                              <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                    <button type="button" class="btn-product-quick-view-open">
-                      <i class="fa fa-arrows"></i>
-                    </button>
-                    <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                  </div>
-                              <a class="banner-link-overlay" href="shop.html"></a>
-                            </div>
-                            <div class="product-info">
-                              <div class="category">
-                                <ul>
-                                  <li><a href="shop.html">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="shop.html">Women</a></li>
-                                </ul>
-                              </div>
-                              <h4 class="title"><a href="index.php?act=chitietSP">Leather Mens Slipper</a></h4>
-                              <div class="prices">
-                                <span class="price-old">$300</span>
-                                <span class="sep">-</span>
-                                <span class="price">$240.00</span>
-                              </div>
-                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse, offici modi dolorem nam cum eligendi enim!</p>
-                              <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                            </div>
-                          </div>
-                        </div>
-                        <!--== End prPduct Item ==-->
-                      </div>
-                      <div class="col-12">
-                        <div class="pagination-items">
-                          <ul class="pagination justify-content-end mb--0">
-                            <li><a class="active" href="shop.html">1</a></li>
-                            <li><a href="shop-four-columns.html">2</a></li>
-                            <li><a href="shop-three-columns.html">3</a></li>
-                          </ul>                    
                         </div>
                       </div>
                     </div>
-                  </div>
+                  <?php endforeach  ?>
                 </div>
               </div>
             </div>
@@ -793,16 +216,32 @@
           <div class="col-xl-3">
             <div class="shop-sidebar">
               <div class="shop-sidebar-category">
-                <h4 class="sidebar-title">Top Categories</h4>
+                <h4 class="sidebar-title">Gender</h4>
                 <div class="sidebar-category">
                   <ul class="category-list mb--0">
-                    <li><a href="shop.html">Shoes <span>(6)</span></a></li>
-                    <li><a href="shop.html">Computer <span>(4)</span></a></li>
-                    <li><a href="shop.html">Covid-19 <span>(2)</span></a></li>
-                    <li><a href="shop.html">Electronics <span>(6)</span></a></li>
-                    <li><a href="shop.html">Frame Sunglasses <span>(12)</span></a></li>
-                    <li><a href="shop.html">Furniture <span>(7)</span></a></li>
-                    <li><a href="shop.html">Genuine Leather <span>(9)</span></a></li>
+                    <li>
+                    <a href="">
+                    <?php
+                        $load_gioitinh = load_gioitinh_all();
+
+                        // Define an associative array to map gioi_tinh values to their corresponding names
+                        $genderMapping = [
+                            0 => 'Unisex',
+                            1 => 'Nam',
+                            2 => 'Nữ',
+                        ];
+
+                        foreach ($load_gioitinh as $gioitinh) {
+                            // Access gioi_tinh data using $gioitinh['gioi_tinh']
+                            $genderId = $gioitinh['gioi_tinh'];
+
+                            // Get the corresponding gender name from the mapping array
+                            $genderName = isset($genderMapping[$genderId]) ? $genderMapping[$genderId] : 'Unknown';
+                            ?>
+                            <li class="active"><?= $genderName ?></li>
+                        <?php } ?>
+                    </a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -813,54 +252,78 @@
                   <div id="price-range"></div>
                 </div>
               </div>
-
+            
               <div class="shop-sidebar-color">
-                <h4 class="sidebar-title">Color</h4>
-                <div class="sidebar-color">
-                  <ul class="color-list">
-                    <li data-bg-color="#39ed8c" class="active"></li>
-                    <li data-bg-color="#a6ed42"></li>
-                    <li data-bg-color="#daed39"></li>
-                    <li data-bg-color="#eed739"></li>
-                    <li data-bg-color="#eca23a"></li>
-                    <li data-bg-color="#f36768"></li>
-                    <li data-bg-color="#e14755"></li>
-                    <li data-bg-color="#dc83a3"></li>
-                    <li data-bg-color="#dc82da"></li>
-                    <li data-bg-color="#9a82dd"></li>
-                    <li data-bg-color="#82c2db"></li>
-                    <li data-bg-color="#6bd6b0"></li>
-                    <li data-bg-color="#9ed76b"></li>
-                    <li data-bg-color="#c8c289"></li>
-                  </ul>
-                </div>
+                  <h4 class="sidebar-title">Color</h4>
+                  <div class="sidebar-color">
+                      <ul class="color-list">
+                        <li>
+                          <?php
+                          $load_color = load_color_all();
+
+                          foreach ($load_color as $color) {
+                              // Access color data using $data['name_color']
+                              $colorName = $color['name_color'];
+                              ?>
+                              <li class="active" style="background-color: <?= $colorName ?>"></li>
+                          <?php } ?>
+                        </li>
+                      </ul>
+                  </div>
               </div>
+
 
               <div class="shop-sidebar-size">
                 <h4 class="sidebar-title">Size</h4>
                 <div class="sidebar-size">
                   <ul class="size-list">
-                    <li><a href="shop.html">S <span>(6)</span></a></li>
-                    <li><a href="shop.html">M <span>(4)</span></a></li>
-                    <li><a href="shop.html">L <span>(2)</span></a></li>
-                    <li><a href="shop.html">XL <span>(6)</span></a></li>
-                    <li><a href="shop.html">XXL <span>(12)</span></a></li>
+                    <li><a href="shop.html">
+                    <?php
+                          $load_size = load_size_all();
+                          foreach ($load_size as $size) {
+                              // Access size data using $size['name_size']
+                              $sizeName = $size['name_size'];
+                              ?>
+                              <li class="active"><?= $sizeName ?>
+                                <!-- <?php foreach ($tong as $key => $value) : ?>
+                                  <span>(<?= $value['Tong'] ?>)</span>
+                                <?php endforeach ?> -->
+                              </li>
+                      <?php } ?>
+                    </a></li>
                   </ul>
                 </div>
               </div>
 
               <div class="shop-sidebar-brand">
-                <h4 class="sidebar-title">Brand</h4>
-                <div class="sidebar-brand">
-                  <ul class="brand-list mb--0">
-                    <li><a href="shop.html">Lakmeetao <span>(6)</span></a></li>
-                    <li><a href="shop.html">Beautifill <span>(4)</span></a></li>
-                    <li><a href="shop.html">Made In GD <span>(2)</span></a></li>
-                    <li><a href="shop.html">Pecifico <span>(6)</span></a></li>
-                    <li><a href="shop.html">Xlovgtir <span>(12)</span></a></li>
-                  </ul>
-                </div>
+                  <h4 class="sidebar-title">Brand</h4>
+                  <div class="sidebar-brand">
+                      <ul class="brand-list mb--0">
+                          <?php
+                          $load_danhmuc = load_danhmuc_all();
+                          foreach ($load_danhmuc as $danhmuc) {
+                              $danhmucName = $danhmuc['name_dm'];
+                              ?>
+                              <li>
+                                  <a href="shop.html">
+                                      <?= $danhmucName ?>
+                                      <?php
+                                      $tong = thongke(); // Assuming this function returns an array with brand counts
+                                      foreach ($tong as $key => $value) :
+                                          if ($value['id_dm'] == $danhmuc['id_dm']) :
+                                      ?>
+                                              <span>(<?= $value['Tong'] ?>)</span>
+                                      <?php
+                                          endif;
+                                      endforeach;
+                                      ?>
+                                  </a>
+                              </li>
+                          <?php } ?>
+                      </ul>
+                  </div>
               </div>
+
             </div>
           </div>
         </div>

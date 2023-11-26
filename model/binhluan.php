@@ -38,7 +38,8 @@ function LoadAll_BL_user($id)
   $bl = pdo_query($sql);
   return $bl;
 }
-function add_bl( $name ,$id_tk ,$id_sp ,$ngayGioHienTai) {
+function add_bl($name, $id_tk, $id_sp, $ngayGioHienTai)
+{
   $sql = "INSERT INTO `binh_luan`(`comment`, `id_sp`, `id_tk`, `ngaybinhluan`) VALUES ('$name','$id_sp','$id_tk','$ngayGioHienTai')";
   pdo_execute($sql);
 }

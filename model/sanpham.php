@@ -93,6 +93,19 @@ function load_sanpham_all_by_views()
     $sp = pdo_query($sql);
     return $sp;
 }
+
+function load_danhmuc_all()
+{
+  $sql = "SELECT * FROM `danhmuc`";
+  $load_danhmuc =   pdo_query($sql);
+  return $load_danhmuc;
+}
+function load_size_all()
+{
+  $sql = "SELECT * FROM `size`";
+  $load_size =   pdo_query($sql);
+  return $load_size;
+}
 function load_size_ct($id)
 {
   $sql = "SELECT * FROM `sanpham_bienthe` LEFT JOIN size ON sanpham_bienthe.id_size = size.id_size WHERE id_sp = $id GROUP BY sanpham_bienthe.id_size;";
@@ -100,11 +113,23 @@ function load_size_ct($id)
   return $sp_img;
 }
 
+function load_color_all()
+{
+  $sql = "SELECT * FROM `color`";
+  $load_color =   pdo_query($sql);
+  return $load_color;
+}
 function load_color_ct($id)
 {
     $sql = "SELECT * FROM `sanpham_bienthe` LEFT JOIN color ON sanpham_bienthe.id_color = color.id_color WHERE id_sp = $id GROUP BY sanpham_bienthe.id_color;";
     $sp_color = pdo_query($sql);
     return $sp_color;
+}
+function load_gioitinh_all()
+{
+  $sql = "SELECT DISTINCT gioi_tinh FROM sanpham";
+  $load_gioitinh = pdo_query($sql);
+  return $load_gioitinh;
 }
 function updat_view($id)
 {

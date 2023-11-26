@@ -42,6 +42,7 @@ function thongke()
   
   return $dm;
 }
+
 function load_sanpham_all_dm($id)
 {
   $sql = "SELECT * FROM sanpham JOIN danhmuc ON sanpham.id_dm = danhmuc.id_dm WHERE danhmuc.id_dm = $id ";

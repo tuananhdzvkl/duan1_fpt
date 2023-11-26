@@ -152,10 +152,20 @@
 
 
             <!-- Nav Item - Charts -->
+            
             <li class="nav-item">
-                <a class="nav-link" href="?act=bieudo1">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#thongke" aria-expanded="true" aria-controls="thongke">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Thông Kê</span></a>
+                    <span>Thống Kê</span>
+                </a>
+                <div id="thongke" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Chức năng:</h6>
+                        <a class="collapse-item" href="?act=bieudo1">Biểu Đồ 1</a>
+                        <a class="collapse-item" href="?act=bieudo2">Biểu Đồ 2</a>
+
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Tables -->

@@ -9,9 +9,9 @@ function loadall_thongke()
 }
 function thongke_ngay()
 {
-    $sql = "SELECT don_hang.id_ctd , SUM(thanh_tien) as Tong , SUM(don_hang.so_luong)
+    $sql = "SELECT don_hang.id_sp , SUM(thanh_tien) as Tong , SUM(don_hang.so_luong)
      AS so_luong , thoi_gian , trang_thai FROM `chitiet_donhang`  JOIN don_hang  
-     ON chitiet_donhang.id_ctdon = don_hang.id_ctd  WHERE trang_thai = 3 GROUP BY don_hang.id_ctd;";
+     ON chitiet_donhang.id_ctdon = don_hang.id_sp  WHERE trang_thai = 3 GROUP BY don_hang.id_sp;";
     $thongke = pdo_query($sql);
     return $thongke;
 }
