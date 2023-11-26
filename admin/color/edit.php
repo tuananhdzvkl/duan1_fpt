@@ -18,7 +18,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="pwd" class="form-label">Name:</label>
-                    <input type="color" class="form-control" id="pwd" placeholder="Tên Danh Mục" name="name" value="<?= $color['name_color'] ?>" required>
+                    <input type="text" class="form-control" id="pwd" placeholder="Tên Danh Mục" name="name" value="<?= $color['name_color'] ?>" required>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Cập Nhật" name="gui">

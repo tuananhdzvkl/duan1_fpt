@@ -20,7 +20,7 @@
                     <input type="text" class="form-control" id="pwd" placeholder="Tên Tên Sản Phẩm" name="name" required>
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">Image:</label>
+                    <label for="email" class="form-label">Img_sp:</label>
                     <input class="form-control" type="file" name="img_sp">
                 </div>
                 <div class="mb-3 mt-3">

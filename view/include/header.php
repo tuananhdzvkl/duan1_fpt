@@ -58,25 +58,23 @@
                 <div class="header-info-items">
                   <div class="info-items">
                     <ul>
-                      <li class="number"><i class="fa fa-phone"></i><a href="tel://0123456789">+84 123 456 789</a></li>
+                      <li class="number"><i class="fa fa-phone"></i><a href="tel://0123456789">0985670942</a></li>
                       <li class="email"><i class="fa fa-envelope"></i><a href="mailto://demo@example.com">demo@example.com</a></li>
                       <li class="account"><i class="fa fa-user"></i>
                         <?php
                           if (!isset($_SESSION['username'])) {
                             echo "<a href='?act=login'>Tài khoản</a>";
                           } else {
-                            echo "
-                              <a type='button'  data-bs-toggle='dropdown'>
-                                Xin Chào : <spam class='text-body'>" . $_SESSION['username']['name_tk'] . "</spam>
-                              </a>
-                              <ul class='dropdown-menu'>
+                            echo "<a type='button'  data-bs-toggle='dropdown'> Xin Chào : <spam class='text-body'>" . $_SESSION['username']['name_tk'] . "</spam> </a> 
+                              <ul class='dropdown-menu'> 
                                 <li><a class='dropdown-item' href='?act=thongtin'>Thông Tin Tài Khoản</a></li>
                                 <li><a class='dropdown-item' href='?act=dangxuat'>Đăng Xuất</a></li>
                                 <li><a class='dropdown-item' href='#'>Đổi Mật Khẩu</a></li>";
-                                  if ($_SESSION['username']['chucvu']== 1){
+                                  if ($_SESSION['username']['chucvu']== 1){ 
                                     echo   "<li><a class='dropdown-item' href='admin/index.php'>Vào Trang Quản Trị</a></li> </ul>";
                                   }
-                                }
+                                                                    
+                          }
                         ?>
                       </li>
                     </ul>

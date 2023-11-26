@@ -109,12 +109,11 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
         $size = LoadAll_size();
         $color = LoadAll_color();
         $id  =    $_GET['idsp'];
-        $sanpham_bienthe  =    load_sanphambt_all($id);
+        $bienthe  =    load_sanphambt_all($id);
         $img = load_img($id);
         $sanpham = load_sanpham_one($id);
         include("sanpham/edit.php");
         break;
-      
       case 'upsp':
         if (isset($_POST['gui']) && $_POST['gui'] != "") {
           $name = $_POST['name'];
@@ -143,7 +142,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
             }
           }
           up_sanpham($name, $id, $img, $gioitinh,  $mota, $giam_gia, $gia, $date, $dm);
-          echo "  <script>alert('Cập Nhật Thành Công') </script> ";
+          echo "  <script>alert('Thành Công') </script> ";
           echo "  <script>window.location.href ='index.php?act=listsp'</script> ";
         }
         if (isset($_POST['bienthe']) && $_POST['bienthe'] != "") {
@@ -152,8 +151,6 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
           $color = $_POST["mau_sac"];
           $soluong = $_POST["soluong"];
           add_spbienthe($id, $size, $color, $soluong);
-          edit_spbienthe($id, $size, $color, $soluong);
-          delete_spbienthe($id);
           //echo $id , $size ; 
           echo "  <script>alert('Thêm Thành Công') </script> ";
           echo "  <script>window.location.href ='index.php?act=editsp&idsp=$id'</script> ";
