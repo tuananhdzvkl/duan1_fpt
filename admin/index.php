@@ -142,7 +142,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
             }
           }
           up_sanpham($name, $id, $img, $gioitinh,  $mota, $giam_gia, $gia, $date, $dm);
-          echo "  <script>alert('Thành Công') </script> ";
+          echo "  <script>alert('Cập Nhật Thành Công') </script> ";
           echo "  <script>window.location.href ='index.php?act=listsp'</script> ";
         }
         if (isset($_POST['bienthe']) && $_POST['bienthe'] != "") {
@@ -169,7 +169,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
       case 'xoabl':
         $id = $_GET['idbl'];
         xoa_bl($id);
-        echo "  <script>alert('Thành Công') </script> ";
+        echo "  <script>alert('Xóa Thành Công') </script> ";
         echo "  <script>window.location.href ='index.php?act=binhluan'</script> ";
         break;
         // Tài khoản

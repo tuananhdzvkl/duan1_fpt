@@ -127,7 +127,12 @@ function load_color_ct($id)
 }
 function load_gioitinh_all()
 {
-  $sql = "SELECT DISTINCT gioi_tinh FROM sanpham";
+  $sql = "SELECT DISTINCT gioi_tinh, CASE gioi_tinh
+      WHEN 0 THEN 'Unisex'
+      WHEN 1 THEN 'Nam'
+      WHEN 2 THEN 'Nữ'
+      ELSE 'Unknown'
+  END AS name_gt FROM sanpham; ";
   $load_gioitinh = pdo_query($sql);
   return $load_gioitinh;
 }
@@ -144,4 +149,39 @@ function search_sanpham_by_keyword($keyword)
     $result = pdo_query($sql);
 
     return $result;
+}
+
+function get_gioitinh_by_id($id)
+{
+    $sql = "SELECT gioi_tinh FROM sanpham WHERE id_sp = $id";
+    $result = pdo_query_one($sql);
+
+    return $result['gioi_tinh'];
+}
+
+function tongsp_gioitinh($id)
+{
+    $sql = "SELECT gioi_tinh, COUNT(*) AS total FROM sanpham WHERE id_sp = :id GROUP BY gioi_tinh";
+    $result = pdo_query($sql, array(':id' => $id));
+
+    return $result;
+}
+
+
+function tongsp_size()
+{
+    $sql = "SELECT size.id_size, size.name_size, COUNT(sanpham_bienthe.id_spbt) AS tong_sp
+            FROM size LEFT JOIN sanpham_bienthe ON size.id_size = sanpham_bienthe.id_size
+            WHERE sanpham_bienthe.soluong > 0 GROUP BY size.id_size";
+
+    $result = pdo_query($sql);
+
+    $sizeCounts = [];
+    foreach ($result as $row) {
+        $sizeCounts[$row['id_size']] = [
+            'Tong' => $row['tong_sp'],
+        ];
+    }
+
+    return $sizeCounts;
 }

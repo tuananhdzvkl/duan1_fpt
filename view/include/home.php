@@ -1,3 +1,14 @@
+<style>
+  .price-old {
+    color: red; /* Đặt màu đỏ cho văn bản */
+    font-size: 15px;
+    font-family:sans-serif;
+  }
+  .price{
+    font-size: 18px;
+    font-family:sans-serif;
+  }
+</style>
 <main class="main-content">
     <!--== Start Hero Area Wrapper ==-->
     <section class="home-slider-area">
@@ -153,7 +164,7 @@
 
                   <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
                   <div class="prices">
-                    <span class="price-old">10.000 vnđ</span>
+                    <span class="price-old"><?= number_format($k['gia_cu'], 0, '.', ',') ?> vnđ</span>
                     <span class="sep">-</span>
                     <span class="price"><?= number_format($k['gia'], 0, '.', ',') ?> vnđ</span>
                   </div>

@@ -15,23 +15,32 @@ include "view/include/header.php";
                 include "view/include/home.php";
                 break;
             case 'shop':
-                
-                $tong = thongke();
                 include "view/shop.php";
                 break;
-            case 'chitietSP':
-                if(isset($_GET['id']) && $_GET['id'] > 0){
-                    $id = $_GET['id'];
-                    $binhluan = LoadAll_BL_user($id);
-                    updat_view($id);
-                    $sp = load_sanpham_one($id);
-                    $sanpham =  load_sanpham_all();
-                    $img_sp = load_img($id);    
-                    $load_size = load_size_ct($id);
-                    $load_color = load_color_ct($id);
-                    include "view/sanpham/sanphamct.php";
-                    break;
-                }
+                case 'chitietSP':
+                    if(isset($_GET['id']) && $_GET['id'] > 0){
+                        $id = $_GET['id'];
+                        $binhluan = LoadAll_BL_user($id);
+                        updat_view($id);
+                        $sp = load_sanpham_one($id);
+                        $sanpham =  load_sanpham_all();
+                        $sizeCounts = tongsp_size();
+                        $genderCounts = load_gioitinh_all();
+                        $tongsp_gioitinh = tongsp_gioitinh($id);
+                        $img_sp = load_img($id);    
+                        $load_size = load_size_ct($id);
+                        $load_color = load_color_ct($id);
+                        $gioitinh = get_gioitinh_by_id($id);
+                
+                        // Kiểm tra và khởi tạo $sizeCounts nếu chưa tồn tại
+                        if (!isset($sizeCounts)) {
+                            $sizeCounts = tongsp_size();
+                        }
+                
+                        include "view/sanpham/sanphamct.php";
+                        break;
+                    }
+                
                 case 'thanhtoan':
                     include "view/thanhtoan.php";
                     break;

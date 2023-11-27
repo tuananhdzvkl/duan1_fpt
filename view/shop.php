@@ -1,3 +1,14 @@
+<style>
+  .price-old {
+    color: red; /* Đặt màu đỏ cho văn bản */
+    font-size: 15px;
+    font-family:sans-serif;
+  }
+  .price{
+    font-size: 18px;
+    font-family:sans-serif;
+  }
+</style>
 <main class="main-content">
     <!--== Start Page Header Area Wrapper ==-->
     <div class="page-header-area" data-bg-img="assets/img/shop/1.jpg">
@@ -109,7 +120,7 @@
                                 </div>
                                 <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
                                 <div class="prices">
-                                  <span class="price-old">10.000 vnđ</span>
+                                  <span class="price-old"><?= number_format($k['gia_cu'], 0, '.', ',') ?> vnđ</span>
                                   <span class="sep">-</span>
                                   <span class="price"><?= number_format($k['gia'], 0, '.', ',') ?> vnđ</span>
                                 </div>
@@ -219,29 +230,29 @@
                 <h4 class="sidebar-title">Gender</h4>
                 <div class="sidebar-category">
                   <ul class="category-list mb--0">
-                    <li>
-                    <a href="">
-                    <?php
-                        $load_gioitinh = load_gioitinh_all();
+                  <li>
+                      <a href="?act=chitietSP&gioi_tinh=<?= $genderId ?>">
+                        <?php
+                          $genderCounts = load_gioitinh_all();
+                          $genderMapping = [
+                              0 => 'Unisex',
+                              1 => 'Nam',
+                              2 => 'Nữ',
+                          ];
 
-                        // Define an associative array to map gioi_tinh values to their corresponding names
-                        $genderMapping = [
-                            0 => 'Unisex',
-                            1 => 'Nam',
-                            2 => 'Nữ',
-                        ];
+                          foreach ($genderCounts as $gioitinh) {
+                              $genderId = $gioitinh['gioi_tinh'];
+                              $genderName = isset($genderMapping[$genderId]) ? $genderMapping[$genderId] : 'Unknown';
+                          ?>
+                              <li class="<?= $genderId == $id ? 'active' : ''; ?>">
+                                  <a href="?act=chitietSP&gioi_tinh=<?= $genderId ?>">
+                                      <?= $genderName ?>
+                                  </a>
+                              </li>
+                          <?php } ?>
+                      </a>
+                  </li>
 
-                        foreach ($load_gioitinh as $gioitinh) {
-                            // Access gioi_tinh data using $gioitinh['gioi_tinh']
-                            $genderId = $gioitinh['gioi_tinh'];
-
-                            // Get the corresponding gender name from the mapping array
-                            $genderName = isset($genderMapping[$genderId]) ? $genderMapping[$genderId] : 'Unknown';
-                            ?>
-                            <li class="active"><?= $genderName ?></li>
-                        <?php } ?>
-                    </a>
-                    </li>
                   </ul>
                 </div>
               </div>
@@ -276,22 +287,26 @@
               <div class="shop-sidebar-size">
                 <h4 class="sidebar-title">Size</h4>
                 <div class="sidebar-size">
-                  <ul class="size-list">
-                    <li><a href="shop.html">
-                    <?php
-                          $load_size = load_size_all();
-                          foreach ($load_size as $size) {
-                              // Access size data using $size['name_size']
-                              $sizeName = $size['name_size'];
-                              ?>
-                              <li class="active"><?= $sizeName ?>
-                                <!-- <?php foreach ($tong as $key => $value) : ?>
-                                  <span>(<?= $value['Tong'] ?>)</span>
-                                <?php endforeach ?> -->
-                              </li>
-                      <?php } ?>
-                    </a></li>
-                  </ul>
+                <ul class="size-list">
+                  <?php
+                  $sizeCounts = tongsp_size();
+                  $load_size = load_size_all();
+                  foreach ($load_size as $size) {
+                    $sizeName = $size['name_size'];
+                    $sizeId = $size['id_size'];
+                    $sizeCount = isset($sizeCounts[$sizeId]) ? $sizeCounts[$sizeId]['Tong'] : 0;
+                ?>
+                    <li class="<?= $sizeCount > 0 ? 'active' : ''; ?>">
+                        <a href="shop.html">
+                            <?= $sizeName ?>
+                            <?php if ($sizeCount > 0) : ?>
+                                <span class="product-count">(<?= $sizeCount ?>)</span>
+                            <?php endif; ?>
+                        </a>
+                    </li>
+                <?php } ?>
+                </ul>
+
                 </div>
               </div>
 

@@ -122,29 +122,29 @@
 
                       <?php
                       // Xử lý tìm kiếm khi form được submit
-                      if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                          $searchKeyword = $_POST["search"];
+                      // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                      //     $searchKeyword = $_POST["search"];
 
-                          // Gọi hàm tìm kiếm
-                          $searchResults = search_sanpham_by_keyword($searchKeyword);
+                      //     // Gọi hàm tìm kiếm
+                      //     $searchResults = search_sanpham_by_keyword($searchKeyword);
 
-                          // Hiển thị kết quả
-                          if ($searchResults) {
-                              foreach ($searchResults as $result) {
-                                  // Hiển thị thông tin sản phẩm
-                                  echo '<div class="search-result">';
-                                  echo '<img src="' . "/public/uploads/" . $result["image_sp"] . '" alt="Product Image" width="100" height="100">';
-                                  echo '<p>Name: ' . $result["name_sp"] . '</p>';
-                                  echo '<p>Gender: ' . $result["gioi_tinh"] . '</p>';
-                                  echo '<p>Price: ' . $result["gia"] . '</p>';
-                                  // Hiển thị các thông tin khác về sản phẩm nếu cần
-                                  echo '</div>';
-                              }
-                          } else {
-                              echo "Không có kết quả tìm kiếm.";
-                          }
-                      }
-                      ?>
+                      //     // Hiển thị kết quả
+                      //     if ($searchResults) {
+                      //         foreach ($searchResults as $result) {
+                      //             // Hiển thị thông tin sản phẩm
+                      //             echo '<div class="search-result">';
+                      //             echo '<img src="' . "/public/uploads/" . $result["image_sp"] . '" alt="Product Image" width="100" height="100">';
+                      //             echo '<p>Name: ' . $result["name_sp"] . '</p>';
+                      //             echo '<p>Gender: ' . $result["gioi_tinh"] . '</p>';
+                      //             echo '<p>Price: ' . $result["gia"] . '</p>';
+                      //             // Hiển thị các thông tin khác về sản phẩm nếu cần
+                      //             echo '</div>';
+                      //         }
+                      //     } else {
+                      //         echo "Không có kết quả tìm kiếm.";
+                      //     }
+                      // }
+                      // ?>
                   </div>
               </div>
 
