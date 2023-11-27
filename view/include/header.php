@@ -114,13 +114,42 @@
                 </div>
               </div>
               <div class="header-middle-align-center">
-                <div class="header-search-area">
-                  <form class="header-searchbox">
-                    <input type="search" class="form-control" placeholder="Search">
-                    <button class="btn-submit" type="submit"><i class="pe-7s-search"></i></button>
-                  </form>
-                </div>
+                  <div class="header-search-area">
+                      <form class="header-searchbox" method="post" action="?act=header">
+                          <input type="search" class="form-control" name="search" placeholder="Search">
+                          <button class="btn-submit" type="submit"><i class="pe-7s-search"></i></button>
+                      </form>
+
+                      <?php
+                      // Xử lý tìm kiếm khi form được submit
+                      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                          $searchKeyword = $_POST["search"];
+
+                          // Gọi hàm tìm kiếm
+                          $searchResults = search_sanpham_by_keyword($searchKeyword);
+
+                          // Hiển thị kết quả
+                          if ($searchResults) {
+                              foreach ($searchResults as $result) {
+                                  // Hiển thị thông tin sản phẩm
+                                  echo '<div class="search-result">';
+                                  echo '<img src="' . "/public/uploads/" . $result["image_sp"] . '" alt="Product Image" width="100" height="100">';
+                                  echo '<p>Name: ' . $result["name_sp"] . '</p>';
+                                  echo '<p>Gender: ' . $result["gioi_tinh"] . '</p>';
+                                  echo '<p>Price: ' . $result["gia"] . '</p>';
+                                  // Hiển thị các thông tin khác về sản phẩm nếu cần
+                                  echo '</div>';
+                              }
+                          } else {
+                              echo "Không có kết quả tìm kiếm.";
+                          }
+                      }
+                      ?>
+                  </div>
               </div>
+
+
+
               <div class="header-middle-align-end">
                 <div class="header-action-area">
                   <div class="shopping-search">

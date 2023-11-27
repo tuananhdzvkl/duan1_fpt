@@ -1,6 +1,15 @@
+<!-- Thư viện FancyBox CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+<!-- Thư viện jQuery (nếu chưa có) -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Thư viện FancyBox JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
 <main class="main-content">
     <!--== Start Page Header Area Wrapper ==-->
-    <div class="page-header-area" data-bg-img="assets/img/photos/slider_4.webp">
+    <div class="page-header-area" data-bg-img="assets/img/photos/1.jpeg">
       <div class="container pt--0 pb--0">
         <div class="row">
           <div class="col-12">
@@ -42,39 +51,30 @@
                         </div>
                       </div>
                       <div class="swiper-container single-product-nav single-product-nav-slider">
-                        <div class="swiper-wrapper">
-                        <?php
-                        foreach ($img_sp as $key) {
-                          extract($key);
-                          $linkimg = "../public/uploads/".$img_url
-                          ?>
-                          <div class="swiper-slide">
-                            <img src="<?= $linkimg ?>" width="127" height="127" alt="Product Image">
+                          <div class="swiper-wrapper">
+                              <?php
+                              foreach ($img_sp as $key) {
+                                  extract($key);
+                                  $linkimg = "../public/uploads/".$img_url;
+                              ?>
+                              <div class="swiper-slide">
+                                  <a href="<?= $linkimg ?>" data-fancybox="gallery" data-caption="Optional caption">
+                                      <img src="<?= $linkimg ?>" width="127" height="127" alt="Product Image">
+                                  </a>
+                              </div>
+                              <?php
+                              }
+                              ?>
                           </div>
-                          
-                          <?php
-                        }
-                        ?>
-                         <!-- <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Product Image">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Product Image">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
-                          </div>
-                          <div class="swiper-slide">
-                            <img src="../public/uploads/" width="127" height="127" alt="Image-HasTech">
-                          </div> -->
-                        </div>
                       </div>
+
+
+                      <script>
+                          $(document).ready(function() {
+                              $(".single-product-nav-slider a").fancybox();
+                          });
+                      </script>
+
                     </div>
                     <!--== End Product Thumbnail Area ==-->
                   </div>
@@ -101,19 +101,53 @@
                       <div class="product-color">
                         <h6 class="title">Color</h6>
                         <ul class="color-list">
-                          <?php foreach ($load_color as $key => $value):?>
-                            <li class="active" style="background-color: <?= $value['name_color'] ?>"></li>
-                          <?php endforeach?>
+                            <?php foreach ($load_color as $key => $value):?>
+                                <li class="color-item" style="background-color: <?= $value['name_color'] ?>" onclick="selectColor(this)"></li>
+                            <?php endforeach?>
                         </ul>
-                      </div>
-                      <div class="product-size">
+                    </div>
+
+                    <div class="product-size">
                         <h6 class="title">Size</h6>
                         <ul class="size-list">
-                          <?php foreach ($load_size as $key => $value):?>
-                            <li class="active" ><?= $value['name_size']?></li>
-                          <?php endforeach?>
+                            <?php foreach ($load_size as $key => $value):?>
+                                <li class="size-item" data-size="<?= $value['name_size'] ?>" onclick="selectSize(this)"><?= $value['name_size']?></li>
+                            <?php endforeach?>
                         </ul>
-                      </div>
+                    </div>
+
+                    <script>
+                        function selectColor(element) {
+                            // Remove 'active' class from all color items
+                            var colorItems = document.querySelectorAll('.color-item');
+                            colorItems.forEach(function(item) {
+                                item.classList.remove('active');
+                            });
+
+                            // Add 'active' class to the selected color item
+                            element.classList.add('active');
+
+                            // You can also store the selected color in a variable or perform other actions here
+                            var selectedColor = element.getAttribute('data-color');
+                            console.log('Selected Color:', selectedColor);
+                        }
+
+                        function selectSize(element) {
+                            // Remove 'active' class from all size items
+                            var sizeItems = document.querySelectorAll('.size-item');
+                            sizeItems.forEach(function(item) {
+                                item.classList.remove('active');
+                            });
+
+                            // Add 'active' class to the selected size item
+                            element.classList.add('active');
+
+                            // You can also store the selected size in a variable or perform other actions here
+                            var selectedSize = element.getAttribute('data-size');
+                            console.log('Selected Size:', selectedSize);
+                        }
+                    </script>
+
                       <div class="product-quick-action">
                         <div class="qty-wrap">
                           <div class="pro-qty">

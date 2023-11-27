@@ -1,6 +1,6 @@
 <main class="main-content">
     <!--== Start Page Header Area Wrapper ==-->
-    <div class="page-header-area">
+    <div class="page-header-area" data-bg-img="assets/img/shop/1.jpg">
       <div class="container pt--0 pb--0">
         <div class="row">
           <div class="col-12">

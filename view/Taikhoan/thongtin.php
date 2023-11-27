@@ -31,7 +31,7 @@
                 <label class="form-label">Ảnh đại diện</label>
                 <input class="form-control" type="file" name="img_tk">
                 <input class="form-control" type="hidden" name="img_tk" value="<?= $tk['image_tk'] ?>">
-                <img src="../public/uploads/<?= $tk['image_tk'] ?>" class="img-thumbnail" style="border-radius: 50%;" max-width="400px">
+                <img src="../public/uploads/<?= $tk['image_tk'] ?>" class="img-thumbnail" style="border-radius: 50%;" max-width="150px">
             </div>
         </div>
         <div class="row">

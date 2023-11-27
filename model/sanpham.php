@@ -136,3 +136,12 @@ function updat_view($id)
   $sql = "UPDATE `sanpham` SET view = view+1 WHERE id_sp = $id";
    pdo_execute($sql);
 }
+
+function search_sanpham_by_keyword($keyword)
+{
+    // Sử dụng LIKE để tìm kiếm các sản phẩm có tên hoặc mô tả chứa từ khóa
+    $sql = "SELECT * FROM sanpham JOIN danhmuc ON sanpham.id_dm = danhmuc.id_dm WHERE name_sp LIKE '%$keyword%' OR mo_ta LIKE '%$keyword%'";
+    $result = pdo_query($sql);
+
+    return $result;
+}
