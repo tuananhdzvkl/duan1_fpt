@@ -86,13 +86,40 @@
                         <span class="price"><?= number_format($sp['gia'], 0, '.', ',') ?> vnđ</span>
                       </div>
                       <div class="rating-box-wrap">
-                        <div class="rating-box">
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
+                      <div class="rating-box" onclick="handleRating(event)">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                      <script>
+                        function handleRating(event) {
+                          // Lấy danh sách các sao
+                          const stars = document.querySelectorAll('.rating-box i');
+
+                          // Lấy chỉ số của ngôi sao được click
+                          const clickedStarIndex = Array.from(stars).indexOf(event.target);
+
+                          // Đặt tất cả các ngôi sao với chỉ số nhỏ hơn hoặc bằng ngôi sao được click là "active"
+                          stars.forEach((star, index) => {
+                            if (index <= clickedStarIndex) {
+                              star.classList.add('fa-star');
+                              star.classList.remove('fa-star-o');
+                            } else {
+                              star.classList.add('fa-star-o');
+                              star.classList.remove('fa-star');
+                            }
+                          });
+
+                          // Ở đây, bạn có thể thực hiện các bước khác như gửi điểm đánh giá lên máy chủ.
+                        }
+                      </script>
+                      <style>
+                        .rating-box {
+                          cursor: pointer;
+                        }
+                      </style>
                         <div class="review-status">
                           <a href="">(<?= $view ?> Lượt Xem)</a>
                         </div>

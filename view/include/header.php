@@ -66,7 +66,9 @@
                           if (!isset($_SESSION['username'])) {
                               echo "<a href='?act=login'>Tài khoản</a>";
                           } else {
-                              echo "<a type='button' data-bs-toggle='dropdown'> Xin Chào : <span class='text-body'>" . $_SESSION['username']['name_tk'] . "</span> </a> 
+                              echo "<a type='button'  data-bs-toggle='dropdown'>
+                                      Xin Chào : <img src='public/uploads/" . $_SESSION['username']['image_tk']. "' class='img-thumbnail' style='border-radius: 50%; width: 30px; height: 30px; object-fit: cover;'> <spam class='text-body'>" . $_SESSION['username']['name_tk'] . " </spam>
+                                    </a>
                                   <div class='dropdown-menu dropdown-menu-right shadow animated--grow-in' aria-labelledby='userDropdown'>
                                       <a class='dropdown-item' href='?act=thongtin'>
                                           <i class='fas fa-user fa-sm fa-fw mr-2 text-gray-400'></i>
@@ -78,9 +80,9 @@
                                                   Admin Page
                                               </a>";
                                       }
-                                      echo "<a class='dropdown-item' href='#'>
+                                      echo "<a class='dropdown-item' href='?act=doimk'>
                                               <i class='fa-solid fa-lock'></i>
-                                              Forgot Password?
+                                              Change Password
                                           </a>
                                           <div class='dropdown-divider'></div>
                                           <a class='dropdown-item' href='?act=dangxuat' data-toggle='modal' data-target='#logoutModal'>
@@ -104,7 +106,7 @@
       <div class="container pt--0 pb--0">
         <div class="row align-items-center">
           <div class="col-12">
-            <div class="header-middle-align">
+            <div class="header-middle-align" style="margin-top: -40px;">
               <div class="header-middle-align-start">
                 <div class="header-logo-area">
                   <a href="index.php?act=home">
@@ -181,7 +183,7 @@
     <div class="header-area header-default">
       <div class="container">
           <div class="row no-gutter align-items-center position-relative">
-              <div class="col-12">
+              <div class="col-12" style="margin-top: -25px;">
                   <div class="header-align">
                       <div class="header-navigation-area position-relative">
                           <ul class="main-menu nav">

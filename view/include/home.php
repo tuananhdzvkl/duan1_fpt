@@ -128,13 +128,27 @@
                   </div>
 
                   <div class="product-action">
-                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
-                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
+                    <a class="btn-product-wishlist" href="#" onclick="addToWishlist()"><i class="fa fa-heart"></i></a>
+                    <a class="btn-product-cart" href="#" onclick="addToCart()"><i class="fa fa-shopping-cart"></i></a>
                     <button type="button" class="btn-product-quick-view-open">
                       <i class="fa fa-arrows"></i>
                     </button>
-                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
+                    <a class="btn-product-compare" href="#"><i class="fa fa-random"></i></a>
                   </div>
+                  <script>
+                    function addToWishlist() {
+                      // Thêm logic xử lý khi sản phẩm được thêm vào yêu thích
+                      alert('Sản phẩm đã được thêm vào danh sách yêu thích');
+                      // Có thể thêm các bước khác như gửi yêu cầu đến máy chủ, cập nhật UI, v.v.
+                    }
+
+                    function addToCart() {
+                      // Thêm logic xử lý khi sản phẩm được thêm vào giỏ hàng
+                      alert('Sản phẩm đã được thêm vào giỏ hàng');
+                      // Có thể thêm các bước khác như gửi yêu cầu đến máy chủ, cập nhật UI, v.v.
+                    }
+                  </script>
+                  
                   <a class="banner-link-overlay" href="shop.php"></a>
                 </div>
                 <div class="product-info">

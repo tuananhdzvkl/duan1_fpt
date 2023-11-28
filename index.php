@@ -26,7 +26,7 @@ include "view/include/header.php";
                         $sanpham =  load_sanpham_all();
                         $sizeCounts = tongsp_size();
                         $genderCounts = load_gioitinh_all();
-                        $tongsp_gioitinh = tongsp_gioitinh($id);
+                        // $tongsp_gioitinh = tongsp_gioitinh($id);
                         $img_sp = load_img($id);    
                         $load_size = load_size_ct($id);
                         $load_color = load_color_ct($id);
@@ -177,7 +177,33 @@ include "view/include/header.php";
                                 }
                             }
                             break;
-                        
+
+                            case 'doimk':
+                                if (isset($_POST['submit'])) {
+                                    $id = $_SESSION['username']['id_tk']; // Lấy ID từ session
+                                    $password = $_POST['password'];
+                                    $newPassword = $_POST['newPassword'];
+                                    $confirmPassword = $_POST['confirmPassword'];
+                
+                                    if ($newPassword === $confirmPassword) {
+                                        // Gọi hàm để cập nhật mật khẩu trong session
+                                        changepassword($id, $newPassword);
+                                        //unset($_SESSION["username"]);
+                                        // Sau khi cập nhật session, bạn có thể tiến hành cập nhật trong cơ sở dữ liệu.
+                                        // Cần sử dụng câu lệnh SQL UPDATE để cập nhật mật khẩu trong bảng taikhoan
+                
+                                        // Ví dụ:
+                                        // $sql = "UPDATE taikhoan SET pass = '$newPassword' WHERE id_tk = $id";
+                                        // pdo_execute($sql);
+                
+                                        echo '<script>alert("Bạn đã đổi mật khẩu thành công")</script>';
+                                        header("refresh:0.08;url=?act=login");
+                                    } else {
+                                        echo '<script>alert("Xác nhận mật khẩu không khớp")</script>';
+                                    }
+                                }
+                                include "view/Taikhoan/doimk.php";
+                                break;    
                     default:
                         break;
             }

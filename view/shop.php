@@ -78,20 +78,33 @@
                                   <img src="assets/img/shop/<?=$image_sp?>" width="270" height="274" alt="Image-HasTech">
                                 </a>
                                 <div class="product-flag">
-                                <ul>
-                                    <?php if ($giam_gia > 0): ?>
-                                        <li class="discount"><?= $giam_gia ?>%</li>
-                                    <?php endif; ?>
-                                </ul>
+                                  <ul>
+                                      <?php if ($giam_gia > 0): ?>
+                                          <li class="discount"><?= $giam_gia ?>%</li>
+                                      <?php endif; ?>
+                                  </ul>
                                 </div>
                                 <div class="product-action">
-                                  <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                                  <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
+                                  <a class="btn-product-wishlist" href="#" onclick="addToWishlist()"><i class="fa fa-heart"></i></a>
+                                  <a class="btn-product-cart" href="#" onclick="addToCart()"><i class="fa fa-shopping-cart"></i></a>
                                   <button type="button" class="btn-product-quick-view-open">
                                     <i class="fa fa-arrows"></i>
                                   </button>
-                                  <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                                  <a class="btn-product-compare" href="#"><i class="fa fa-random"></i></a>
                                 </div>
+                                <script>
+                                  function addToWishlist() {
+                                    // Thêm logic xử lý khi sản phẩm được thêm vào yêu thích
+                                    alert('Sản phẩm đã được thêm vào danh sách yêu thích');
+                                    // Có thể thêm các bước khác như gửi yêu cầu đến máy chủ, cập nhật UI, v.v.
+                                  }
+
+                                  function addToCart() {
+                                    // Thêm logic xử lý khi sản phẩm được thêm vào giỏ hàng
+                                    alert('Sản phẩm đã được thêm vào giỏ hàng');
+                                    // Có thể thêm các bước khác như gửi yêu cầu đến máy chủ, cập nhật UI, v.v.
+                                  }
+                                </script>
                                 <a class="banner-link-overlay" href="shop.html"></a>
                               </div>
                               <div class="product-info">
@@ -161,17 +174,30 @@
                                   </ul>
                                 </div>
                                 <div class="product-action">
-                                    <a class="btn-product-wishlist" href="shop-wishlist.php"><i class="fa fa-heart"></i></a>
-                                    <a class="btn-product-cart" href="shop-cart.php"><i class="fa fa-shopping-cart"></i></a>
-                                    <button type="button" class="btn-product-quick-view-open">
-                                      <i class="fa fa-arrows"></i>
-                                    </button>
-                                    <a class="btn-product-compare" href="shop-compare.php"><i class="fa fa-random"></i></a>
+                                  <a class="btn-product-wishlist" href="#" onclick="addToWishlist()"><i class="fa fa-heart"></i></a>
+                                  <a class="btn-product-cart" href="#" onclick="addToCart()"><i class="fa fa-shopping-cart"></i></a>
+                                  <button type="button" class="btn-product-quick-view-open">
+                                    <i class="fa fa-arrows"></i>
+                                  </button>
+                                  <a class="btn-product-compare" href="#"><i class="fa fa-random"></i></a>
                                 </div>
+                                <script>
+                                  function addToWishlist() {
+                                    // Thêm logic xử lý khi sản phẩm được thêm vào yêu thích
+                                    alert('Sản phẩm đã được thêm vào danh sách yêu thích');
+                                    // Có thể thêm các bước khác như gửi yêu cầu đến máy chủ, cập nhật UI, v.v.
+                                  }
+
+                                  function addToCart() {
+                                    // Thêm logic xử lý khi sản phẩm được thêm vào giỏ hàng
+                                    alert('Sản phẩm đã được thêm vào giỏ hàng');
+                                    // Có thể thêm các bước khác như gửi yêu cầu đến máy chủ, cập nhật UI, v.v.
+                                  }
+                                </script>
                                 <a class="banner-link-overlay" href="shop.php"></a>
                               </div>
                               <div class="product-info">
-                                <div class="category">
+                                  <div class="category">
                                     <ul>
                                         <li><a href="shop.php">
                                             <?php
@@ -193,7 +219,7 @@
                                             ?>
                                         </a></li>
                                     </ul>
-                                </div>
+                                  </div>
                                 <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
                                 <div class="prices">
                                   <span class="price-old">10.000 vnđ</span>
