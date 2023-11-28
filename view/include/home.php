@@ -116,7 +116,7 @@
             <div class="product-item">
               <div class="inner-content">
                 <div class="product-thumb">
-                  <a href="index.php?act=chitietSP&id=<?= $id_sp ?>">
+                  <a href="index.php?act=chitietSP&id=<?= $id_sp ?>&id_dm=<?=$id_dm?>">
                     <img src="assets/img/shop/<?=$image_sp?>" width="270" height="274" alt="Image-HasTech">
                   </a>
                   <div class="product-flag">
@@ -152,29 +152,29 @@
                   <a class="banner-link-overlay" href="shop.php"></a>
                 </div>
                 <div class="product-info">
-                <div class="category">
-                    <ul>
-                        <li><a href="shop.php">
-                            <?php
-                            $genderName = '';
-                            switch ($gioi_tinh) {
-                                case 0:
-                                    $genderName = 'Unisex';
-                                    break;
-                                case 1:
-                                    $genderName = 'Nam';
-                                    break;
-                                case 2:
-                                    $genderName = 'Nữ';
-                                    break;
-                                default:
-                                    $genderName = 'Unknown';
-                            }
-                            echo $genderName;
-                            ?>
-                        </a></li>
-                    </ul>
-                </div>
+                  <div class="category">
+                      <ul>
+                          <li><a href="shop.php">
+                              <?php
+                              $genderName = '';
+                              switch ($gioi_tinh) {
+                                  case 0:
+                                      $genderName = 'Unisex';
+                                      break;
+                                  case 1:
+                                      $genderName = 'Nam';
+                                      break;
+                                  case 2:
+                                      $genderName = 'Nữ';
+                                      break;
+                                  default:
+                                      $genderName = 'Unknown';
+                              }
+                              echo $genderName;
+                              ?>
+                          </a></li>
+                      </ul>
+                  </div>
 
                   <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
                   <div class="prices">

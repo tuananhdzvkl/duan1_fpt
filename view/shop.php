@@ -74,7 +74,7 @@
                           <div class="product-item">
                             <div class="inner-content">
                               <div class="product-thumb">
-                                <a href="index.php?act=chitietSP&id=<?= $id_sp ?>">
+                                <a href="index.php?act=chitietSP&id=<?= $id_sp ?>&id_dm=<?= $id_dm ?>">
                                   <img src="assets/img/shop/<?=$image_sp?>" width="270" height="274" alt="Image-HasTech">
                                 </a>
                                 <div class="product-flag">
@@ -131,7 +131,7 @@
                                       </a></li>
                                   </ul>
                                 </div>
-                                <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
+                                <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>&id_dm=<?= $id_dm ?>"><?=$name_sp?></a></h4>
                                 <div class="prices">
                                   <span class="price-old"><?= number_format($k['gia_cu'], 0, '.', ',') ?> vnđ</span>
                                   <span class="sep">-</span>
@@ -163,7 +163,7 @@
                           <div class="product-item product-list-item">
                             <div class="inner-content">
                               <div class="product-thumb">
-                                <a href="index.php?act=chitietSP&id=<?= $id_sp ?>">
+                                <a href="index.php?act=chitietSP&id=<?= $id_sp ?>&id_dm=<?= $id_dm ?>">
                                   <img src="assets/img/shop/<?=$image_sp?>" width="270" height="274" alt="Image-HasTech">
                                 </a>
                                 <div class="product-flag">
@@ -220,7 +220,7 @@
                                         </a></li>
                                     </ul>
                                   </div>
-                                <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?=$name_sp?></a></h4>
+                                <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>&id_dm=<?= $id_dm ?>"><?=$name_sp?></a></h4>
                                 <div class="prices">
                                   <span class="price-old">10.000 vnđ</span>
                                   <span class="sep">-</span>
@@ -311,55 +311,59 @@
 
 
               <div class="shop-sidebar-size">
-                <h4 class="sidebar-title">Size</h4>
-                <div class="sidebar-size">
-                <ul class="size-list">
-                  <?php
-                  $sizeCounts = tongsp_size();
-                  $load_size = load_size_all();
-                  foreach ($load_size as $size) {
-                    $sizeName = $size['name_size'];
-                    $sizeId = $size['id_size'];
-                    $sizeCount = isset($sizeCounts[$sizeId]) ? $sizeCounts[$sizeId]['Tong'] : 0;
-                ?>
-                    <li class="<?= $sizeCount > 0 ? 'active' : ''; ?>">
-                        <a href="shop.html">
-                            <?= $sizeName ?>
-                            <?php if ($sizeCount > 0) : ?>
-                                <span class="product-count">(<?= $sizeCount ?>)</span>
-                            <?php endif; ?>
-                        </a>
-                    </li>
-                <?php } ?>
-                </ul>
+                  <h4 class="sidebar-title">Size</h4>
+                  <div class="sidebar-size">
+                      <ul class="size-list">
+                          <?php
+                          $load_size = load_size_with_total_products();
+                          foreach ($load_size as $size) {
+                              $sizeName = $size['name_size'];
+                              $sizeId = $size['id_size'];
+                              $sizeCount = $size['total_products'];
 
-                </div>
+                              // Load products for the current size
+                              $load_sp = load_sanpham_all_size($sizeId);
+                          ?>
+                              <li class="<?= $sizeCount > 0 ? 'active' : ''; ?>">
+                                  <a href="?act=sizesp&id_size=<?= $sizeId ?>">
+                                      <?= $sizeName ?>
+                                      <?php if ($sizeCount > 0) : ?>
+                                          <span class="product-count">(<?= $sizeCount ?>)</span>
+                                      <?php endif; ?>
+                                  </a>
+                              </li>
+                          <?php } ?>
+                      </ul>
+                  </div>
               </div>
+
+
 
               <div class="shop-sidebar-brand">
                   <h4 class="sidebar-title">Brand</h4>
                   <div class="sidebar-brand">
                       <ul class="brand-list mb--0">
                           <?php
-                          $load_danhmuc = load_danhmuc_all();
-                          foreach ($load_danhmuc as $danhmuc) {
-                              $danhmucName = $danhmuc['name_dm'];
+                            $load_danhmuc = loadAll_DM();
+
+                            foreach ($load_danhmuc as $danhmuc) {
+                                $danhmucName = $danhmuc['name_dm'];
+                            ?>
+                            <li>
+                              <a href='index.php?act=danhmuc&id_dm=<?= $danhmuc['id_dm'] ?>'>
+                              <?= $danhmuc['name_dm'] ?>
+                              <?php
+                                $tong = thongke(); // Assuming this function returns an array with brand counts
+                                foreach ($tong as $key => $value) :
+                                  if ($value['id_dm'] == $danhmuc['id_dm']) :
                               ?>
-                              <li>
-                                  <a href="shop.html">
-                                      <?= $danhmucName ?>
-                                      <?php
-                                      $tong = thongke(); // Assuming this function returns an array with brand counts
-                                      foreach ($tong as $key => $value) :
-                                          if ($value['id_dm'] == $danhmuc['id_dm']) :
-                                      ?>
-                                              <span>(<?= $value['Tong'] ?>)</span>
-                                      <?php
-                                          endif;
-                                      endforeach;
-                                      ?>
-                                  </a>
-                              </li>
+                              <span>(<?= $value['Tong'] ?>)</span>
+                                <?php
+                                  endif;
+                                  endforeach;
+                                ?>
+                              </a>
+                            </li>
                           <?php } ?>
                       </ul>
                   </div>

@@ -16,7 +16,7 @@ function load_sanpham_all()
 {
   $sql = "SELECT * FROM sanpham JOIN danhmuc ON sanpham.id_dm = danhmuc.id_dm";
   $sp =   pdo_query($sql);
-  return $sp;
+  return $sp; 
 }
 function xoasp($id)
 {
@@ -94,18 +94,34 @@ function load_sanpham_all_by_views()
     return $sp;
 }
 
-function load_danhmuc_all()
+// function load_danhmuc_all()
+// {
+//   $sql = "SELECT * FROM `danhmuc`";
+//   $load_danhmuc =   pdo_query($sql);
+//   return $load_danhmuc;
+// }
+function load_size_with_total_products()
 {
-  $sql = "SELECT * FROM `danhmuc`";
-  $load_danhmuc =   pdo_query($sql);
-  return $load_danhmuc;
+    $sql = "SELECT size.*, COUNT(sanpham_bienthe.id_spbt) AS total_products
+            FROM size
+            LEFT JOIN sanpham_bienthe ON size.id_size = sanpham_bienthe.id_size
+            WHERE sanpham_bienthe.soluong > 0
+            GROUP BY size.id_size";
+
+    $result = pdo_query($sql);
+    return $result;
 }
-function load_size_all()
+
+function load_sanpham_all_size($id_size)
 {
-  $sql = "SELECT * FROM `size`";
-  $load_size =   pdo_query($sql);
-  return $load_size;
+    $sql = "SELECT * FROM sanpham_bienthe WHERE id_size = $id_size";
+    $sp = pdo_query($sql);
+    return $sp;
 }
+
+
+
+
 function load_size_ct($id)
 {
   $sql = "SELECT * FROM `sanpham_bienthe` LEFT JOIN size ON sanpham_bienthe.id_size = size.id_size WHERE id_sp = $id GROUP BY sanpham_bienthe.id_size;";

@@ -14,16 +14,28 @@ include "view/include/header.php";
             case 'home':
                 include "view/include/home.php";
                 break;
-            case 'shop':
+            case 'danhmuc':
+                $id_dm = $_GET['id_dm'];
+                $sanpham =  load_sanpham_all_dm($id_dm);
+                include "view/shop.php";
+                break;
+            case "sizesp" :
+                $id_size = $_GET['id_size'];
+                $load_sp = load_sanpham_all_size($id_size);
+                include "view/shop.php";
+                break;
+            case 'sanpham':
+                // $sampham_size = load_sanpham_all_size($id_size);
                 include "view/shop.php";
                 break;
                 case 'chitietSP':
                     if(isset($_GET['id']) && $_GET['id'] > 0){
                         $id = $_GET['id'];
+                        $id_dm = $_GET['id_dm'];
                         $binhluan = LoadAll_BL_user($id);
                         updat_view($id);
                         $sp = load_sanpham_one($id);
-                        $sanpham =  load_sanpham_all();
+                        $sanpham =  load_sanpham_all_dm($id_dm);
                         $sizeCounts = tongsp_size();
                         $genderCounts = load_gioitinh_all();
                         // $tongsp_gioitinh = tongsp_gioitinh($id);
@@ -98,6 +110,10 @@ include "view/include/header.php";
                     include "view/Taikhoan/login.php";
                     break;
                     
+                    case 'quenmk':
+                            include "view/Taikhoan/quenmk.php";
+                        
+                        break;
                     case 'contact':
                         include "view/contact.php";
                         break;
@@ -115,35 +131,24 @@ include "view/include/header.php";
                     break;        
                         
                     case 'capnhattk':
-                        if (isset($_POST['gui']) && !empty($_POST['gui'])) {
-                            $id = isset($_POST['id']) ? $_POST['id'] : null;
-                            $full_name = isset($_POST['full-name']) ? $_POST['full-name'] : '';
-                            $sdt = isset($_POST['sdt']) ? $_POST['sdt'] : '';
-                            $diachi = isset($_POST['diachi']) ? $_POST['diachi'] : '';
-                            $email = isset($_POST['email']) ? $_POST['email'] : '';
-                            $img = isset($_POST['img_tk']) ? $_POST['img_tk'] : '';
-                    
-                            // Check if a file was uploaded
-                            if (!empty($_FILES['img_tk']['name'])) {
-                                $file = $_FILES['img_tk'];
-                                if ($file['size'] > 0) {
-                                    $img = $file['name'];
-                                    move_uploaded_file($file['tmp_name'], "assets/uploads/" . $img);
-                                }
+                        if (isset($_POST['gui']) && ($_POST['gui'] != "")) {
+
+                            $full_name = $_POST['full-name'];
+                            $sdt = $_POST['sdt'];
+                            $diachi = $_POST['diachi'];
+                            $email = $_POST['email'];
+                            $file = $_FILES['img_tk'];
+                            $id = $_POST['id'];
+                            $img = $_POST['img_tk'];
+                            if ($file['size'] > 0) {
+                                $img = $file['name'];
+                                move_uploaded_file($file['tmp_name'], "assets/uploads/" . $img);
                             }
-                    
-                            if (!empty($id)) {
-                                // Perform the update
-                                upload_tk_user($id, $sdt, $full_name, $diachi, $email, $img);
-                    
-                                // Redirect or display a success message
-                                echo '<script>alert("Cập nhật Thành Công")</script>';
-                                echo '<script>window.location.href = "?act=thongtin"</script>';
-                            } else {
-                                // Handle the case when the ID is not set
-                                echo '<script>alert("Không thể cập nhật thông tin. Vui lòng thử lại.")</script>';
-                                echo '<script>window.location.href = "index.php"</script>';
-                            }
+        
+                            // echo $img;
+                            upload_tk_user($id, $sdt, $full_name, $diachi, $email, $img);
+                            echo '<script>alert("Cập nhật Thành Công")</script>';
+                            echo "  <script>window.location.href ='index.php'</script> ";
                         }
                         break;
                     
@@ -169,13 +174,14 @@ include "view/include/header.php";
                                     add_bl($name, $id_tk, $id_sp, $ngayGioHienTai);
                         
                                     // Redirect the user to the product details page after submission
-                                    header("Location: ?act=chitietSP&id_sp=$id_sp");
+                                    header("Location: ?act=chitietSP&id=$id_sp");
                                     exit(); // Ensure that no further code execution occurs after the redirect
                                 } else {
                                     // Handle the case where the comment is empty
                                     echo "Bình luận không được để trống.";
                                 }
                             }
+                            // include "view/binhluan/binhluan.php";
                             break;
 
                             case 'doimk':

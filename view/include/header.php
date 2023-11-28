@@ -195,15 +195,15 @@
                                       <?php
                                       // Assuming LoadAll_DM() returns an array of categories
                                       $danhmuc = LoadAll_DM();
-
                                       foreach ($danhmuc as $category) {
-                                          echo "<li><a href='index.php?act=shop&id={$category['id_dm']}'>{$category['name_dm']}</a></li>";
+                                          echo "<li><a href='index.php?act=danhmuc&id_dm={$category['id_dm']}'>{$category['name_dm']}</a></li>";
                                       }
                                       ?>
                                   </ul>
                               </li>
+
                               <li>
-                                  <a href="index.php?act=shop"><span>Sản Phẩm</span></a>
+                                  <a href="index.php?act=sanpham"><span>Sản Phẩm</span></a>
                                   <!-- You may populate this submenu with dynamic data if needed -->
                                   <!-- <ul class="submenu-nav submenu-nav-mega1">
                                       <?php

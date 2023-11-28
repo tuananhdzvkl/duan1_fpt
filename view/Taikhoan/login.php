@@ -56,11 +56,12 @@
         <span>hoặc sử dụng mật khẩu tài khoản của bạn </span>
         <input name="username" type="text" placeholder="Tài khoản" required>
         <input name="password" type="password" placeholder="Mật Khẩu" required>
-        <a href="#">Quên mật khẩu?</a>
+        <a href="?act=quenmk">Quên mật khẩu?</a>
         <input type="submit" name="login" value="Đăng Nhập" style="background-color: red; color: white; " >
 
       </form>
     </div>
+    
     <div class="toggle-container">
       <div class="toggle">
         <div class="toggle-panel toggle-left">
