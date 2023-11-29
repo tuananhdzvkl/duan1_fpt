@@ -201,3 +201,17 @@ function tongsp_size()
 
     return $sizeCounts;
 }
+
+
+function loadall_sanpham_tk($keyw="",$id_dm=0){
+  $sql = "select * from sanpham JOIN danhmuc ON sanpham.id_dm = danhmuc.id_dm where 1";
+  if($keyw != ""){
+    $sql .= " and name_sp like '%".$keyw."%'";
+  }
+  if($id_dm > 0){
+    $sql .= " and sanpham.id_dm ='".$id_dm."'";
+  }
+  $sql .= " order by id_sp";
+  $listsanpham = pdo_query($sql);
+  return  $listsanpham;
+}

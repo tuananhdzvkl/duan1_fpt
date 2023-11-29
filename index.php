@@ -7,7 +7,24 @@ include "model/danhmuc.php";
 include "model/size.php";
 include "model/binhluan.php";
 include "model/taikhoan.php";
+$dm =  LoadAll_DM();
 include "view/include/header.php";
+if(isset($_POST['keyword']) &&  $_POST['keyword'] != 0 ){
+    $kyw = $_POST['key'];
+    $dssp=loadall_sanpham_tk($kyw);
+                $count = COUNT($dssp);
+                include "view/shop.php";
+   
+}else{
+    $kyw = "";
+}
+
+if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
+    $id=$_GET['id_dm'];
+}else{
+    $id=0;
+}
+
     if (isset($_GET['act']) &&($_GET['act'])) {
         $act = $_GET['act'];
         switch ($act) {
@@ -25,7 +42,9 @@ include "view/include/header.php";
                 include "view/shop.php";
                 break;
             case 'sanpham':
-                // $sampham_size = load_sanpham_all_size($id_size);
+                
+                $dssp=loadall_sanpham_tk($kyw);
+                $count = COUNT($dssp);
                 include "view/shop.php";
                 break;
                 case 'chitietSP':
@@ -48,6 +67,7 @@ include "view/include/header.php";
                         if (!isset($sizeCounts)) {
                             $sizeCounts = tongsp_size();
                         }
+                        
                 
                         include "view/sanpham/sanphamct.php";
                         break;
@@ -209,7 +229,10 @@ include "view/include/header.php";
                                     }
                                 }
                                 include "view/Taikhoan/doimk.php";
-                                break;    
+                                break;  
+                            case 'verifycode':
+                                include "view/Taikhoan/verifycode.php";
+                                break; 
                     default:
                         break;
             }
@@ -247,7 +270,7 @@ include "view/include/header.php";
 <!--=== jQuery Custom Js ===-->
 <script src="assets/js/custom.js"></script>
 
-<script>
+        n<script>
   const container = document.getElementById('container2');
   const registerBtn = document.getElementById('register');
   const loginBtn = document.getElementById('login');

@@ -40,7 +40,7 @@
               <div class="col-12">
                 <div class="shop-top-bar">
                   <div class="shop-top-left">
-                    <p class="pagination-line"><a href="shop.php">12</a> Product Found of <a href="shop.php">30</a></p>
+                    <p class="pagination-line">Hiện có <a href="shop.php"> <?= $count ?> </a>  sản phẩm</p>
                   </div>
                   <div class="shop-top-center">
                     <nav class="product-nav">
@@ -68,7 +68,7 @@
                 <div class="tab-content" id="nav-tabContent">
                   <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
                     <div class="row">
-                    <?php foreach ($sanpham as $k)  : extract($k) ?>
+                    <?php foreach ($dssp as $k)  : extract($k) ?>
                         <div class="col-sm-6 col-lg-4">
                           <!--== Start Product Item ==-->
                           <div class="product-item">
