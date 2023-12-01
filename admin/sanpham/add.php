@@ -12,35 +12,39 @@
 
             <form action="?act=addsp" enctype="multipart/form-data" method="post">
                 <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">ID:</label>
+                    <label for="email" class="form-label">ID</label>
                     <input class="form-control" placeholder="AUTO NUMBER" readonly>
                 </div>
                 <div class="mb-3">
-                    <label for="pwd" class="form-label">Name:</label>
+                    <label for="pwd" class="form-label">Name</label>
                     <input type="text" class="form-control" id="pwd" placeholder="Tên Tên Sản Phẩm" name="name" required>
                 </div>
+                <div class="mb-3">
+                <label for="exampleFormControlTextarea1">Mô tả</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="mo_ta"></textarea>
+                </div>
                 <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">Img_sp:</label>
+                    <label for="email" class="form-label">Image</label>
                     <input class="form-control" type="file" name="img_sp">
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">Giảm Giá:</label>
+                    <label for="email" class="form-label">Giảm Giá</label>
                     <input class="form-control" type="text" name="giam_gia" value="0">
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">Giá Tiền :</label>
+                    <label for="email" class="form-label">Giá Tiền</label>
                     <input class="form-control" type="text" name="gia" value="0">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Mô tả : </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mo_ta"></textarea>
+                    <label for="exampleFormControlTextarea1">Mô tả chi tiết</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mota_ct"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Ngày nhập</label>
                     <input type="date" name="date" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="mb-3 mt-3">
-                    <label for="email" class="form-label">Ảnh Mô Tả:</label>
+                    <label for="email" class="form-label">Ảnh Mô Tả</label>
                     <input class="form-control" type="file" name="img_mota[]" multiple="multiple">
                 </div>
                 <div class="mb-3">
@@ -55,7 +59,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Danh mục : </label>
+                    <label for="exampleInputPassword1" class="form-label">Danh mục</label>
                     <select class="form-control" aria-label="Default select example" name="dm">
                         <option selected>-------- Chọn Danh Mục --------</option>
                         <?php foreach ($danhmuc as $key => $value) : ?>

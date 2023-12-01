@@ -33,32 +33,34 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
                 break;
             case 'danhmuc':
                 $id_dm = $_GET['id_dm'];
-                $sanpham =  load_sanpham_all_dm($id_dm);
+                 $dssp= loadall_sanpham_tk($kyw,$id_dm);
+     
                 include "view/shop.php";
                 break;
+            
             case "sizesp" :
                 $id_size = $_GET['id_size'];
                 $load_sp = load_sanpham_all_size($id_size);
                 include "view/shop.php";
                 break;
             case 'sanpham':
-                
-                $dssp=loadall_sanpham_tk($kyw);
+                $dssp= loadall_sanpham_tk($kyw);
                 $count = COUNT($dssp);
                 include "view/shop.php";
                 break;
+
                 case 'chitietSP':
-                    if(isset($_GET['id']) && $_GET['id'] > 0){
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
                         $id = $_GET['id'];
-                        $id_dm = $_GET['id_dm'];
+                        $id_dm = isset($_GET['id_dm']) ? $_GET['id_dm'] : 0; // Set a default value if 'id_dm' is not set
                         $binhluan = LoadAll_BL_user($id);
                         updat_view($id);
                         $sp = load_sanpham_one($id);
-                        $sanpham =  load_sanpham_all_dm($id_dm);
+                        $dssp= loadall_sanpham_tk($kyw);
                         $sizeCounts = tongsp_size();
                         $genderCounts = load_gioitinh_all();
                         // $tongsp_gioitinh = tongsp_gioitinh($id);
-                        $img_sp = load_img($id);    
+                        $img_sp = load_img($id);
                         $load_size = load_size_ct($id);
                         $load_color = load_color_ct($id);
                         $gioitinh = get_gioitinh_by_id($id);
@@ -67,18 +69,45 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
                         if (!isset($sizeCounts)) {
                             $sizeCounts = tongsp_size();
                         }
-                        
                 
                         include "view/sanpham/sanphamct.php";
                         break;
                     }
                 
+                
                 case 'thanhtoan':
                     include "view/thanhtoan.php";
                     break;
+                // Your existing code...
+
+                // Case 'CTthanhtoan'
                 case 'CTthanhtoan':
-                    include "view/chitietThanhtoan.php";
+                    // Kiểm tra xem giỏ hàng có dữ liệu hay không
+                    if (!empty($_SESSION['cart'])) {
+                        $cart = $_SESSION['cart'];
+                        
+                        // Tạo mảng chứa ID các sản phẩm trong giỏ hàng
+                        $productId = array_column($cart, 'id');
+                        
+                        // Chuyển đôi mảng id thành một chuỗi để thực hiện truy vấn
+                        $idList = implode(',', $productId);
+                        
+                        // Lấy sản phẩm trong bảng sản phẩm theo id
+                        $dataDb = loadone_sanphamCart($idList);
+                        
+                        // Load location data
+                        // $location = load_location_all();
+                        
+                        // var_dump($dataDb); // Add this line to check the content of $dataDb
+                    }
+                    
+                    include "view/giohang/chitietThanhToan.php";
                     break;
+                
+                
+
+                // Your existing code...
+
                 case 'blog':
                     include "view/blog.php";
                     break;
@@ -88,9 +117,24 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
                 case 'wishlist':
                     include "view/wishlist.php";
                     break;
-                case 'cart':
-                    include "view/cart.php";
-                    break;
+                    case 'cart':
+                        // Kiểm tra xem giỏ hàng có dữ liệu hay không
+                        if (!empty($_SESSION['cart'])) {
+                            $cart = $_SESSION['cart'];
+                    
+                            // Tạo mảng chứa ID các sản phẩm trong giỏ hàng
+                            $productId = array_column($cart, 'id');
+                            
+                            // Chuyển đôi mảng id thành một chuỗi để thực hiện truy vấn
+                            $idList = implode(',', $productId);
+                            
+                            // Lấy sản phẩm trong bảng sản phẩm theo id
+                            $dataDb = loadone_sanphamCart($idList);
+                            // var_dump($dataDb);
+                        }
+                        include "view/giohang/cart.php";
+                        break;
+                    
                 case 'login':
                     if (isset($_POST['login']) && ($_POST['login'] != "")) {
                         $username = $_POST['username'];
@@ -184,25 +228,27 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
                                 $name = htmlspecialchars($_POST['binhluan']); // Sanitize user input
                                 $id_tk = $_POST['id_tk'];
                                 $id_sp = $_POST['id'];
-                        
+                                $id_dm = isset($_GET['id_dm']) ? $_GET['id_dm'] : 0; // Set a default value if 'id_dm' is not set
+                                $sanpham = load_sanpham_all_dm($id_dm);
                                 // Ensure that the comment is not empty before adding to the database
                                 if (!empty($name)) {
                                     date_default_timezone_set('Asia/Ho_Chi_Minh');
                                     $ngayGioHienTai = date('Y-m-d H:i:s');
-                        
+                                
                                     // Add the comment to the database
                                     add_bl($name, $id_tk, $id_sp, $ngayGioHienTai);
-                        
+                                
                                     // Redirect the user to the product details page after submission
-                                    header("Location: ?act=chitietSP&id=$id_sp");
+                                    header("Location: ?act=chitietSP&id=$id_sp&id_dm=$id_dm");
                                     exit(); // Ensure that no further code execution occurs after the redirect
                                 } else {
-                                    // Handle the case where the comment is empty
-                                    echo "Bình luận không được để trống.";
-                                }
+                                    echo "<script>alert('Bình luận không được để trống.'); window.location.href = '?act=chitietSP&id=$id_sp&id_dm=$id_dm';</script>";
+                                    exit(); // Ensure that no further code execution occurs if the comment is empty
+                                }                                
                             }
                             // include "view/binhluan/binhluan.php";
                             break;
+                        
 
                             case 'doimk':
                                 if (isset($_POST['submit'])) {
@@ -230,9 +276,9 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
                                 }
                                 include "view/Taikhoan/doimk.php";
                                 break;  
-                            case 'verifycode':
-                                include "view/Taikhoan/verifycode.php";
-                                break; 
+                            // case 'verifycode':
+                            //     include "view/Taikhoan/verifycode.php";
+                            //     break; 
                     default:
                         break;
             }
@@ -270,7 +316,7 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
 <!--=== jQuery Custom Js ===-->
 <script src="assets/js/custom.js"></script>
 
-        n<script>
+<script>
   const container = document.getElementById('container2');
   const registerBtn = document.getElementById('register');
   const loginBtn = document.getElementById('login');

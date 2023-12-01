@@ -76,7 +76,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
         if (isset($_POST['gui']) && $_POST['gui'] != "") {
           $name = $_POST['name'];
           $giam_gia = $_POST['giam_gia'];
-          $mota = $_POST['mo_ta'];
+          $mo_ta = $_POST['mo_ta'];
           $date = $_POST['date'];
           $gioitinh = $_POST['gt'];
           $dm = $_POST['dm'];
@@ -85,7 +85,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
           $img = $file['name'];
 
           move_uploaded_file($file['tmp_name'], "../public/uploads/" . $img);
-          $idspnew =   add_sanpham($name, $giam_gia, $mota, $date, $gioitinh, $dm, $gia, $img);
+          $idspnew =   add_sanpham($name, $giam_gia, $mo_ta, $date, $gioitinh, $dm, $gia, $img, $mota_ct);
           if (isset($_FILES['img_mota'])) {
             $file_mt = $_FILES['img_mota'];
             $img_mt = $file_mt['name'];
@@ -96,7 +96,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
           }
           //echo $idspnew;
           //echo "  <script>alert('Thêm Thành Công') </script> ";
-          echo "  <script>window.location.href ='index.php?act=editsp&idsp=$idspnew'</script> ";
+          echo "  <script>window.location.href ='index.php?act=listsp'</script> ";
         }
         include("sanpham/add.php");
         break;
@@ -114,48 +114,79 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
         $sanpham = load_sanpham_one($id);
         include("sanpham/edit.php");
         break;
-      case 'upsp':
-        if (isset($_POST['gui']) && $_POST['gui'] != "") {
-          $name = $_POST['name'];
-          $giam_gia = $_POST['giam_gia'];
-          $mota = $_POST['mo_ta'];
-          $date = $_POST['date'];
-          $gioitinh = $_POST['gt'];
-          $dm = $_POST['dm'];
-          $gia = $_POST['gia'];
-          $file = $_FILES['img_sp'];
-          $id = $_POST['id'];
-          $img = $_POST['img'];
-          if ($file['size'] > 0) {
-            $img = $file['name'];
-            move_uploaded_file($file['tmp_name'], "../public/uploads/" . $img);
-          }
-          if (isset($_FILES['img_mota'])) {
-            $file_mt = $_FILES['img_mota'];
-            $img_mt = $file_mt['name'];
-            if (!empty($img_mt[0])) {
-              xoaimgsp($id);
-              foreach ($img_mt as $key => $value) {
-                add_img($value, $id);
-                move_uploaded_file($file_mt['tmp_name'][$key], "../public/uploads/" . $value);
+        case 'upsp':
+          if (isset($_POST['gui']) && $_POST['gui'] != "") {
+            $name = $_POST['name'];
+            $giam_gia = $_POST['giam_gia'];
+            $mo_ta = $_POST['mo_ta'];
+            $mota_ct = $_POST['mota_ct'];
+            $date = $_POST['date'];
+            $gioitinh = $_POST['gt'];
+            $dm = $_POST['dm'];
+            $gia = $_POST['gia'];
+            $file = $_FILES['img_sp'];
+            $id = $_POST['id'];
+            $img = $_POST['img'];
+            if ($file['size'] > 0) {
+              $img = $file['name'];
+              move_uploaded_file($file['tmp_name'], "../public/uploads/" . $img);
+            }
+            if (isset($_FILES['img_mota'])) {
+              $file_mt = $_FILES['img_mota'];
+              $img_mt = $file_mt['name'];
+              if (!empty($img_mt[0])) {
+                xoaimgsp($id);
+                foreach ($img_mt as $key => $value) {
+                  add_img($value, $id);
+                  move_uploaded_file($file_mt['tmp_name'][$key], "../public/uploads/" . $value);
+                }
               }
             }
+            up_sanpham($name, $id, $img, $gioitinh,  $mo_ta, $giam_gia, $gia, $date, $dm, $mota_ct);
+            echo "  <script>alert('Thành Công') </script> ";
+            echo "  <script>window.location.href ='index.php?act=listsp'</script> ";
           }
-          up_sanpham($name, $id, $img, $gioitinh,  $mota, $giam_gia, $gia, $date, $dm);
-          echo "  <script>alert('Cập Nhật Thành Công') </script> ";
-          echo "  <script>window.location.href ='index.php?act=listsp'</script> ";
-        }
-        if (isset($_POST['bienthe']) && $_POST['bienthe'] != "") {
-          $id = $_POST["id_sp"];
-          $size = $_POST["kich_co"];
-          $color = $_POST["mau_sac"];
-          $soluong = $_POST["soluong"];
-          add_spbienthe($id, $size, $color, $soluong);
-          //echo $id , $size ; 
-          echo "  <script>alert('Thêm Thành Công') </script> ";
-          echo "  <script>window.location.href ='index.php?act=editsp&idsp=$id'</script> ";
-        }
-        break;
+          if (isset($_POST['bienthe']) && $_POST['bienthe'] != "") {
+            $id = $_POST["id_sp"];
+            $size = $_POST["kich_co"];
+            $color = $_POST["mau_sac"];
+            $soluong = $_POST["soluong"];
+            add_spbienthe($id, $size, $color, $soluong);
+            //echo $id , $size ; 
+            echo "  <script>alert('Thêm Thành Công') </script> ";
+            echo "  <script>window.location.href ='index.php?act=editsp&idsp=$id'</script> ";
+          }
+  
+          break;
+
+          case 'suabt':
+            if (isset($_GET["idbt"])) {
+              $id = $_GET["idbt"];
+              $size = LoadAll_size();
+              $color = LoadAll_color();
+              $btsp =    load_one_bt($id);
+            }
+              if (isset($_POST['bienthe']) && $_POST['bienthe'] != "") {
+                $id_bt = $_POST["id_sp"];
+                $id = $_POST["id"];
+                $size = $_POST["kich_co"];
+                $color = $_POST["mau_sac"];
+                $soluong = $_POST["soluong"];
+                // add_spbienthe($id, $size, $color, $soluong);
+                //echo $id , $size ; 
+                sua_spbienthe($id_bt, $size, $color, $soluong);
+                echo "  <script>alert('Thành Công') </script> ";
+                echo "  <script>window.location.href ='index.php?act=editsp&idsp=$id'</script> ";
+              }
+            include("sanpham/suabt.php");
+            break;
+          case 'xoabt':
+            $id = $_GET['idsp'];
+            $idbt = $_GET['idbt'];
+            xoa_spbienthe($idbt);
+            echo "  <script>alert('Thành Công') </script> ";
+            echo "  <script>window.location.href ='index.php?act=editsp&idsp=$id'</script> ";
+            break;
         //Bình luận 
       case 'binhluan':
         $bl =   thongke_bl();

@@ -176,17 +176,89 @@
                     </script>
 
                       <div class="product-quick-action">
-                        <div class="qty-wrap">
+                        <div class="qty-wrap">              
                           <div class="pro-qty">
                             <input type="text" title="Quantity" value="1">
                           </div>
                         </div>
                         <a class="btn-theme" href="index.php?act=thanhtoan">Thanh Toán</a>
                       </div>
+                      <!-- ... Your existing HTML code ... -->
+
                       <div class="product-wishlist-compare">
-                        <a href="shop-wishlist.html"><i class="pe-7s-like"></i>Thêm vào ưa thích</a>
-                        <a href="shop-compare.html"><i class="pe-7s-shuffle"></i>Thêm vào giỏ hàng</a>
+                          <a href="#" onclick="addToWishlist();"><i class="pe-7s-like"></i>Thêm vào ưa thích</a>
+                          <a href="#" data-id="<?= $id ?>" class="btnCart" onclick="addToCart(<?= $id ?>, '<?= $name_sp ?>', <?= $gia ?>)">
+                              <i class="pe-7s-shuffle"></i>Thêm vào giỏ hàng
+                          </a>
                       </div>
+
+                      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+                      <script>
+                          $(document).ready(function () {
+                              // Array to keep track of added products
+                              let addedProducts = [];
+
+                              $('.btnCart').on('click', function (e) {
+                                  e.preventDefault();
+
+                                  let productId = $(this).data('id');
+                                  let productName = '<?= $name_sp ?>';
+                                  let productPrice = <?= $gia ?>;
+
+                                  // Check if the product is already added
+                                  if (addedProducts.includes(productId)) {
+                                      alert('Sản phẩm này đã được thêm vào giỏ hàng!');
+                                  } else {
+                                      addToCart(productId, productName, productPrice);
+                                  }
+                              });
+
+                              function addToCart(productId, productName, productPrice) {
+                                  $.ajax({
+                                      type: 'POST',
+                                      url: '/view/giohang/themgiohang.php',
+                                      data: {
+                                          id: productId,
+                                          name_sp: productName,
+                                          gia: productPrice
+                                      },
+                                      success: function (response) {
+                                          if (response === 'Invalid request') {
+                                              console.error('Invalid request');
+                                          } else {
+                                              updateCartTotal(response);
+                                              // Add the product to the array
+                                              addedProducts.push(productId);
+                                              alert('Bạn đã thêm sản phẩm vào giỏ hàng thành công!');
+                                          }
+                                      },
+                                      error: function (error) {
+                                          console.log(error);
+                                      }
+                                  });
+                              }
+
+                              function updateCartTotal(total) {
+                                  let totalProduct = document.getElementById('totalProduct');
+                                  if (totalProduct) {
+                                      totalProduct.innerText = total;
+                                  }
+
+                                  // Update the initial count value if it exists on the page
+                                  let initialCount = document.getElementById('initialCount');
+                                  if (initialCount) {
+                                      initialCount.innerText = total;
+                                  }
+                              }
+                          });
+                      </script>
+
+
+
+                      <!-- ... Your existing HTML code ... -->
+
+
+
                       <div class="product-info-footer">
                         <h6 class="code"><span>Code :</span><?=$ma_sp?></h6>
                         <div class="social-icons">
@@ -218,7 +290,7 @@
               <div class="tab-content product-tab-content" id="ReviewTabContent">
                 <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
                   <div class="product-information">
-                    <p><?= $mota_chitiet ?></p>
+                    <p><?= $mota_ct ?></p>
                   </div>
                 </div>
                 

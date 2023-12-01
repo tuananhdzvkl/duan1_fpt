@@ -7,46 +7,53 @@
                 <span class="review-write-btn">Viết Bình Luận</span>
             </div>
         </div>
+        <script>
+    // JavaScript to scroll to the reviews section
+    document.addEventListener("DOMContentLoaded", function () {
+        // Check if the URL contains the reviews-container hash
+        if (window.location.hash === "#reviews") {
+            // Scroll to the reviews section
+            document.getElementById("reviews").scrollIntoView();
+        }
+    });
+</script>
 
         <!--== Start Reviews Form Item ==-->
         <?php
-        if (isset($_SESSION['username'])) {
-            echo "<div class='reviews-form-area'>
-                <h4 class='title'>Bình Luận Mới</h4>
-                <div class='reviews-form-content'>
-                    <form action='index.php?act=binhluan' method='post'>
-                        <div class='row'>
-                            <div class='col-md-12'>
-                                <div class='form-group'>
-                                    <textarea id='for_comment' class='form-control' placeholder='Write your comments here' name='binhluan'></textarea>
-                                </div>
-                            </div>
-                            <div class='col-md-12'>
-                                <div class='form-submit-btn'>
-                                    <input type='hidden' name='id' value='" . $sp['id_sp'] . "'>
-                                    <input type='hidden' name='id_tk' value='" . $_SESSION['username']['id_tk'] . "'>
-                                    <input type='submit' class='btn-submit' name='gui' value='Bình Luận'>
-                                </div>
-                            </div>
+if (isset($_SESSION['username'])) {
+    echo "<div class='reviews-form-area'>
+        <h4 class='title'>Bình Luận Mới</h4>
+        <div class='reviews-form-content'>
+            <form action='index.php?act=binhluan' method='post' onsubmit='return submitForm();'>
+                <div class='row'>
+                    <div class='col-md-12'>
+                        <div class='form-group'>
+                            <textarea id='for_comment' class='form-control' placeholder='Write your comments here' name='binhluan'></textarea>
                         </div>
-                    </form>
+                    </div>
+                    <div class='col-md-12'>
+                        <div class='form-submit-btn'>
+                            <input type='hidden' name='id' value='" . $sp['id_sp'] . "'>
+                            <input type='hidden' name='id_dm' value='" . $sp['id_dm'] . "'>
+                            <input type='hidden' name='id_tk' value='" . $_SESSION['username']['id_tk'] . "'>
+                            <input type='submit' class='btn-submit' name='gui' value='Bình Luận'>
+                        </div>
+                    </div>
                 </div>
-            </div>";
+            </form>
+        </div>
+    </div>";
 
-            // Make sure to handle the form submission and then redirect
-            if (isset($_POST['gui'])) {
-                // Your form submission logic here...
-            
-                // Redirect back to the same page
-                header("Location: index.php?act=binhluan");
-                exit();
-            }            
-        } else {
-            echo "<div class='reviews-form-area'>
-                <h4 class='title'>Bạn Hãy Vui Lòng <a href='?act=login'>Đăng Nhập</a> Để Bình Luận </h4>
-            </div>";
-        }
-        ?>
+    if (isset($_POST['gui'])) {
+        // Your form submission logic here...
+        echo "<script>window.location.href='index.php?act=binhluan#reviews'</script>";
+    }
+} else {
+    echo "<div class='reviews-form-area'>
+        <h4 class='title'>Bạn Hãy Vui Lòng <a href='?act=login'>Đăng Nhập</a> Để Bình Luận </h4>
+    </div>";
+}
+?>
         <!--== End Reviews Form Item ==-->
 
         <div class="reviews-content-body">
@@ -80,7 +87,7 @@
                     </h5>
                     <p><?= $value['comment'] ?></p>
                 </div>
-            <?php endforeach ?>
+            <?php endforeach ?>     
             <!--== End Reviews Content Item ==-->
         </div>
     </div>

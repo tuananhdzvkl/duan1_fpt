@@ -114,7 +114,7 @@
                     <!-- <img class="logo-light" src="assets/img/logo-light.webp" width="131" height="34" alt="Logo" /> -->
                   </a>
                 </div>
-              </div>
+              </div>  
               <div class="header-middle-align-center">
                   <div class="header-search-area">
                       <form class="header-searchbox" method="post" action="?act=sanpham">
@@ -133,17 +133,23 @@
                   </div>
                   <div class="shopping-wishlist">
                     <a class="shopping-wishlist-btn" href="index.php?act=wishlist">
-                      <i class="pe-7s-like icon"></i>
+                      <i style="font-weight: bold;" class="pe-7s-like icon"></i>
                     </a>
                   </div>
+
                   <div class="shopping-cart">
-                    <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasCart" aria-controls="offcanvasRightLabel">
-                      <a class="shopping-wishlist-btn" href="index.php?act=cart">
-                      <i class="pe-7s-shopbag icon"></i>
-                      <sup class="shop-count">02</sup>
-                    </a>
-                    </button>
+                      <button class="shopping-cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasCart" aria-controls="offcanvasRightLabel">
+                          <a class="shopping-wishlist-btn" href="index.php?act=cart">
+                          <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: -9px;" width="27" height="27" fill="currentColor" class="bi bi-cart" viewBox="0  0 16 16">
+                              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                          </svg>
+
+                              <sup id="totalProduct" style="left: 11px;"  class="shop-count"><?= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?></sup>
+                              <span id="initialCount" style="display:none;"><?= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?></span>
+                          </a>
+                      </button>
                   </div>
+
                   <button class="btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
                     <i class="pe-7s-menu"></i>
                   </button>
