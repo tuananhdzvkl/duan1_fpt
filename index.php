@@ -40,6 +40,7 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
             
             case "sizesp" :
                 $id_size = $_GET['id_size'];
+                $dssp= loadall_sanpham_tk($kyw);
                 $load_sp = load_sanpham_all_size($id_size);
                 include "view/shop.php";
                 break;
@@ -117,6 +118,7 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
                 case 'wishlist':
                     include "view/wishlist.php";
                     break;
+                    
                     case 'cart':
                         // Kiểm tra xem giỏ hàng có dữ liệu hay không
                         if (!empty($_SESSION['cart'])) {
@@ -206,7 +208,7 @@ if(isset($_GET['id_dm']) && ($_GET['id_dm']>0)){
                             $img = $_POST['img_tk'];
                             if ($file['size'] > 0) {
                                 $img = $file['name'];
-                                move_uploaded_file($file['tmp_name'], "assets/uploads/" . $img);
+                                move_uploaded_file($file['tmp_name'], "public/uploads/" . $img);
                             }
         
                             // echo $img;

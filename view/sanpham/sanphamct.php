@@ -175,89 +175,211 @@
                         }
                     </script>
 
-                      <div class="product-quick-action">
-                        <div class="qty-wrap">              
-                          <div class="pro-qty">
-                            <input type="text" title="Quantity" value="1">
-                          </div>
+                    <div class="product-quick-action">
+                      <div class="qty-wrap">
+                        <div class="pro-qty">
+                          <input type="text" class="soluong" title="Quantity" value="1" id="quantityInput" min="1" readonly>
+
+                          <div class="dec qty-btn">-</div>
+                          <div class="inc qty-btn">+</div>
                         </div>
-                        <a class="btn-theme" href="index.php?act=thanhtoan">Thanh Toán</a>
                       </div>
+                    <button data-id="<?= $sp_img['id_sp'] ?>" class="btn-theme" id="addToCartBtn" onclick="addToCart(<?= $id ?>, '<?= $name_sp ?>', <?= $giathuc ?>)">Thêm vào giỏ hàng</button>
+                  </div>
                       <!-- ... Your existing HTML code ... -->
 
-                      <div class="product-wishlist-compare">
-                          <a href="#" onclick="addToWishlist();"><i class="pe-7s-like"></i>Thêm vào ưa thích</a>
-                          <a href="#" data-id="<?= $id ?>" class="btnCart" onclick="addToCart(<?= $id ?>, '<?= $name_sp ?>', <?= $gia ?>)">
-                              <i class="pe-7s-shuffle"></i>Thêm vào giỏ hàng
-                          </a>
-                      </div>
+                      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                  <script>
+                    let totalProduct = document.getElementById('giohanh');
 
-                      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-                      <script>
-                          $(document).ready(function () {
-                              // Array to keep track of added products
-                              let addedProducts = [];
 
-                              $('.btnCart').on('click', function (e) {
-                                  e.preventDefault();
+                    function addToCart(productId, productName, productPrice) {
+                      // console.log(productId, productName, productPrice);
+                      // Sử dụng jQuery
+                      if (mau_sac != null || size_s != null) {
+                        $.ajax({
+                          type: 'POST',
+                          // Đường dẫ tới tệp PHP xử lý dữ liệu
+                          url: 'model/addToCart.php',
+                          data: {
+                            id: productId,
+                            name: productName,
+                            price: productPrice,
+                            sl: soluong,
+                            size: size_s,
+                            mau: mau_sac
+                          },
+                          success: function(response) {
+                            totalProduct.innerText = response;
+                            alert('Bạn đã thêm sản phẩm vào giỏ hàng thành công!')
+                          },
+                          error: function(error) {
+                            console.log(error);
+                          }
+                        });
 
-                                  let productId = $(this).data('id');
-                                  let productName = '<?= $name_sp ?>';
-                                  let productPrice = <?= $gia ?>;
 
-                                  // Check if the product is already added
-                                  if (addedProducts.includes(productId)) {
-                                      alert('Sản phẩm này đã được thêm vào giỏ hàng!');
-                                  } else {
-                                      addToCart(productId, productName, productPrice);
-                                  }
-                              });
+                      } else {
+                        alert('Vui Lòng Chọn Màu Sắc , Size')
+                      }
 
-                              function addToCart(productId, productName, productPrice) {
-                                  $.ajax({
-                                      type: 'POST',
-                                      url: '/view/giohang/themgiohang.php',
-                                      data: {
-                                          id: productId,
-                                          name_sp: productName,
-                                          gia: productPrice
-                                      },
-                                      success: function (response) {
-                                          if (response === 'Invalid request') {
-                                              console.error('Invalid request');
-                                          } else {
-                                              updateCartTotal(response);
-                                              // Add the product to the array
-                                              addedProducts.push(productId);
-                                              alert('Bạn đã thêm sản phẩm vào giỏ hàng thành công!');
-                                          }
-                                      },
-                                      error: function (error) {
-                                          console.log(error);
-                                      }
-                                  });
-                              }
 
-                              function updateCartTotal(total) {
-                                  let totalProduct = document.getElementById('totalProduct');
-                                  if (totalProduct) {
-                                      totalProduct.innerText = total;
-                                  }
+                    }
 
-                                  // Update the initial count value if it exists on the page
-                                  let initialCount = document.getElementById('initialCount');
-                                  if (initialCount) {
-                                      initialCount.innerText = total;
-                                  }
-                              }
-                          });
-                      </script>
+                    // đoạn số lượng 
 
+                    let mau_sac = null;
+                    let size_s = null;
+                    let idsp = null;
+                    let soluong = 1;
+
+                    //var id_san_pham = $(".product-single-info").children(".id_sp").val();
+                    $(document).ready(function() {
+
+                      var quantityInput = $('#quantityInput');
+                      $('.inc').click(function() {
+                        if (mau_sac != null || size_s != null) {
+                          var currentValue = parseInt(quantityInput.val());
+                          soluong = parseInt(currentValue+1);
+                          console.log(soluong);
+                          checkAndUpdateQuantity(currentValue + 1);
+                        } else {
+                          alert('Vui Lòng Chọn Màu Sắc , Size')
+                        }
+                      });
+
+                      $('.dec').click(function() {
+                        if (mau_sac != null || size_s != null) {
+                          var currentValue = parseInt(quantityInput.val());
+                         
+                          if (currentValue > 1) {
+                            soluong = parseInt(currentValue-1);
+                            //console.log(soluong);
+                            checkAndUpdateQuantity(currentValue - 1);
+                          } else {
+                            soluong = 1 ; 
+                            alert('Số Lượng Sản Phẩm Không Nhỏ Hơn 1')
+                          }
+                        } else {
+                          alert('Vui Lòng Chọn Màu Săc , Size')
+                        }
+                      });
+
+                      function checkAndUpdateQuantity(newQuantity) {
+
+                        // Gửi yêu cầu Ajax để kiểm tra số lượng
+                        $.ajax({
+                          type: 'POST',
+                          url: 'model/check_sluong.php', // Thay đổi đường dẫn phù hợp
+                          data: {
+                            newQuantity: newQuantity,
+                            mau: mau_sac,
+                            size: size_s,
+                            id_sp: idsp
+                          },
+                          success: function(response) {
+                            if (response === 'valid') {
+                              // Nếu số lượng hợp lệ, cập nhật giá trị
+                              quantityInput.val(newQuantity);
+                            } else {
+                           
+                              let hihi = newQuantity - 1;
+                              soluong = hihi ; 
+                              alert('Hiện tại Trong Kho Còn: ' + hihi + ' Sản phẩm');
+                            }
+                          }
+                        });
+                      }
+                    });
+
+                    // màu với size 
+                    $(document).on('click', '.color-list li', function() {
+                      // Xóa class 'active' từ tất cả các màu
+                      $('.color-list li').removeClass('active');
+                      // Thêm class 'active' cho màu được chọn
+                      $(this).addClass('active');
+
+                      // Rest of your code...
+                    });
+                    $(document).on('click', '.size-list li', function() {
+                      // Xóa class 'active' từ tất cả các màu
+                      $('.size-list li').removeClass('active');
+                      // Thêm class 'active' cho màu được chọn
+                      $(this).addClass('active');
+
+
+                    });
+
+
+                    // Sự kiện khi một kích thước được chọn
+                    $(document).on('click', '.size-list li', function() {
+                      var selectedSizeId = $(this).val();
+                      var selectedColor = $('.color-list li.active').attr('value');
+                      var id_san_pham = $(".product-single-info").children(".id_sp").val();
+
+                      // Check size thuộc màu
+                      $.post(
+                        "model/check_size.php", {
+                          id_sp: id_san_pham,
+                          color: selectedColor,
+                          size: selectedSizeId,
+                        },
+function(data) {
+                          var isSizeBelongsToColor = JSON.parse(data);
+                          if (isSizeBelongsToColor) {
+                            // alert("Chọn đúng nền văn minh rồi");
+                            // Nếu size thuộc màu, kiểm tra số lượng
+                            // console.log(selectedColor);
+                            mau_sac = selectedColor;
+                            size_s = selectedSizeId;
+                            idsp = id_san_pham;
+                           // soluong = 1;
+                           console.log(soluong);
+                            //console.log(id_san_pham);
+                            ////console.log(size);
+                          } else {
+
+                            alert("Hiện Tại Size này Đang Hết Hàng");
+                          }
+                        }
+                      );
+                    });
+                    $(document).on('click', '.color-list li', function() {
+                      var selectedColor = $(this).val();
+                      var selectedSizeId = $('.size-list li.active').attr('value');
+                      var id_san_pham = $(".product-single-info").children(".id_sp").val();
+
+                      // Check màu thuộc size
+                      $.post(
+                        "model/check_size.php", {
+                          id_sp: id_san_pham,
+                          color: selectedColor,
+                          size: selectedSizeId,
+                        },
+                        function(data) {
+                          var isSizeBelongsToSize = JSON.parse(data);
+                          if (isSizeBelongsToSize) {
+                            mau_sac = selectedColor;
+                            size_s = selectedSizeId;
+                            idsp = id_san_pham;
+                           // soluong = 1;
+                             console.log(soluong);
+                            // console.log(size_s);
+                            //  console.log(id_san_pham);
+                            // Nếu màu thuộc size, kiểm tra số lượng
+
+                          } else {
+                            alert("Hiện Tại Màu này Đang Hết Hàng");
+                          }
+                        }
+                      );
+                    });
+                  </script>
 
 
                       <!-- ... Your existing HTML code ... -->
 
-
+                      <div class="product-wishlist-compare"></div>
 
                       <div class="product-info-footer">
                         <h6 class="code"><span>Code :</span><?=$ma_sp?></h6>

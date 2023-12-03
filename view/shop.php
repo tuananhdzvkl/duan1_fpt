@@ -87,16 +87,16 @@
                                       <?php endif; ?>
                                   </ul>
                                 </div>
-                                <div class="product-action">
+                                <!-- <div class="product-action">
                                   <a class="btn-product-wishlist" href="#" onclick="addToWishlist()"><i class="fa fa-heart"></i></a>
                                   <a class="btn-product-cart" href="#" onclick="addToCart()"><i class="fa fa-shopping-cart"></i></a>
                                   <button type="button" class="btn-product-quick-view-open">
                                     <i class="fa fa-arrows"></i>
                                   </button>
                                   <a class="btn-product-compare" href="#"><i class="fa fa-random"></i></a>
-                                </div>
+                                </div> -->
                                 
-                                <a class="banner-link-overlay" href="shop.html"></a>
+                                <!-- <a class="banner-link-overlay" href="shop.html"></a> -->
                               </div>
                               <div class="product-info">
                                 <div class="category">
@@ -124,9 +124,14 @@
                                 </div>
                                 <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>&id_dm=<?= $id_dm ?>"><?=$name_sp?></a></h4>
                                 <div class="prices">
-                                  <span class="price-old"><?= number_format($k['gia_cu'], 0, '.', ',') ?> vnđ</span>
-                                  <span class="sep">-</span>
-                                  <span class="price"><?= number_format($k['gia'], 0, '.', ',') ?> vnđ</span>
+                                <?php if ($giam_gia == 0) : ?>
+                                      <span class="price"><?php echo number_format($gia, 0, '.', ','); ?> VND</span>
+                                  <?php else : ?>
+                                      <?php $giathuc = $gia - ($giam_gia * $gia) / 100; ?>
+                                      <span class="price-old" style="font-size: small; color: red;"><?php echo number_format($gia, 0, '.', ','); ?> VND</span>
+                                      <span class="sep">-</span>
+                                      <span class="price"><?php echo number_format($giathuc, 0, '.', ','); ?> VND</span>
+                                  <?php endif; ?>
                                 </div>
                               </div>
                             </div>
@@ -241,12 +246,12 @@
               </div>
             </div>
 
-              <div class="shop-sidebar-price-range">
+              <!-- <div class="shop-sidebar-price-range">
                 <h4 class="sidebar-title">Price Filter</h4>
                 <div class="sidebar-price-range">   
                   <div id="price-range"></div>
                 </div>
-              </div>
+              </div> -->
             
               <div class="shop-sidebar-color">
                   <h4 class="sidebar-title">Color</h4>

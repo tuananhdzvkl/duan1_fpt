@@ -109,6 +109,8 @@ if (empty($dataDb)) {
                                     <th class="product-stt">STT</th>
                                     <th class="product-image">IMAGE</th>
                                     <th class="product-name">Product</th>
+                                    <!-- <th class="product-size">Size</th>
+                                    <th class="product-color">Color</th> -->
                                     <th class="product-price">Price</th>
                                     <th class="product-quantity">Quantity</th>
                                     <th class="product-subtotal">Total</th>
@@ -142,6 +144,12 @@ if (empty($dataDb)) {
                                             <td class="product-name">
                                                 <h4 class="title"><?= $sanpham['name_sp'] ?></h4>
                                             </td>
+                                            <!-- <td class="product-name">
+                                                <h4 class="title"><?= $sanpham['size'] ?></h4>
+                                            </td>
+                                            <td class="product-name">
+                                                <h4 class="title"><?= $sanpham['color'] ?></h4>
+                                            </td> -->
                                             <td class="product-price">
                                                 <span class="price"><?= number_format((int)$sanpham['gia'], 0, '.', ',') ?> VNĐ </span>
                                             </td>
@@ -236,7 +244,7 @@ if (empty($dataDb)) {
                                     <?php endforeach ?>
                                     <tr class="actions">
                                     <td class="border-0" colspan="8">
-                                        <button type="submit" class="update-cart" disabled>Cập nhật giỏ hàng</button>
+                                        <button type="submit" class="update-cart">Cập nhật giỏ hàng</button>
                                         <button type="submit" class="clear-cart">Dọn dẹp giỏ hàng</button>
                                         <button type="button" class="clear-cart"  onclick="redirectToCheckout()">Mua Ngay</button>
                                         <a href="?act=sanpham" class="btn-theme btn-flat">Tiếp tục mua sắm</a>

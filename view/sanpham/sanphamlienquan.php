@@ -90,9 +90,14 @@
                                                 <h4 class="title"><a href="index.php?act=chitietSP&id=<?= $id_sp ?>"><?= $name_sp ?></a></h4>
                                                 <!-- Prices -->
                                                 <div class="prices">
-                                                    <span class="price-old"><?= number_format($gia_cu, 0, '.', ',') ?> vnđ</span>
-                                                    <span class="sep">-</span>
-                                                    <span class="price"><?= number_format($gia, 0, '.', ',') ?> vnđ</span>
+                                                    <?php if ($giam_gia == 0) : ?>
+                                                    <span class="price"><?php echo number_format($gia, 0, '.', ','); ?> VND</span>
+                                                    <?php else : ?>
+                                                    <?php $giathuc = $gia - ($giam_gia * $gia) / 100; ?>
+                                                        <span class="price-old" style="font-size: small; color: red;"><?php echo number_format($gia, 0, '.', ','); ?> VND</span>
+                                                        <span class="sep">-</span>
+                                                        <span class="price"><?php echo number_format($giathuc, 0, '.', ','); ?> VND</span>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>

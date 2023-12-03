@@ -1,9 +1,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<script src="view/giohang/location.js"></script>
-<form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="">
-<main class="main-content">
+<script src="assets/js/location.js"></script>
+<form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="" >
+<main class="main-content" >
     <!--== Start Page Header Area Wrapper ==-->
     <div class="page-header-area" data-bg-img="assets/img/photos/slider_4.webp">
       <div class="container pt--0 pb--0">
@@ -26,30 +26,67 @@
     <!--== End Page Header Area Wrapper ==-->
 
     <!--== Start Shopping Checkout Area Wrapper ==-->
-    <section class="shopping-checkout-wrap">
+    <section class="shopping-checkout-wrap" style="margin-top:-5pc;">
       <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="checkout-page-login-wrap">
-              <!--== Start Checkout Login Accordion ==-->
-              <div class="login-accordion" id="LoginAccordion">
-              
+      <div class="row">
+        <div class="col-12">
+          <div class="checkout-page-login-wrap">
+            <!--== Start Checkout Login Accordion ==-->
+            <div class="login-accordion" id="LoginAccordion">
+              <div class="card">
+                <br><br>
+                <div id="loginaccordion" class="collapse" data-bs-parent="#LoginAccordion">
+                  <div class="card-body">
+                    <div class="login-wrap">
+                    
+                      <form action="#" method="post">
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <!--== End Checkout Login Accordion ==-->
             </div>
+            <!--== End Checkout Login Accordion ==-->
           </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="checkout-page-coupon-wrap">
-              <!--== Start Checkout Coupon Accordion ==-->
-              <div class="coupon-accordion" id="CouponAccordion">
-        
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="checkout-page-coupon-wrap">
+            <!--== Start Checkout Coupon Accordion ==-->
+            <div class="coupon-accordion" id="CouponAccordion">
+              <div class="card">
+                <h3>
+                  <i class="fa fa-info-circle"></i>
+                  Có phiếu giảm giá?
+                  <a href="#/" data-bs-toggle="collapse" data-bs-target="#couponaccordion"> Bấm vào đây để nhập mã của bạn</a>
+                </h3>
+                <div id="couponaccordion" class="collapse" data-bs-parent="#CouponAccordion">
+                  <div class="card-body">
+                    <div class="apply-coupon-wrap mb-60">
+                      <p>Nhập mã giảm giá của bạn (Nếu có)</p>
+                      <form action="#" method="post">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <input class="form-control" type="text" placeholder="Enter your coupon code..">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <button class="btn-coupon">Xác Nhận</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <!--== End Checkout Coupon Accordion ==-->
             </div>
+            <!--== End Checkout Coupon Accordion ==-->
           </div>
         </div>
+      </div>
         <div class="row">
           <div class="col-lg-6">
             <!--== Start Billing Accordion ==-->
@@ -59,20 +96,20 @@
                 <form action="#" method="post">
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="form-group">
+                      <div class="form-group" style="margin-top:-10px;">
                         <label for="f_name">Tên của bạn <abbr class="required" title="required">*</abbr></label>
                         <input id="f_name" type="text"  class="form-control" required>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group">
+                      <div class="form-group" style="margin-top:-10px;">
                         <label for="l_name">Họ Tên <abbr class="required" title="required">*</abbr></label>
                         <input id="l_name" type="text"  class="form-control" required>
                       </div>
                     </div>
                     
                     <div class="col-md-12">
-                      <div class="form-group">
+                      <div class="form-group" style="margin-top:10px;">
                         <label for="province">Tỉnh/Thành phố <abbr class="required" title="required">*</abbr></label>
                         <select id="province" name="province" class="form-control">
                           <option>Chọn tỉnh thành</option>
@@ -81,7 +118,7 @@
                     </div>
 
                     <div class="col-md-12">
-                      <div class="form-group">
+                      <div class="form-group" style="margin-top:10px;">
                         <label for="district">Quận/Huyện <abbr class="required" title="required">*</abbr></label>
                         <select id="district" name="district" class="form-control">
                           <option>Chọn quận/huyện</option>
@@ -90,7 +127,7 @@
                     </div>
 
                     <div class="col-md-12">
-                      <div class="form-group">
+                      <div class="form-group" style="margin-top:10px;">
                         <label for="ward">Xã/Phường <abbr class="required" title="required">*</abbr></label>
                         <select id="ward" name="ward" class="form-control">
                           <option>Chọn xã/phường</option>
@@ -99,19 +136,19 @@
                     </div>
 
                     <div class="col-md-12">
-                      <div class="form-group">
+                      <div class="form-group" style="margin-top:10px;">
                         <label for="address">Địa chỉ cụ thể <abbr class="required" title="required">*</abbr></label>
                         <input id="address" type="text"  class="form-control">
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <div class="form-group">
+                      <div class="form-group" style="margin-top:10px;">
                         <label for="phone">Số điện thoại <abbr class="required" title="required">*</abbr></label>
                         <input id="phone" type="text" required class="form-control">
                       </div>
                     </div>
                     <div class="col-md-12">
-                      <div class="form-group" data-margin-bottom="30">
+                      <div class="form-group" data-margin-bottom="30" style="margin-top:10px;">
                         <label for="email">Địa chỉ Email (optional)</label>
                         <input id="email" type="text"  class="form-control">
                       </div>
@@ -197,21 +234,13 @@
                       </div>
                     </div> -->
                     <div class="shipping-form-coupon">
-                  <div class="section-title-cart">
-                  <label for="order-notes">Nhập mã giảm giá của bạn (Nếu có)</label>
-                  </div>
                   <form action="#" method="post">
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group">
-                          <label for="couponCode" class="visually-hidden">Mã giảm giá</label>
-                          <input type="text" id="couponCode" class="form-control" placeholder="Enter your coupon code..">
-                        </div>
-                      </div>
-                      <div class="col-md-12">
                       <div class="form-group mb--0">
                         <label for="order-notes">Ghi chú đơn hàng (optional)</label>
-                        <textarea id="order-notes" class="form-control" placeholder="Ghi chú về đơn đặt hàng của bạn, ví dụ: ghi chú đặc biệt khi giao hàng."></textarea>
+                        <textarea id="order-notes" style="height: 200px;" class="form-control"  placeholder="Ghi chú về đơn đặt hàng của bạn, ví dụ: ghi chú đặc biệt khi giao hàng."></textarea>
+                        
                       </div>
                     </div>
                     <br><br>
@@ -273,54 +302,75 @@
                     ?> 
                     </tbody>
                     <!-- Table Footer -->
-                    <tfoot class="table-foot">
-                        <tr class="cart-subtotal">
-                            <th>Giảm Giá</th>
-                            <td>£89.99</td>
-                        </tr>
-                        <tr class="shipping">
-                            <th>Phí Vận Chuyển</th>
-                            <td>Flat rate: £2.00</td>
-                        </tr>
-                        <tr class="order-total">
-                            <th>Tổng </th>
-                            <td class="product-total">
-                                <?php
-                                // Calculate and output the total
-                                $total = 0;
-                                foreach ($dataDb as $item) {
-                                    $productId = isset($item['id_sp']) ? $item['id_sp'] : '';
-                                    $quantity = getQuantityFromCart($productId, $cart);
-                                    $total += (int)$item['gia'] * (int)$quantity;
-                                }
-                                echo number_format($total, 0, '.', ',') . ' VNĐ';
-                                ?>
-                            </td>
-                        </tr>
-                    </tfoot>
-                    </table>
-                  
+                      <?php
+                          $discountAmount = rand(1, 30);
 
-                  <div class="shop-payment-method">
+                          // Ensure the discount amount is not more than 100%
+                          $discountAmount = min(100, $discountAmount);
+
+                          // Function to get quantity from the original cart data
+                          if (!function_exists('getQuantityFromCart')) {
+                            function getQuantityFromCart($productId, $cart) {
+                                foreach ($cart as $cartItem) {
+                                    if ($cartItem['id'] == $productId) {
+                                        return $cartItem['quantity'];
+                                    }
+                                }
+                                return 0; // Default quantity if not found
+                            }
+                          }
+                          ?>
+
+                          <tfoot class="table-foot">
+                              <tr class="cart-subtotal">
+                                  <th>Giảm Giá</th>
+                                  <td><?= $discountAmount ?> %</td>
+                              </tr>
+                              <tr class="shipping">
+                                  <th>Phí Vận Chuyển</th>
+                                  <td>Flat rate: £2.00</td>
+                              </tr>
+                              <tr class="order-total">
+                                  <th>Tổng </th>
+                                  <td class="product-total">
+                                      <?php
+                                      $total = 0;
+                                      foreach ($dataDb as $item) {
+                                          $productId = isset($item['id_sp']) ? $item['id_sp'] : '';
+                                          $quantity = getQuantityFromCart($productId, $cart);
+                                          
+                                          // Apply the discount to each item's total
+                                          $discountedItemTotal = (int)$item['gia'] * (int)$quantity * ((100 - $discountAmount) / 100);
+                                          
+                                          $total += $discountedItemTotal;
+                                      }
+                                      echo number_format($total, 0, '.', ',') . ' VNĐ';
+                                      ?>
+                                  </td>
+                              </tr>
+                          </tfoot>
+                          <!-- End of Table Footer -->
+                  </table>
+
+                  <div class="shop-payment-method" style="margin-top:50px;">
                     <div id="PaymentMethodAccordion">
                       <div class="card">
-                        <div class="card-header" id="check_payments">
+                      <h2 class="title mb-25">Phương thức thanh toán</h2>
+                        <!-- <div class="card-header" id="check_payments">
                           <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemOne" aria-controls="itemOne" aria-expanded="true">Chuyển khoản ngân hàng</h5>
                         </div>
                         <div id="itemOne" class="collapse show" aria-labelledby="check_payments" data-bs-parent="#PaymentMethodAccordion">
                           <div class="card-body">
-                            <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
+                            <p>Thực hiện thanh toán trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn hàng của bạn làm tài liệu tham khảo thanh toán. Đơn đặt hàng của bạn sẽ không được vận chuyển cho đến khi tiền đã được xóa trong tài khoản của chúng tôi.</p>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                       <div class="card">
                         <div class="card-header" id="check_payments3">
                           <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemThree" aria-controls="itemTwo" aria-expanded="false">Thanh toán khi nhận hàng</h5>
                         </div>
                         <div id="itemThree" class="collapse" aria-labelledby="check_payments3" data-bs-parent="#PaymentMethodAccordion">
-                          <div class="card-body">
-                            <p>Pay with cash upon delivery.</p>
-                          </div>
+                          
                         </div>
                       </div>
                       <div class="card">
@@ -334,12 +384,93 @@
                                   <img style="margin-left: 15px;" src="../assets/img/icons/momo.png" width="70" height="90" alt="image">
                               </a>
                             
-                              
-                              <a href="view/giohang/xulyvnpay.php" target="_blank">
-                                <img style="margin-left: 15px;" src="/assets/img/icons/vnpay.png" width="70" height="90" alt="image">
-                            </a>
+                              <a href="#" onclick="openModal();">
+                            <img src="/assets/img/icons/vnpay.png" width="70" height="90" alt="image">
+                        </a>
 
-                          </div>
+                        <div id="myModal" class="modal-container">
+                            <div class="modal-content">
+                                <p style="font-size: 15px;">Tính năng đang được cập nhật</p>
+                                <button class="close-button" onclick="closeModal()">Đóng</button>
+                            </div>
+                        </div>
+
+                        <script>
+                            function openModal() {
+                                // Display the modal
+                                document.getElementById('myModal').style.display = 'flex';
+                            }
+
+                            function closeModal() {
+                                // Hide the modal
+                                document.getElementById('myModal').style.display = 'none';
+                            }
+                        </script>
+                    <style>
+                            /* Modal container */
+                            .modal-container {
+                                display: none;
+                                position: fixed;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: rgba(0, 0, 0, 0.5);
+                                align-items: center;
+                                justify-content: center;
+                                z-index: 1;
+                            }
+
+                            /* Modal content */
+                            .modal-content {
+                                background: #fff;
+                                padding: 20px;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                                text-align: center;
+                                animation: fadeInScale 0.3s ease-in-out forwards;
+                                width: 20pc;
+                            }
+
+                            /* Close button */
+                            .close-button {
+                                background: #3498db;
+                                color: #fff;
+                                border: none;
+                                padding: 10px 20px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin-top: 10px;
+                                cursor: pointer;
+                                border-radius: 3px;
+                            }
+
+                            /* Image style */
+                            img {
+                                margin-left: 15px;
+                                cursor: pointer;
+                                transition: transform 0.3s ease-in-out;
+                            }
+
+                            /* Hover effect for the image */
+                            img:hover {
+                                transform: scale(1.1);
+                            }
+
+                            @keyframes fadeInScale {
+                                from {
+                                    transform: scale(0.8);
+                                    opacity: 0;
+                                }
+                                to {
+                                    transform: scale(1);
+                                    opacity: 1;
+                                }
+                            }
+                        </style>
+                                              </div>
                         </div>
                       </div>
                     </div>

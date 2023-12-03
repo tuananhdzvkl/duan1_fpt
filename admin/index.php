@@ -143,7 +143,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
               }
             }
             up_sanpham($name, $id, $img, $gioitinh,  $mo_ta, $giam_gia, $gia, $date, $dm, $mota_ct);
-            echo "  <script>alert('Thành Công') </script> ";
+            echo "  <script>alert('Cập Nhật Thành Công') </script> ";
             echo "  <script>window.location.href ='index.php?act=listsp'</script> ";
           }
           if (isset($_POST['bienthe']) && $_POST['bienthe'] != "") {
