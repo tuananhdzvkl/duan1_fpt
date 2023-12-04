@@ -29,7 +29,7 @@
                                 <tr>
                                     <td><input type="checkbox"></td>
                                     <td><?= $value['name_tk'] ?></td>
-                                    <td><img src="../public/uploads/<?= $value['image_tk'] ?>" alt="" width="100"></td>
+                                    <td><img src="../assets/uploads/<?= $value['image_tk'] ?>" alt="" width="100"></td>
                                     <td><?= $value['full_name'] ?></td>
                                     <td><?= $value['dia_chi'] ?></td>
                                     <td><?php if ($value['chucvu'] == '1') {

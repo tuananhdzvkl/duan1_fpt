@@ -15,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Xóa sản phẩm khỏi giỏ hàng
             unset($_SESSION['cart'][$index]);
             $_SESSION['cart'] = array_values($_SESSION['cart']);
-            
+
             // Tính toán tổng số lượng và tổng giá tiền sau khi xóa sản phẩm
             $totalQuantity = array_sum(array_column($_SESSION['cart'], 'quantity'));
             $totalPrice = array_sum(array_map(function ($item) {
                 return $item['price'] * $item['quantity'];
             }, $_SESSION['cart']));
-            
+
             // Trả về thông tin cập nhật cho client
             $response = [
                 'status' => 'success',
@@ -46,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
         echo json_encode($response);
     }
-
 } else {
     // Trả về thông báo nếu yêu cầu không hợp lệ
     $response = [
@@ -55,4 +54,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
     echo json_encode($response);
 }
-?>

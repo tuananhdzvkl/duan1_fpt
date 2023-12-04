@@ -31,8 +31,8 @@
                 <?php $trang_thai = $_GET['trang'] ?>
                 <td><?= $key + 1 ?></td>
                 <td><?= $value['name_sp'] ?></td>
-                <td><img src="../public/uploads/<?= $value['image_sp'] ?>" alt="" width="100"></td>
-                <td><?= number_format($value['gia'], 0, '.', ',') ?> vnđ</td>
+                <td><img src="../assets/uploads/<?= $value['image_sp'] ?>" alt="" width="100"></td>
+                <td><?= $value['gia'] ?></td>
                 <td><?= $value['so_luong'] ?></td>
                 <td><?= $value['mau_sac'] ?></td>
                 <td><?= $value['kich_co'] ?></td>
@@ -59,7 +59,7 @@
           <input type="submit" class="btn btn-success" value=" Xác Nhận Đơn" name="xac" <?= ($trang_thai == '1' || $trang_thai == '2' || $trang_thai == '3' || $trang_thai == '4') ? 'hidden' : '' ?>>
           <input type="submit" class="btn btn-success" value=" Đang Giao Hàng" name="giao" <?= ($trang_thai == '0'  || $trang_thai == '2' || $trang_thai == '3' || $trang_thai == '4') ? 'hidden' : '' ?>>
           <input type="submit" class="btn btn-danger" value="Hủy Đơn" name="huy" <?= ($trang_thai == '2' || $trang_thai == '3' || $trang_thai == '4') ? 'hidden' : '' ?>>
-
+          <input type="submit" class="btn btn-danger" value="Đã Nhận Hàng" name="thanhcong" <?= ($trang_thai == '2' || $trang_thai == '1' || $trang_thai == '4' || $trang_thai == '0') ? 'hidden' : '' ?>>
           <input type="submit" class="btn btn-danger" value="Quay Lại" name="quay">
         </form>
         </tbody>

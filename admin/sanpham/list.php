@@ -6,7 +6,7 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <a class="btn btn-primary" href="?act=addsp">Thêm Sản Phẩm <i class="bi bi-plus-circle"></i></a>
+      <a class="btn btn-primary" href="?act=addsp">Thêm Thêm Sản Phẩm <i class="bi bi-plus-circle"></i></a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -36,16 +36,16 @@
                   <td><input type="checkbox"></td>
                   <td><?= $key + 1 ?></td>
                   <td><?= $value['name_sp'] ?></td>
-                  <td><img src="../public/uploads/<?= $value['image_sp'] ?>" alt="" width="100"></td>
+                  <td><img src="../assets/uploads/<?= $value['image_sp'] ?>" alt="" width="100"></td>
                   <td><?= $value['giam_gia'] ?>%</td>
                   <td><?= $value['gia'] ?></td>
-                  <td><?= $value['mo_ta'] ?></td>
+                  <td><?= $value['mo_ngan'] ?></td>
                   <td><?= $value['ngay_nhap'] ?></td>
                   <td><?= $value['name_dm'] ?></td>
                   <td><?= $value['view'] ?></td>
                   <td><?php
                       if ($value['gioi_tinh'] == '0') {
-                        echo "Unisex";
+                        echo "Nam/Nữ";
                       } else if ($value["gioi_tinh"] == "1") {
                         echo "Nam";
                       } else {

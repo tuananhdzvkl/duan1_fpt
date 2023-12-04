@@ -5,7 +5,7 @@
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 function pdo_get_connection(){
-    $dburl = "mysql:host=127.0.0.1;dbname=duan1;charset=utf8";
+    $dburl = "mysql:host=127.0.0.1;dbname=demo_duan1;charset=utf8";
     $username = 'root';
     $password = '';
 

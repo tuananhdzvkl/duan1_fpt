@@ -3,9 +3,9 @@
 include_once "model/pdo.php";
 
 // Include PHPMailer dependencies
-require "./src/PHPMailer.php";
-require "./src/SMTP.php";
-require './src/Exception.php';
+require "assets/src/PHPMailer.php";
+require "assets/src/SMTP.php";
+require 'assets/src/Exception.php';
 
 // Start the session if not already started
 if (session_status() == PHP_SESSION_NONE) {
@@ -23,11 +23,11 @@ function sendEmail($to, $subject, $message) {
         $mail->Port = 587;
         $mail->SMTPSecure = 'tls';
         $mail->SMTPAuth = true;
-        $mail->Username = 'anhthu09112k5@gmail.com';
-        $mail->Password = 'fkfq rpno incy hekz'; // Replace with your SMTP password
+        $mail->Username = 'phuonglun66666@gmail.com';
+        $mail->Password = 'fawv uptv lsqf qxou'; // Replace with your SMTP password
 
         // Set email details
-        $mail->setFrom('anhthu09112k5@gmail.com', 'Nguyễn Hữu Tuấn Anh');
+        $mail->setFrom('phuonglun66666@gmail.com', 'TPT SHORE');
         $mail->addAddress($to);
         $mail->Subject = $subject;
         $mail->Body = $message;

@@ -34,7 +34,7 @@
                                     <td><input type="checkbox"></td>
                                     <td><?= $key + 1 ?></td>
                                     <td><?= $value['name_sp'] ?></td>
-                                    <td><img src="../public/uploads/<?= $value['image_sp'] ?>" alt="" width="100"></td>
+                                    <td><img src="../assets/uploads/<?= $value['image_sp'] ?>" alt="" width="100"></td>
                                     <td><?= $value['giam_gia'] ?>%</td>
                                     <td><?= $value['gia'] ?></td>
                                     <td><?= $value['mo_ngan'] ?></td>

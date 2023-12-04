@@ -25,7 +25,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-               
+
                 <h5 class="modal-title" id="exampleModalLabel">Sẵn sàng rời đi?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -41,21 +41,21 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="../public/admin/vendor/jquery/jquery.min.js"></script>
-<script src="../public/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/admin/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="../public/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="../public/admin/js/sb-admin-2.min.js"></script>
+<script src="../assets/admin/js/sb-admin-2.min.js"></script>
 
 <!-- Page level plugins -->
-<script src="../public/admin/vendor/chart.js/Chart.min.js"></script>
+<script src="../assets/admin/vendor/chart.js/Chart.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="../public/admin/js/demo/2123.js"></script>
-<script src="../public/admin/js/demo/chart-pie-demo.js"></script>
+<script src="../assets/admin/js/demo/2123.js"></script>
+<script src="../assets/admin/js/demo/chart-pie-demo.js"></script>
 
 
 </body>

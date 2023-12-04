@@ -13,10 +13,10 @@ function delete_color($id)
   $sql = " DELETE FROM color  WHERE id_color = $id";
   pdo_query($sql);
 }
-function add_color($name)
+function add_color($name, $mau)
 {
 
-  $sql = "INSERT INTO `color`(`name_color`) VALUES ('$name')";
+  $sql = "INSERT INTO `color`(`name_color`, `mau`) VALUES ('$name', '$mau')";
   pdo_query($sql);
 }
 function Loadone_color($id)
@@ -25,8 +25,8 @@ function Loadone_color($id)
   $dm = pdo_query_one($sql);
   return $dm;
 }
-function edit_color($idcolor,$name)
+function edit_color($idcolor, $name, $mau)
 {
-  $sql = "UPDATE color SET name_color='$name' WHERE id_color='$idcolor' ";
+  $sql = "UPDATE color SET name_color='$name' , mau='$mau' WHERE id_color='$idcolor' ";
   pdo_execute($sql);
 }

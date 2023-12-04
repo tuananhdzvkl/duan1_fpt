@@ -67,7 +67,7 @@
                               echo "<a href='?act=login'>Tài khoản</a>";
                           } else {
                               echo "<a type='button'  data-bs-toggle='dropdown'>
-                                      Xin Chào : <img src='public/uploads/" . $_SESSION['username']['image_tk']. "' class='img-thumbnail' style='border-radius: 50%; width: 30px; height: 30px; object-fit: cover;'> <spam class='text-body'>" . $_SESSION['username']['name_tk'] . " </spam>
+                                      Xin Chào : <img src='assets/uploads/" . $_SESSION['username']['image_tk']. "' class='img-thumbnail' style='border-radius: 50%; width: 30px; height: 30px; object-fit: cover;'> <spam class='text-body'>" . $_SESSION['username']['name_tk'] . " </spam>
                                     </a>
                                   <div class='dropdown-menu dropdown-menu-right shadow animated--grow-in' aria-labelledby='userDropdown'>
                                       <a class='dropdown-item' href='?act=thongtin'>
@@ -117,7 +117,7 @@
               </div>  
               <div class="header-middle-align-center">
                   <div class="header-search-area">
-                      <form class="header-searchbox" method="post" action="?act=sanpham">
+                      <form class="header-searchbox" method="post" action="?act=shop">
                           <input type="search" class="form-control" name="key" placeholder="Search">
                           <button class="btn-submit" name="keyword" type="submit"><i class="pe-7s-search"></i></button>
                       </form>  
@@ -176,14 +176,14 @@
                                       // Assuming LoadAll_DM() returns an array of categories
                                       $danhmuc = LoadAll_DM();
                                       foreach ($danhmuc as $category) {
-                                          echo "<li><a href='index.php?act=danhmuc&id_dm={$category['id_dm']}'>{$category['name_dm']}</a></li>";
+                                          echo "<li><a href='index.php?act=shop&id_dm={$category['id_dm']}'>{$category['name_dm']}</a></li>";
                                       }
                                       ?>
                                   </ul>
                               </li>
 
                               <li>
-                                  <a href="index.php?act=sanpham"><span>Sản Phẩm</span></a>
+                                  <a href="index.php?act=shop"><span>Sản Phẩm</span></a>
                                   <!-- You may populate this submenu with dynamic data if needed -->
                                   <!-- <ul class="submenu-nav submenu-nav-mega1">
                                       <?php

@@ -1,6 +1,6 @@
 <main class="main-content">
     <!--== Start Page Header Area Wrapper ==-->
-    <div class="page-header-area" data-bg-img="assets/img/shop/boss.jpg">
+    <div class="page-header-area" data-bg-img="assets/img/photos/bg3.webp">
       <div class="container pt--0 pb--0">
         <div class="row">
           <div class="col-12">
@@ -8,7 +8,7 @@
               <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Danh sách yêu thích</h2>
               <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
                 <ul class="breadcrumb">
-                  <li><a href="?act=home">Trang chủ</a></li>
+                  <li><a href="index.html">Trang chủ</a></li>
                   <li class="breadcrumb-sep">//</li>
                   <li>Danh sách yêu thích</li>
                 </ul>

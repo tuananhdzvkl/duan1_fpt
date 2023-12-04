@@ -33,7 +33,7 @@ function xoa_bl($id)
 }
 function LoadAll_BL_user($id)
 {
-  $sql = "SELECT taikhoan.full_name , binh_luan.ngaybinhluan , comment , id_bl  FROM binh_luan JOIN taikhoan 
+  $sql = "SELECT taikhoan.full_name , binh_luan.ngaybinhluan , comment , id_bl , image_tk FROM binh_luan JOIN taikhoan 
   ON binh_luan.id_tk = taikhoan.id_tk where id_sp = $id  GROUP BY id_bl DESC";
   $bl = pdo_query($sql);
   return $bl;

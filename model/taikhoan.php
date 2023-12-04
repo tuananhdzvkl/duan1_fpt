@@ -49,7 +49,6 @@ function upload_tk_user($id, $sdt, $full_name, $diachi, $email, $img)
   $sql = "UPDATE `taikhoan` SET `image_tk`='$img',`full_name`='$full_name',`email`='$email',`phone`='$sdt',`dia_chi`='$diachi' WHERE id_tk = $id";
   pdo_execute($sql);
 }
-
 function changepassword($id, $newpasss1)
 {
   $sql = "UPDATE taikhoan SET pass = $newpasss1  where id_tk =  $id ";

@@ -31,7 +31,7 @@
             </div>
             <div class="col">
                 <label name="mau_sac" class="form-label">Ảnh đại diện</label>
-                <img src="../public/uploads/<?= $tk['image_tk'] ?>" class="img-thumbnail">
+                <img src="../assets/uploads/<?= $tk['image_tk'] ?>" class="img-thumbnail">
             </div>
 
         </div>

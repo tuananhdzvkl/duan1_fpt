@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col">
                 <label name="mau_sac" class="form-label">Tài Khoản Đăng Nhập:</label>
-                <input type="text" value="<?= $tk['name_tk'] ?>" name="name" class="form-control" readonly>
+                <input type="text" value="<?= $tk['name_tk'] ?>" name="tk" class="form-control" readonly>
             </div>
             <div class="col">
                 <label name="mau_sac" class="form-label">Mật Khẩu</label>
-                <input type="text" value="<?= $tk['pass'] ?>" class="form-control" readonly>
+                <input type="text" name="mk" value="<?= $tk['pass'] ?>" class="form-control" readonly>
             </div>
 
         </div>
@@ -33,7 +33,7 @@
                 <label name="mau_sac" class="form-label">Ảnh đại diện</label>
                 <input class="form-control" type="file" name="img_tk">
                 <input class="form-control" type="hidden" name="img_tk" value="<?= $tk['image_tk'] ?>">
-                <img src="public/uploads/<?= $tk['image_tk'] ?>" class="img-thumbnail" style="border-radius: 50%;" max-width="400px">
+                <img src="assets/uploads/<?= $tk['image_tk'] ?>" class="img-thumbnail" style="margin-top: 10px; border-radius: 50%; width:180px; height: 190px;" >
             </div>
 
         </div>

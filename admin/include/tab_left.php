@@ -1,4 +1,4 @@
-<body id="page-top">
+<body id="page-top"></body>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -10,7 +10,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon ">
 
-                    <img src="../public/admin/img/logo.png" alt="logo" class="img-profile rounded-circle" width="65">
+                    <img src="../assets/img/logo.png" alt="logo" class="img-profile rounded-circle" width="65">
                 </div>
                 <div class="sidebar-brand-text mx-3">ASCENSION</div>
             </a>
@@ -349,7 +349,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Xin Chào: <?=$_SESSION['username']['name_tk']?></span>
-                                <img class="img-profile rounded-circle" src="../public/uploads/<?=$_SESSION['username']['image_tk']?>" alt="image">
+                                <img class="img-profile rounded-circle" src="../assets/uploads/<?=$_SESSION['username']['image_tk']?>" alt="image">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
