@@ -374,6 +374,11 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
         $thongke =  thongke_ngay();
         include "thongke/list.php";
         break;
+        case 'bieudo2':
+          $listthongke = loadall_thongke();
+          $thongke =  thongke_ngay();
+          include "thongke/list2.php";
+          break;
       default:
         echo "  <script>window.location.href ='index.php'</script> ";
         break;
