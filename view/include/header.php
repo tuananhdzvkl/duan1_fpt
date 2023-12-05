@@ -73,6 +73,10 @@
                                       <a class='dropdown-item' href='?act=thongtin'>
                                           <i class='fas fa-user fa-sm fa-fw mr-2 text-gray-400'></i>
                                           Profile
+                                      </a>
+                                      <a class='dropdown-item' href='?act=chitietmua'>
+                                          <i class='fa-solid fa-truck-fast'></i>
+                                          Order Details
                                       </a>";
                                       if ($_SESSION['username']['chucvu'] == 1) {
                                           echo "<a class='dropdown-item' href='admin/index.php'>
