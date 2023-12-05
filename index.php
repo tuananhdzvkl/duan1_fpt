@@ -59,53 +59,53 @@
             case 'thanhtoan':
                 if (isset($_POST['dathang']) && ($_POST['dathang'] != "")) {
                     function generateRandomString($length = 3)
-                    {
-                        $characters = '0123456789';
-                        $randomString = '';
-
-                        for ($i = 0; $i < $length; $i++) {
-                            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+                        {
+                            $characters = '0123456789';
+                            $randomString = '';
+    
+                            for ($i = 0; $i < $length; $i++) {
+                                $randomString .= $characters[rand(0, strlen($characters) - 1)];
+                            }
+    
+                            return $randomString;
                         }
-
-                        return $randomString;
+                        if (isset($_SESSION['username'])) {
+                            $id_tk = $_SESSION['username']['id_tk'];
+                        } else {
+                            $id_tk = 0;
+                        }
+                        $diachi = $_POST['customInput'];
+                        $name = $_POST['name'];
+                        $phone = $_POST['sdt'];
+                        $thanhtoan = $_POST['payment_method'];
+    
+                        $tong_tien = $_POST['tong'];
+                        $ma_don = generateRandomString(3);
+                        $don_ma = "#Don" . $ma_don;
+                        date_default_timezone_set('Asia/Ho_Chi_Minh');
+    
+                        $thoigian = date('Y-m-d H:i:s');
+                        $id_don =  add_bill($id_tk, $diachi, $name, $phone, $thanhtoan,  $don_ma, $thoigian, $tong_tien);
+                        // echo $diachi, $name, $phone, $thanhtoan,  $don_ma ,$thoigian ,$tong_tien;
+                        foreach ($_SESSION['cart'] as $item) {
+                            $id_sp =    $item['id'];
+                            $so_luong =    $item['quantity'];
+                            $id_mau =    $item['mau'];
+                            $id_size =    $item['size'];
+                            add_bill_ct($id_sp,  $so_luong, $id_mau, $id_size,  $id_don);
+                        }
+                        unset($_SESSION["cart"]);
+    
+    
+                        if ($thanhtoan == 0) {
+                            include "view/xulymomo.php";
+                        } else {
+    
+                            include "view/thanhtoan/thanhtoan_khinhan.php";
+                        }
                     }
-                    if (isset($_SESSION['username'])) {
-                        $id_tk = $_SESSION['username']['id_tk'];
-                    } else {
-                        $id_tk = 0;
-                    }
-                    $diachi = $_POST['customInput'];
-                    $name = $_POST['name'];
-                    $phone = $_POST['sdt'];
-                    $thanhtoan = $_POST['payment_method'];
-
-                    $tong_tien = $_POST['tong'];
-                    $ma_don = generateRandomString(3);
-                    $don_ma = "#Don" . $ma_don;
-                    date_default_timezone_set('Asia/Ho_Chi_Minh');
-
-                    $thoigian = date('Y-m-d H:i:s');
-                    $id_don = add_bill($id_tk, $diachi, $name, $phone, $thanhtoan,  $don_ma, $thoigian, $tong_tien);
-                    // echo $diachi, $name, $phone, $thanhtoan,  $don_ma ,$thoigian ,$tong_tien;
-                    foreach ($_SESSION['cart'] as $item) {
-                        $id_sp =    $item['id'];
-                        $so_luong =    $item['quantity'];
-                        $id_mau =    $item['mau'];
-                        $id_size =    $item['size'];
-                        add_bill_ct($id_sp,  $so_luong, $id_mau, $id_size,  $id_don);
-                    }
-                    unset($_SESSION["cart"]);
-
-
-                    if ($thanhtoan == 0) {
-                        include "view/xulymomo.php";
-                    } else {
-                        echo '<script>alert("Đặt  Hàng Thành Công  ")</script>';
-                        echo "  <script>window.location.href ='?act'</script> ";
-                    }
-                }
-
-                break;
+    
+                    break;
             case 'CTthanhtoan':
                 if (!empty($_SESSION['cart'])) {
                     $cart = $_SESSION['cart'];
@@ -124,7 +124,7 @@
                     // Lấy sản phẩm trong bảng sản phẩm theo id
                     $dataDb = loadone_sanphamCart($idList, $mauList, $sizeList);
                 }
-                include "view/chitietThanhtoan.php";
+                include "view/thanhtoan/chitietThanhtoan.php";
                 break;
             case 'blog':
                 include "view/blog.php";
@@ -314,29 +314,4 @@
     ?>
 
 
-                            <!-- ︵
-                        /'_/) 
-                      /¯ ../ 
-                    /'..../ 
-                  /¯ ../ 
-                /... ./
-   ¸•´¯/´¯ /' ...'/´¯`•¸  
- /'.../... /.... /.... /¯\
-('  (...´.(,.. ..(...../',    \
- \'.............. .......\'.    )      
-   \'....................._.•´/
-     \ ....................  /
-       \ .................. |
-         \  ............... |
-           \............... |
-             \ .............|
-               \............|
-                 \ .........|
-                   \ .......|
-                     \ .....|
-                       \ ...|
-                         \ .|
-                           \\
-                              \('-') 
-                                 |_|\
-                                |  | -->
+  
