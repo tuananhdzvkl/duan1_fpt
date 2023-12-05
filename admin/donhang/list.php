@@ -29,10 +29,10 @@
               <tr>
 
                 <td><?= $value['ma_don'] ?></td>
-                <td><?= $value['full_name'] ?></td>
+                <td><strong><?= $value['full_name'] ?></strong></td>
                 <td>0<?= $value['phone'] ?></td>
                 <td><?= $value['dia_chi'] ?></td>
-                <td><?= $value['thanh_tien'] ?> Đ</td>
+                <td style="color:red; font-weight:500"><?= number_format($value['thanh_tien'], 0, '.', ',') ?> vnđ</td>
                 <td><?php
                     $dateTime = new DateTime($value['thoi_gian']);
                     // Chuyển đổi sang định dạng khác (ví dụ: dd/mm/yyyy)

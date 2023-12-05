@@ -147,7 +147,9 @@
                 }
                 include "view/giohang/cart.php";
                 break;
-
+            case 'chitietmua':
+                include "view/chi_tiet_mua/test.php";
+                break;
             case 'xoaallgio':
 
                 if (isset($_SESSION["cart"])) {
@@ -303,7 +305,7 @@
     ?>
 
 
-                            ︵
+                            <!-- ︵
                         /'_/) 
                       /¯ ../ 
                     /'..../ 
@@ -328,4 +330,4 @@
                            \\
                               \('-') 
                                  |_|\
-                                |  |
+                                |  | -->

@@ -10,7 +10,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon ">
 
-                    <img src="../assets/img/logo.png" alt="logo" class="img-profile rounded-circle" width="65">
+                    <img src="../assets/img/photos/logo.jpg" alt="logo" class="img-profile rounded-circle" width="65">
                 </div>
                 <div class="sidebar-brand-text mx-3">ASCENSION</div>
             </a>

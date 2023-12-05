@@ -202,7 +202,7 @@
 
                         </tr>
                         <tr class="cart-item">
-                          <td class="product-name">Màu Sắc : <b style="color: red;"><?php foreach ($mau1 as $key => $value) {
+                          <td class="product-name">Màu Sắc : <b style="color:crimson;"><?php foreach ($mau1 as $key => $value) {
                                                                                       if ($value['id_color'] == $sanpham['id_color']) {
                                                                                         echo $value['name_color'];
                                                                                       }
@@ -232,7 +232,7 @@
 
                     <tr class="cart-subtotal">
                       <th>Giảm Giá</th>
-                      <td><?= isset($discountAmount) ? $discountAmount . ' %' : 'chưa áp dụng' ?></td>
+                      <td><?= isset($discountAmount) ? $discountAmount . ' %' : 'Chưa áp dụng' ?></td>
                     </tr>
 
                     <tr class="order-total">
@@ -251,14 +251,7 @@
                   <div id="PaymentMethodAccordion">
                     <div class="card">
                       <h2 class="title mb-25">Phương thức thanh toán</h2>
-                      <!-- <div class="card-header" id="check_payments">
-                          <h5 class="title" data-bs-toggle="collapse" data-bs-target="#itemOne" aria-controls="itemOne" aria-expanded="true">Chuyển khoản ngân hàng</h5>
-                        </div>
-                        <div id="itemOne" class="collapse show" aria-labelledby="check_payments" data-bs-parent="#PaymentMethodAccordion">
-                          <div class="card-body">
-                            <p>Thực hiện thanh toán trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn hàng của bạn làm tài liệu tham khảo thanh toán. Đơn đặt hàng của bạn sẽ không được vận chuyển cho đến khi tiền đã được xóa trong tài khoản của chúng tôi.</p>
-                          </div>
-                        </div> -->
+                      
                     </div>
                     <div class="card">
                       <div class="card-header" id="check_payments3">

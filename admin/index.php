@@ -148,7 +148,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
             }
           }
           up_sanpham($name, $id, $img, $gioitinh,  $mota, $giam_gia, $gia, $date, $dm, $mota_n);
-          echo "  <script>alert('Thành Công') </script> ";
+          echo "  <script>alert('Cập Nhật Thành Công') </script> ";
           echo "  <script>window.location.href ='index.php?act=listsp'</script> ";
         }
         if (isset($_POST['bienthe']) && $_POST['bienthe'] != "") {
@@ -158,7 +158,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
           $soluong = $_POST["soluong"];
           add_spbienthe($id, $size, $color, $soluong);
           //echo $id , $size ; 
-          echo "  <script>alert('Thêm Thành Công') </script> ";
+          echo "  <script>alert('Thêm Biến Thể Thành Công') </script> ";
           echo "  <script>window.location.href ='index.php?act=editsp&idsp=$id'</script> ";
         }
 
@@ -179,7 +179,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
           // add_spbienthe($id, $size, $color, $soluong);
           //echo $id , $size ; 
           sua_spbienthe($id_bt, $size, $color, $soluong);
-          echo "  <script>alert('Thành Công') </script> ";
+          echo "  <script>alert('Cập Nhật Biến Thể Thành Công') </script> ";
           echo "  <script>window.location.href ='index.php?act=editsp&idsp=$id'</script> ";
         }
         include("sanpham/suabt.php");
@@ -374,6 +374,11 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
         $thongke =  thongke_ngay();
         include "thongke/list.php";
         break;
+        case 'bieudo2':
+          $listthongke = loadall_thongke();
+          $thongke =  thongke_ngay();
+          include "thongke/list2.php";
+          break;
       default:
         echo "  <script>window.location.href ='index.php'</script> ";
         break;
