@@ -2,7 +2,7 @@
 function add_sanpham($name, $giam_gia, $mota, $date, $gioitinh, $dm, $gia, $img, $mota_n)
 {
   $sql = " INSERT INTO sanpham (id_sp, name_sp,mo_ngan, image_sp, giam_gia, gia, mo_ta, ngay_nhap, view, gioi_tinh, id_dm) 
-  VALUES (NULL, '$name',$mota_n, '$img', '$giam_gia', '$gia', '$mota', '$date', '0', '$gioitinh', '$dm') ";
+  VALUES (NULL, '$name','$mota_n', '$img', '$giam_gia', '$gia', '$mota', '$date', '0', '$gioitinh', '$dm') ";
   $lastInsertedId = pdo_execute_return_lastInsertId($sql);
   return $lastInsertedId;
 }
@@ -113,7 +113,8 @@ function loadone_sanphamCart($idList,$mauList,$sizeList) {
   return $sanpham;
 }
 
-function loadall_sanpham_tk($keyw="",$id_dm=0){
+// Tất cả, nam, nữ 
+function loadall_sanpham_tk($keyw="",$id_dm=0,$gioi_tinh=0){
   $sql = "select * from sanpham JOIN danhmuc ON sanpham.id_dm = danhmuc.id_dm where 1";
   if($keyw != ""){
     $sql .= " and name_sp like '%".$keyw."%'";
@@ -121,10 +122,37 @@ function loadall_sanpham_tk($keyw="",$id_dm=0){
   if($id_dm > 0){
     $sql .= " and sanpham.id_dm ='".$id_dm."'";
   }
+  if($gioi_tinh > 0){
+    $sql .= " and gioi_tinh ='".$gioi_tinh."'";
+  }
   $sql .= " order by id_sp";
   $listsanpham = pdo_query($sql);
   return  $listsanpham;
 }
+function tongsp_gioitinh($gioi_tinh = null)
+{
+    $sql = "SELECT gioi_tinh, COUNT(*) AS total FROM sanpham GROUP BY gioi_tinh";
+    $result = pdo_query($sql);
+
+    $gioitinhCounts = [];
+    foreach ($result as $row) {
+        $gioitinhCounts[$row['gioi_tinh']] = [
+            'total' => $row['total'],
+        ];
+    }
+
+    // If gioi_tinh is null or 3, calculate the total for all genders
+    if ($gioi_tinh === null || $gioi_tinh == 0) {
+        $totalAllGenders = array_sum(array_column($gioitinhCounts, 'total'));
+        $gioitinhCounts[0] = [
+            'total' => $totalAllGenders,
+        ];
+    }
+
+    return $gioitinhCounts;
+}
+
+
 
 function load_sanpham_top8()
 {
@@ -143,21 +171,6 @@ function load_gioitinh_all()
   END AS name_gt FROM sanpham; ";
   $load_gioitinh = pdo_query($sql);
   return $load_gioitinh;
-}
-
-function tongsp_gioitinh()
-{
-    $sql = "SELECT gioi_tinh, COUNT(*) AS total FROM sanpham GROUP BY gioi_tinh";
-    $result = pdo_query($sql);
-
-    $gioitinhCounts = [];
-    foreach ($result as $row) {
-        $gioitinhCounts[$row['gioi_tinh']] = [
-            'total' => $row['total'],
-        ];
-    }
-
-    return $gioitinhCounts;
 }
 
 function load_color_all()
@@ -185,3 +198,4 @@ function load_sanpham_all_size($id_size)
     $sp = pdo_query($sql);
     return $sp;
 }
+

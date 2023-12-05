@@ -119,7 +119,7 @@
                                       $genderName = '';
                                       switch ($gioi_tinh) {
                                         case 0:
-                                          $genderName = 'Unisex';
+                                          $genderName = 'Nam/Nữ';
                                           break;
                                         case 1:
                                           $genderName = 'Nam';
@@ -264,48 +264,42 @@
             <div class="shop-sidebar-category">
               <h4 class="sidebar-title">Gender</h4>
                 <div class="sidebar-category">
-                  <ul class="category-list mb--0">
-                      <?php
-                      $genderCounts = load_gioitinh_all();
-                      $genderMapping = [
-                          0 => 'Unisex',
-                          1 => 'Nam',
-                          2 => 'Nữ',
-                      ];
+                <ul class="category-list mb--0">
+                  <?php
+                  $genderMapping = [                   
+                      1 => 'Nam',
+                      2 => 'Nữ',
+                      0 => 'Tất Cả'
+                  ];
 
-                      foreach ($genderCounts as $gioitinh) {
-                          $currentGenderId = $gioitinh['gioi_tinh'];
-                          $currentGenderName = isset($genderMapping[$currentGenderId]) ? $genderMapping[$currentGenderId] : 'Unknown';
+                  foreach ($genderMapping as $genderId => $genderName) {
+                      // Lấy tổng số sản phẩm theo giới tính
+                      $gioitinhCounts = tongsp_gioitinh($genderId);
 
-                          // Lấy tổng số sản phẩm theo giới tính
-                          $gioitinhCounts = tongsp_gioitinh();
-                          
+                      // Kiểm tra xem $currentGenderId có tồn tại trong $gioitinhCounts không
+                      if (isset($gioitinhCounts[$genderId])) {
+                          $totalProductsForGender = $gioitinhCounts[$genderId]['total'];
+                      } else {
+                          $totalProductsForGender = 0;
+                      }
 
-                          // Kiểm tra xem $currentGenderId có tồn tại trong $gioitinhCounts không
-                          if (isset($gioitinhCounts[$currentGenderId])) {
-                              $totalProductsForGender = $gioitinhCounts[$currentGenderId]['total'];
-                          } else {
-                              $totalProductsForGender = 0;
-                          }
+                      // Tính toán URL dựa trên giới tính
+                      $shopURL = $genderId !== null ? "?act=shop&gioi_tinh={$genderId}" : "index.php";
+                  ?>
+                      <li class="<?= $genderId == $gioi_tinh ? 'active' : ''; ?>">
+                          <a href="<?= $shopURL ?>">
+                              <?= $genderName ?>
+                              <!-- Hiển thị số lượng sản phẩm theo giới tính -->
+                              <?php if ($totalProductsForGender > 0) : ?>
+                                  <span class="product-count">(<?= $totalProductsForGender ?>)</span>
+                              <?php endif; ?>
+                          </a>
+                      </li>
+                  <?php } ?>
+              </ul>
 
-                          // Tính toán URL dựa trên giới tính
-                          
-                          $shopURL = $currentGenderId !== null ? "?act=shop&gioi_tinh={$currentGenderId}" : "index.php";
 
-                      ?>
-                      
-                          <li class="<?= $currentGenderId == $gioi_tinh ? 'active' : ''; ?>">
-                              <a href="<?= $shopURL ?>">
-                                  <?= $currentGenderName ?>
-                                  <!-- Hiển thị số lượng sản phẩm theo giới tính -->
-                                  
-                                  <?php if ($totalProductsForGender > 0) : ?>
-                                      <span class="product-count">(<?= $totalProductsForGender ?>)</span>
-                                  <?php endif; ?>
-                              </a>
-                          </li>
-                      <?php } ?>
-                  </ul>
+
               </div>
             </div>
 

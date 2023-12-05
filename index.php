@@ -25,6 +25,14 @@
     } else {
         $id = 0;
     }
+     // tất cả nam nữ 
+     if(isset($_GET['gioi_tinh']) && ($_GET['gioi_tinh']>0)){
+        $gioi_tinh=$_GET['gioi_tinh'];
+    }
+    else {
+        $gioi_tinh=0;
+    }
+    // hết 
     if (isset($_GET['act']) && ($_GET['act'])) {
         $act = $_GET['act'];
         switch ($act) {
@@ -32,7 +40,7 @@
                 include "view/include/home.php";
                 break;
             case 'shop':
-                $dssp = loadall_sanpham_tk($kyw, $id);
+                $dssp=loadall_sanpham_tk($kyw,$id,$gioi_tinh);
                 $count = COUNT($dssp);
                 include "view/shop.php";
                 break;
@@ -148,6 +156,7 @@
                 include "view/giohang/cart.php";
                 break;
             case 'chitietmua':
+               
                 include "view/chi_tiet_mua/test.php";
                 break;
             case 'xoaallgio':

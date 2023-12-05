@@ -34,50 +34,36 @@
   <section class="product-area product-collection-area">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <!--== Start Product Collection Item ==-->
-          <div class="product-collection">
-            <div class="inner-content">
-              <div class="product-collection-content">
-                <div class="content">
-                  <h1>UNISEX</h1>
-                </div>
-              </div>
-              <a class="banner-link-overlay" href="?act=shop"></a>
-            </div>
-          </div>
-          <!--== End Product Collection Item ==-->
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <!--== Start Product Collection Item ==-->
-          <div class="product-collection">
-            <div class="inner-content">
-              <div class="product-collection-content">
-                <div class="content">
-                  <h1>NAM</h1>
-                </div>
-              </div>
-              <a class="banner-link-overlay" href="?act=shop"></a>
-            </div>
-          </div>
+        <?php
+            // Tất cả, nam, nữ 
+            $genderCounts = load_gioitinh_all();
+            $genderMapping = [
+              0 => 'TẤT CẢ',
+              1 => 'NAM',
+              2 => 'NỮ',
+            ];
 
-          <!--== End Product Collection Item ==-->
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <!--== Start Product Collection Item ==-->
-          <div class="product-collection">
-            <div class="inner-content">
-              <div class="product-collection-content">
-                <div class="content">
-                  <h1>NỮ</h1>
+            foreach ($genderCounts as $gioitinh) {
+                $genderId = $gioitinh['gioi_tinh'];
+                $genderName = isset($genderMapping[$genderId]) ? $genderMapping[$genderId] : 'Unknown';
+            ?>
+            <div class="col-lg-4 col-md-6">
+                <!--== Start Product Collection Item ==-->
+                <div class="product-collection <?= $genderId == $id ? 'active' : ''; ?>">
+                  <div class="inner-content">
+                    <div class="product-collection-content">
+                      <div class="content">
+                        <h1><?= $genderName ?></h1>
+                      </div>
+                    </div>
+                    <a class="banner-link-overlay" href="?act=shop&gioi_tinh=<?= $genderId ?>"></a>
+                  </div>
                 </div>
-              </div>
-              <a class="banner-link-overlay" href="?act=shop"></a>
+                <!--== End Product Collection Item ==-->
             </div>
-          </div>
-
-          <!--== End Product Collection Item ==-->
-        </div>
+            <?php };?>
+            <?php if (isset($_GET['gioi_tinh'])) { $gioi_tinh = $_GET['gioi_tinh']; $sql = "SELECT * FROM sanpham WHERE gioi_tinh = $gioi_tinh"; $sanpham = pdo_query($sql); } ?>
+          <!-- hết  -->
       </div>
     </div>
   </section>
