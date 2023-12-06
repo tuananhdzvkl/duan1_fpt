@@ -83,7 +83,7 @@
         </div>
       </div>
       <div class="row">
-        <?php foreach ($sanpham as $k) : extract($k) ?>
+        <?php foreach ($sp as $k) : extract($k) ?>
 
           <div class="col-sm-6 col-lg-3">
             <!--== Start Product Item ==-->
@@ -316,7 +316,7 @@
             <div class="content">
               <h2 class="title">Sports Shoes</h2>
               <p class="desc">Up To 30% Off All Shoes & Products</p>
-              <a class="btn-theme" href="shop.html">Shop Now</a>
+              <a class="btn-theme" href="?act=shop">Shop Now</a>
             </div>
           </div>
         </div>

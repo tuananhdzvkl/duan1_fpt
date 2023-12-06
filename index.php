@@ -37,6 +37,7 @@
         $act = $_GET['act'];
         switch ($act) {
             case 'home':
+                $sp = load_sanpham_view_top8();
                 include "view/include/home.php";
                 break;
             case 'shop':
@@ -48,7 +49,7 @@
                 $id = $_GET['id_sp'];
                 $id_dm = $_GET['id_dm'];
                 $load_color = load_color_ct($id);
-                $sanpham =  load_sanpham_all_dm($id_dm);
+                $sanpham = load_sanpham_all_dm($id_dm);
                 $binhluan =  LoadAll_BL_user($id);
                 updat_view($id);
                 $sp_img = load_sanpham_one($id);
@@ -156,7 +157,7 @@
                 include "view/giohang/cart.php";
                 break;
             case 'chitietmua':
-               
+                
                 include "view/chi_tiet_mua/test.php";
                 break;
             case 'xoaallgio':
@@ -307,7 +308,7 @@
                 break;
         }
     } else {
-        $sanpham = load_sanpham_top8();
+        $sp = load_sanpham_view_top8();
         include "view/include/home.php";
     }
     include "view/include/footer.php";

@@ -10,7 +10,9 @@
     font-size: 18px;
     font-family: sans-serif;
   }
+  
 </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
 <main class="main-content">
   <!--== Start Page Header Area Wrapper ==-->
   <div class="page-header-area" data-bg-img="assets/img/shop/1.jpg">
@@ -46,26 +48,6 @@
                     <p class="pagination-line" style="margin-left: 10pc;">Cảm ơn bạn đã ghé thăm sản phẩm của chúng tôi. Hiện tại cửa hàng đang có <a href="?act=sanpham"><?= $count ?> </a> sản phẩm</p>
                   </marquee>
                 </div>
-                <!-- <div class="shop-top-center">
-                  <nav class="product-nav">
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <button class="nav-link active" id="nav-grid-tab" data-bs-toggle="tab" data-bs-target="#nav-grid" type="button" role="tab" aria-controls="nav-grid" aria-selected="true"><i class="fa fa-th"></i></button>
-                      <button class="nav-link" id="nav-list-tab" data-bs-toggle="tab" data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list" aria-selected="false"><i class="fa fa-list"></i></button>
-                    </div>
-                  </nav>
-                </div>
-                <div class="shop-top-right">
-                  <div class="shop-sort">
-                    <span>Sort By :</span>
-                    <select class="form-select" aria-label="Sort select example">
-                      <option selected>Default</option>
-                      <option value="1">Popularity</option>
-                      <option value="2">Average Rating</option>
-                      <option value="3">Newsness</option>
-                      <option value="4">Price Low to High</option>
-                    </select>
-                  </div>
-                </div> -->
               </div>
             </div>
             <div class="col-12">
@@ -88,28 +70,7 @@
                                   <?php endif; ?>
                                 </ul>
                               </div>
-                              <!-- <div class="product-action">
-                                <a class="btn-product-wishlist" href="#" onclick="addToWishlist()"><i class="fa fa-heart"></i></a>
-                                <a class="btn-product-cart" href="#" onclick="addToCart()"><i class="fa fa-shopping-cart"></i></a>
-                                <button type="button" class="btn-product-quick-view-open">
-                                  <i class="fa fa-arrows"></i>
-                                </button>
-                                <a class="btn-product-compare" href="#"><i class="fa fa-random"></i></a>
-                              </div>
-                              <script>
-                                function addToWishlist() {
-                                  // Thêm logic xử lý khi sản phẩm được thêm vào yêu thích
-                                  alert('Sản phẩm đã được thêm vào danh sách yêu thích');
-                                  // Có thể thêm các bước khác như gửi yêu cầu đến máy chủ, cập nhật UI, v.v.
-                                }
-
-                                function addToCart() {
-                                  // Thêm logic xử lý khi sản phẩm được thêm vào giỏ hàng
-                                  alert('Sản phẩm đã được thêm vào giỏ hàng');
-                                  // Có thể thêm các bước khác như gửi yêu cầu đến máy chủ, cập nhật UI, v.v.
-                                }
-                              </script>
-                              <a class="banner-link-overlay" href="shop.html"></a> -->
+                        
                             </div>
                             <div class="product-info">
                               <div class="category">
@@ -154,14 +115,66 @@
                     <?php endforeach  ?>
 
                     <div class="col-12">
-                      <div class="pagination-items">
-                        <ul class="pagination justify-content-end mb--0">
-                          <li><a class="active" href="shop.html">1</a></li>
-                          <li><a href="shop-four-columns.html">2</a></li>
-                          <li><a href="shop-three-columns.html">3</a></li>
-                        </ul>
-                      </div>
+                        <div class="pagination-items">
+                            <ul class="pagination justify-content-end mb--0" id="pagination">
+                                <!-- Pagination links will be dynamically added here -->
+                            </ul>
+                        </div>
                     </div>
+                    <script>
+                        $(document).ready(function() {
+                            // Set the number of products per page
+                            var productsPerPage = 9;
+
+                            // Get the total number of products
+                            var totalProducts = <?= count($dssp) ?>;
+
+                            // Calculate the total number of pages
+                            var totalPages = Math.ceil(totalProducts / productsPerPage);
+
+                            // Initial page load
+                            showProducts(1);
+
+                            // Function to show products for a specific page
+                            function showProducts(page) {
+                                var startIndex = (page - 1) * productsPerPage;
+                                var endIndex = startIndex + productsPerPage;
+
+                                // Hide all products
+                                $('.product-item').hide();
+
+                                // Show products for the current page
+                                $('.product-item').slice(startIndex, endIndex).show();
+
+                                // Update pagination links
+                                updatePagination(page);
+                            }
+
+                            // Function to update pagination links
+                            function updatePagination(currentPage) {
+                                var paginationContainer = $('#pagination');
+                                paginationContainer.empty();
+
+                                for (var i = 1; i <= totalPages; i++) {
+                                    var liClass = (i === currentPage) ? 'active' : '';
+                                    var liElement = $('<li><a href="#" class="' + liClass + '">' + i + '</a></li>');
+                                    paginationContainer.append(liElement);
+                                }
+
+                                // Handle pagination click event
+                                paginationContainer.find('a').on('click', function(e) {
+                                    e.preventDefault();
+                                    var page = parseInt($(this).text());
+
+                                    if (!isNaN(page) && page > 0 && page <= totalPages) {
+                                        showProducts(page);
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+
+
                   </div>
                 </div>
                 <?php foreach ($dssp as $k) : extract($k) ?>

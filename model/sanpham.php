@@ -153,13 +153,13 @@ function tongsp_gioitinh($gioi_tinh = null)
 }
 
 
-
-function load_sanpham_top8()
+function load_sanpham_view_top8()
 {
-  $sql = "SELECT * FROM sanpham JOIN danhmuc ON sanpham.id_dm = danhmuc.id_dm ORDER BY sanpham.id_sp DESC LIMIT 8";
+  $sql = "SELECT * FROM sanpham JOIN danhmuc ON sanpham.id_dm = danhmuc.id_dm ORDER BY sanpham.view DESC LIMIT 8;";
   $sp =   pdo_query($sql);
   return $sp;
 }
+
 
 function load_gioitinh_all()
 {
