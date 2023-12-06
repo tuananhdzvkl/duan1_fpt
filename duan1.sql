@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2023 lúc 05:10 AM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.0.28
+-- Thời gian đã tạo: Th12 05, 2023 lúc 02:20 PM
+-- Phiên bản máy phục vụ: 10.4.27-MariaDB
+-- Phiên bản PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `duan1`
+-- Cơ sở dữ liệu: `demo_duan1`
 --
 
 -- --------------------------------------------------------
@@ -43,7 +43,14 @@ INSERT INTO `binh_luan` (`id_bl`, `comment`, `id_sp`, `id_tk`, `ngaybinhluan`) V
 (3, 'drtgefd', 9, 1, '2023-11-25 00:00:00'),
 (4, 'Sản Phẩm Đẹp Quá', 9, 4, '2023-11-25 00:00:00'),
 (5, 'Hulu', 9, 4, '2023-11-25 18:27:48'),
-(6, 'huhu', 9, 4, '2023-11-25 18:30:17');
+(6, 'huhu', 9, 4, '2023-11-25 18:30:17'),
+(9, 'HIHI', 7, 4, '2023-11-27 14:40:16'),
+(10, 'hjhggfđs', 7, 1, '2023-11-27 14:59:31'),
+(11, 'Tuấn Anh Đần Vler', 7, 1, '2023-11-29 09:33:31'),
+(12, ',kgjhfds', 7, 1, '2023-11-29 09:37:44'),
+(13, 'dưeer', 7, 1, '2023-11-29 09:38:08'),
+(14, 'sản phẩm đẹp ', 17, 4, '2023-12-03 17:51:06'),
+(15, 'ghfb', 11, 4, '2023-12-03 13:05:36');
 
 -- --------------------------------------------------------
 
@@ -53,6 +60,8 @@ INSERT INTO `binh_luan` (`id_bl`, `comment`, `id_sp`, `id_tk`, `ngaybinhluan`) V
 
 CREATE TABLE `chitiet_donhang` (
   `id_ctdon` int(11) NOT NULL,
+  `id_tk` int(11) NOT NULL,
+  `ma_don` varchar(25) NOT NULL,
   `full_name` varchar(150) NOT NULL,
   `phone` int(11) NOT NULL,
   `dia_chi` text NOT NULL,
@@ -66,20 +75,15 @@ CREATE TABLE `chitiet_donhang` (
 -- Đang đổ dữ liệu cho bảng `chitiet_donhang`
 --
 
-INSERT INTO `chitiet_donhang` (`id_ctdon`, `full_name`, `phone`, `dia_chi`, `thoi_gian`, `thanh_tien`, `trang_thai`, `thanh_toan`) VALUES
-(2, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1100000, 2, 1),
-(3, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 22:12:02', 1500000, 4, 0),
-(4, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 22:00:02', 1200000, 2, 0),
-(5, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1300000, 0, 0),
-(6, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1400000, 0, 0),
-(7, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1600000, 0, 0),
-(8, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1200000, 0, 0),
-(9, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 2100000, 0, 0),
-(10, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1900000, 0, 0),
-(11, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1210000, 0, 0),
-(12, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1000000, 0, 0),
-(13, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1000000, 0, 0),
-(14, 'Cao Xuân Phương', 985679042, 'Hà Nội', '2023-11-21 21:58:02', 1000000, 0, 0);
+INSERT INTO `chitiet_donhang` (`id_ctdon`, `id_tk`, `ma_don`, `full_name`, `phone`, `dia_chi`, `thoi_gian`, `thanh_tien`, `trang_thai`, `thanh_toan`) VALUES
+(11, 1, '#Don577', 'Cao Xuân Phương', 2147483647, '123 - Phường Hồng Gai - Thành phố Hạ Long -Tỉnh Quảng Ninh  ', '2023-12-04 22:31:41', 810000, 2, 0),
+(14, 1, '#Don803', 'NGUYỄN HỮU TUẤN ANH', 2147483647, 'Thôn 1  - Phường Cổ Nhuế 2 - Quận Bắc Từ Liêm -Thành phố Hà Nội  ', '2023-12-05 01:59:04', 2430000, 1, 1),
+(15, 0, '#Don432', 'Nguyễn Hữu Tuấn Anh', 2147483647, ' - Xã Đông Quan - Huyện Lộc Bình -Tỉnh Lạng Sơn  ', '2023-12-05 02:10:47', 2430000, 0, 1),
+(16, 1, '#Don563', 'NGUYỄN HỮU TUẤN ANHNGUYỄN HỮU TUẤN ANH', 2147483647, 'Thôn 1  - Phường Giảng Võ - Quận Ba Đình -Thành phố Hà Nội  ', '2023-12-05 03:19:04', 5700000, 0, 0),
+(17, 1, '#Don044', 'NGUYỄN HỮU TUẤN ANHNGUYỄN HỮU TUẤN ANH', 2147483647, 'Thôn 1  - Phường Giảng Võ - Quận Ba Đình -Thành phố Hà Nội  ', '2023-12-05 03:19:05', 5700000, 0, 0),
+(18, 1, '#Don761', 'NGUYỄN HỮU TUẤN ANH', 2147483647, 'Thôn 1  - Xã Vĩnh Lại - Huyện Lâm Thao -Tỉnh Phú Thọ  ', '2023-12-05 03:44:28', 324000000, 0, 0),
+(19, 0, '#Don585', 'Nguyễn Hữu Tuấn Anh', 2147483647, ' - Phường Tích Sơn - Thành phố Vĩnh Yên -Tỉnh Vĩnh Phúc  ', '2023-12-05 09:43:31', 16830000, 0, 1),
+(20, 1, '#Don953', 'NGUYỄN HỮU TUẤN ANH', 2147483647, 'Thôn 1  - Phường Chương Dương - Quận Hoàn Kiếm -Thành phố Hà Nội  ', '2023-12-05 09:51:24', 111410000, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -100,8 +104,8 @@ CREATE TABLE `color` (
 INSERT INTO `color` (`id_color`, `name_color`, `mau`) VALUES
 (1, 'Đỏ', '#ff0000'),
 (2, 'Vàng', '#fbff00'),
-(3, 'Tm', '#d400f0'),
-(4, 'Xanh-Tím', '#462e9e');
+(3, 'Trắng', '#ffffff'),
+(4, 'Xanh', '#3700ff');
 
 -- --------------------------------------------------------
 
@@ -120,9 +124,10 @@ CREATE TABLE `danhmuc` (
 --
 
 INSERT INTO `danhmuc` (`id_dm`, `name_dm`, `trang_thai`) VALUES
-(1, 'Giày Thể Thao', 0),
-(2, 'Giày Nike', 0),
-(6, 'phuongggg', 0);
+(1, 'LOUIS VUITTON', 0),
+(2, 'GUCCI', 0),
+(8, 'ADIDAS', 0),
+(9, 'CANIFA', 0);
 
 -- --------------------------------------------------------
 
@@ -135,8 +140,8 @@ CREATE TABLE `don_hang` (
   `id_ctd` int(11) NOT NULL,
   `id_sp` int(11) NOT NULL,
   `so_luong` int(11) NOT NULL,
-  `mau_sac` varchar(255) NOT NULL,
-  `kich_co` varchar(255) NOT NULL
+  `mau_sac` int(11) NOT NULL,
+  `kich_co` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -144,20 +149,22 @@ CREATE TABLE `don_hang` (
 --
 
 INSERT INTO `don_hang` (`id_don`, `id_ctd`, `id_sp`, `so_luong`, `mau_sac`, `kich_co`) VALUES
-(6, 2, 11, 12, 'Vàng', 'Đỏ'),
-(7, 2, 11, 12, 'Vàng', 'Đỏ'),
-(8, 2, 11, 12, 'Vàng', 'Đỏ'),
-(9, 3, 11, 12, 'Vàng', 'Đỏ'),
-(10, 3, 11, 12, 'Vàng', 'Đỏ'),
-(11, 3, 11, 12, 'Vàng', 'Đỏ'),
-(12, 4, 11, 12, 'Vàng', 'Đỏ'),
-(13, 4, 11, 12, 'Vàng', 'Đỏ'),
-(14, 4, 11, 12, 'Vàng', 'Đỏ'),
-(15, 5, 11, 12, 'Vàng', 'Đỏ'),
-(16, 5, 11, 12, 'Vàng', 'Đỏ'),
-(17, 5, 11, 12, 'Vàng', 'Đỏ'),
-(18, 9, 11, 12, 'Vàng', 'Đỏ'),
-(19, 8, 11, 12, 'Vàng', 'Đỏ');
+(1, 2, 18, 1, 2, 4),
+(2, 4, 18, 1, 2, 3),
+(3, 4, 18, 1, 2, 4),
+(4, 6, 16, 2, 1, 4),
+(5, 7, 18, 2, 2, 3),
+(6, 8, 18, 2, 2, 3),
+(7, 9, 7, 1, 1, 2),
+(8, 10, 18, 2, 2, 3),
+(9, 11, 17, 1, 1, 3),
+(10, 14, 17, 3, 3, 3),
+(11, 15, 16, 10, 1, 4),
+(12, 16, 18, 8, 2, 3),
+(13, 18, 10, 4, 1, 2),
+(14, 19, 12, 11, 2, 2),
+(15, 20, 17, 5, 4, 2),
+(16, 20, 7, 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -198,40 +205,57 @@ INSERT INTO `img_sp` (`id_img`, `id_sp`, `img_url`) VALUES
 (12, 1, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép - Sao chép.png'),
 (13, 1, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép.png'),
 (14, 5, 'Ảnh chụp màn hình 2023-10-30 140541.png'),
-(18, 7, 'Ảnh chụp màn hình 2023-11-15 090604.png'),
-(19, 7, 'Ảnh chụp màn hình 2023-11-15 093439.png'),
-(20, 7, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép - Sao chép.png'),
-(21, 7, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (3) - Sao chép.png'),
-(23, 8, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép - Sao chép.png'),
-(24, 9, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép - Sao chép (2).png'),
-(25, 9, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép - Sao chép.png'),
-(26, 9, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép - Sao chép.png'),
-(27, 9, 'Ảnh chụp màn hình 2023-10-30 140541 - Sao chép.png'),
-(28, 10, 'anh-nen-4k-cho-win-10_105907787.jpg'),
-(29, 10, 'anh-nen-may-tinh-4k_105909115.jpg'),
-(30, 10, 'Ảnh-nền-máy-tính-cực-đẹp-Gearvn.jpg'),
-(31, 10, 'Hinh-nen-anime-5-min.jpg'),
-(32, 10, 'hinh-nen-may-tinh-4k-de-thuong-scaled.jpg'),
-(33, 10, 'hinh-nen-may-tinh-8-1.jpg'),
-(34, 10, 'hinh-nen-may-tinh-hoat-hinh-de-thuong_053704784.jpg'),
-(37, 12, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép - Sao chép (2).png'),
-(38, 12, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép - Sao chép.png'),
-(39, 12, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép - Sao chép.png'),
-(40, 12, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép.png'),
 (41, 13, 'Ảnh-nền-máy-tính-cực-đẹp-Gearvn - Sao chép.jpg'),
 (42, 13, 'Ảnh-nền-máy-tính-cực-đẹp-Gearvn.jpg'),
 (43, 13, 'hinh-nen-may-tinh-hoat-hinh-de-thuong_053704784.jpg'),
-(44, 11, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép - Sao chép.png'),
-(45, 11, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép.png'),
-(46, 11, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép.png'),
-(47, 11, 'Ảnh chụp màn hình 2023-10-30 140515.png'),
-(48, 11, 'Ảnh chụp màn hình 2023-10-30 140541 - Sao chép.png'),
-(49, 11, 'Ảnh chụp màn hình 2023-10-30 140541.png'),
 (50, 6, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép - Sao chép (2).png'),
 (51, 6, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép - Sao chép.png'),
 (52, 6, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép - Sao chép.png'),
 (53, 6, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép.png'),
-(54, 6, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2).png');
+(54, 6, 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2).png'),
+(98, 7, '4.avif'),
+(99, 7, '5.avif'),
+(100, 7, '3.avif'),
+(101, 7, '2.avif'),
+(102, 8, '10.avif'),
+(103, 8, '9.jpg'),
+(104, 8, '8.avif'),
+(105, 8, '7.avif'),
+(106, 18, '2.jpg'),
+(107, 18, '1.png'),
+(108, 18, '12.avif'),
+(109, 18, '11.avif'),
+(110, 9, '19.avif'),
+(111, 9, '18.avif'),
+(112, 9, '17.avif'),
+(113, 9, '16.avif'),
+(114, 9, '14.avif'),
+(115, 10, '24.avif'),
+(116, 10, '23.avif'),
+(117, 10, '22.avif'),
+(118, 10, '21.avif'),
+(119, 11, '29.avif'),
+(120, 11, '28.avif'),
+(121, 11, '27.avif'),
+(122, 11, '26.avif'),
+(123, 12, '35.avif'),
+(124, 12, '34.avif'),
+(125, 12, '33.avif'),
+(126, 12, '31.avif'),
+(127, 12, '30.avif'),
+(128, 15, '41.avif'),
+(129, 15, '40.avif'),
+(130, 15, '38.avif'),
+(131, 15, '37.avif'),
+(132, 15, '36.avif'),
+(133, 16, '5.webp'),
+(134, 16, '4.webp'),
+(135, 16, '3.webp'),
+(136, 16, '2.webp'),
+(137, 17, '10.webp'),
+(138, 17, '9.webp'),
+(139, 17, '8.webp'),
+(140, 17, '7.webp');
 
 -- --------------------------------------------------------
 
@@ -258,12 +282,16 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`id_sp`, `name_sp`, `mo_ngan`, `image_sp`, `giam_gia`, `gia`, `mo_ta`, `ngay_nhap`, `view`, `gioi_tinh`, `id_dm`) VALUES
-(7, 'Giày Vip', 'Đẹp Zai Khoai To ', 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép.png', 12, 78676453, 'hgfds', '2004-08-17', 38, 0, 1),
-(8, 'phuongggg21', '', 'Ảnh chụp màn hình 2023-10-30 210717.png', 30, 123, '  123', '2023-11-16', 3, 1, 2),
-(9, 'phuongggg123', '', 'Ảnh chụp màn hình 2023-10-31 210245.png', 0, 1200000, 'phuongcao', '2023-11-16', 39, 1, 2),
-(10, 'CAOXUANPHUONG', '', 'Ảnh chụp màn hình 2023-11-12 215708.png', 12, 1230000000, '   gulkyfjudtyhregsfadwq', '2023-11-16', 12, 1, 2),
-(11, 'phuonggg', '', 'hinh-nen-may-tinh-hoat-hinh-de-thuong_053704784.jpg', 0, 123, ' 123', '2023-11-17', 0, 1, 1),
-(12, 'phuongggg', '', 'Ảnh chụp màn hình 2023-10-30 140515 - Sao chép (2) - Sao chép - Sao chép.png', 0, 1342537, ' zsfdf', '2023-11-17', 22, 1, 1);
+(7, 'Áo Sơ Mi Denim Dáng Rộng', 'Áo sơ mi Denim màu đen này là trang phục không thể thiếu trong tủ đồ thường nhật. ', '1.avif', 12, 61000000, 'Áo sơ mi Denim màu đen này là trang phục không thể thiếu trong tủ đồ thường nhật. Phom dáng tối giản được tô điểm với hoa văn Monogram được dập nổi trên túi áo. Áo có thể mặc như áo khoác và dễ dàng kết hợp với quần kiểu Carpenter đồng bộ để tạo nên tổng thể trẻ trung và năng động.', '2004-08-17', 376, 1, 1),
+(8, 'Áo Denim Dáng Rộng', 'Mẫu áo Denim dáng rộng màu xanh chàm gây ấn tượng với mô típ Monogram Mappamundi tinh xảo tượng trưng cho sự kết nối giữa các nền văn hóa.', '6.avif', 1, 1000000, 'Mẫu áo Denim dáng rộng màu xanh chàm gây ấn tượng với mô típ Monogram Mappamundi tinh xảo tượng trưng cho sự kết nối giữa các nền văn hóa. Hình bản đồ thế giới được in dọc theo thân áo với hiệu ứng Pixel tẩy màu, kết hợp hoa văn Monogram kinh điển. Được hoàn thiện với túi áo lớn, thiết kế sẽ là điểm nhấn nổi bật cho bộ trang phục thường nhật.', '2023-11-23', 27, 0, 1),
+(9, 'TECHNICAL FABRIC COAT', 'Lựa chọn trang phục nam cho Cruise 2024 lấy cảm hứng từ những năm 1990. Vải Moleskin và các họa tiết di sản lấy cảm hứng từ kho lưu trữ của House làm phong phú', '13.avif', 10, 1200000, 'Lựa chọn trang phục nam cho Cruise 2024 lấy cảm hứng từ những năm 1990. Vải Moleskin và các họa tiết di sản lấy cảm hứng từ kho lưu trữ của House làm phong phú thêm những chiếc áo khoác mới, kết hợp với quần denim để tạo nét hiện đại. Được làm bằng chất liệu vải kỹ thuật màu đen, chiếc áo khoác hai hàng khuy này khám phá một hình dáng có cấu trúc phù hợp với việc xếp lớp chuyển tiếp.', '2023-11-16', 50, 1, 2),
+(10, 'GG WOOL FLANNEL PADDED OVERSHIRT', 'Màu sắc và họa tiết gắn liền với mùa lạnh hơn truyền cảm hứng cho tủ quần áo đô thị mới cho Bộ sưu tập Cruise 2024 của Gucci. ', '20.avif', 10, 90000000, 'Màu sắc và họa tiết gắn liền với mùa lạnh hơn truyền cảm hứng cho tủ quần áo đô thị mới cho Bộ sưu tập Cruise 2024 của Gucci. Lựa chọn trang phục nam bao gồm quần dài thoải mái bằng vải cotton và denim, được thiết kế theo kiểu xếp lớp. Chiếc áo khoác ngoài cổ điển cũng được tái hiện lại, được trình bày ở đây bằng vải flannel len GG màu xanh lá cây và xanh nước biển với khóa kéo tiện dụng.', '2023-11-16', 32, 1, 2),
+(11, 'ÁO DỆT KIM LAMÉ CÓ KHÓA LIÊN ĐỘNG G', 'Kiểu dáng đẹp mắt của mùa này lấy cảm hứng từ những năm 1990, với phần áo ôm vừa vặn và phần quần hơi trễ.', '25.avif', 10, 1500000, 'Kiểu dáng đẹp mắt của mùa này lấy cảm hứng từ những năm 1990, với phần áo ôm vừa vặn và phần quần hơi trễ. Những chiếc áo dệt kim mỏng, nhẹ vừa vặn như làn da thứ hai, trong khi váy và quần được mặc với vẻ thanh lịch thoải mái. Được chế tác từ vải lamé có đường khâu sườn màu xanh lá cây nhạt, chiếc áo dệt kim này được tạo điểm nhấn bằng hình thêu chữ G lồng vào nhau ở giữa.', '2023-11-17', 16, 2, 2),
+(12, 'ARSENAL FC 23/24 LFSTLR JERSEY', 'ÁO THI ĐẤU NGOÀI SÂN CỎ CAO CẤP CỦA ARSENAL, ĐƯỢC LÀM BẰNG VẬT LIỆU TÁI CHẾ.', '32.avif', 10, 1700000, 'Sử dụng bộ quần áo bóng đá thứ ba bắt mắt của câu lạc bộ làm nguồn cảm hứng, chiếc áo đấu Arsenal Jersey này của adidas tạo nên sự chuyển đổi từ hiệu suất bóng đá ưu tú sang khả năng mặc tuyệt vời. Chi tiết sang trọng và đường dệt đôi bằng polyester nâng cao vẻ ngoài và cảm giác của chiếc áo jersey cao cấp này để mang lại sự thoải mái, sang trọng khi mặc hàng ngày. ', '2023-11-17', 30, 1, 8),
+(15, 'ÁO KHOÁC QUỐC CA REAL MADRID', 'ÁO THỂ THAO PHONG CÁCH VỚI MÀU SẮC CỔ ĐIỂN CỦA CÂU LẠC BỘ — VỚI HUY HIỆU PHONG PHÚ, ĐỦ MÀU SẮC', '39.avif', 25, 16000000, 'Khi các cầu thủ chuyên nghiệp mặc vest và bước vào sân, Áo khoác quốc ca của Real Madrid là dấu hiệu cho thấy tài năng đẳng cấp thế giới đã bước vào đấu trường. Với thiết kế bóng bẩy và màu sắc thuần túy của câu lạc bộ, chiếc áo khoác sành điệu giúp bạn mang theo tâm lý chiến thắng trong ngày thi đấu mọi lúc mọi nơi.', '2023-11-28', 8, 0, 8),
+(16, 'Áo nỉ nam basic', 'Áo nỉ nam dáng rộng vừa, dày dặn đứng phom. Áo phù hợp để mặc thường ngày, áo đơn giản dễ dàng phối đồ, áo trơn basic, có cắt cúp sau lưng tạo điểm nhấn.', '1.webp', 5, 5000000, 'Giặt máy ở chế độ nhẹ, nhiệt độ thường. Không sử dụng hóa chất tẩy có chứa Clo. Phơi trong bóng mát. Sấy khô ở nhiệt độ thấp. Là ở nhiệt độ thấp 110 độ C. Giặt với sản phẩm cùng màu. Không là lên chi tiết trang trí.', '2023-12-01', 63, 1, 9),
+(17, 'Quần mặc nhà nữ ống rộng', 'Quần mặc nhà dáng suông rủ vừa phải, gọn gàng nhưng vẫn rộng rãi thoải mái. Nguyên liệu dệt kim giả len mềm mại, ấm áp, mỏng nhẹ tạo cảm giác dễ chịu khi mặc, phù hợp các hoạt động nghỉ ngơi.', '6.webp', 10, 900000, 'Giặt máy ở chế độ nhẹ, nhiệt độ thường. Không sử dụng hóa chất tẩy có chứa Clo. Phơi vắt ngang, trong bóng mát. Không sử dụng máy sấy. Là ở nhiệt độ thấp 110 độ C. Giặt mặt trái sản phẩm. Giặt với sản phẩm cùng màu.', '2023-11-29', 69, 2, 9),
+(18, 'Áo Khoác Parka Họa Tiết Monogram', 'Mẫu áo khoác Parka quen thuộc nay được nâng tầm với chất liệu Satin nhẹ tênh, sáng bóng. ', '1.jpg', 5, 750000, 'Mẫu áo khoác Parka quen thuộc nay được nâng tầm với chất liệu Satin nhẹ tênh, sáng bóng. Bên cạnh họa tiết Monogram cùng tông màu được dệt kiểu Jacquard trên toàn bộ thiết kế, áo còn nổi bật với các chi tiết bằng Monogram Canvas trên đầu khóa kéo phía trước và dây rút. Mang phong cách năng động với lớp lót bằng vải lưới thoáng khí, sản phẩm được hoàn thiện với mũ trùm tiện dụng, túi trước rộng rãi và tay áo bo chun.', '2023-11-29', 352, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -292,7 +320,29 @@ INSERT INTO `sanpham_bienthe` (`id_spbt`, `id_color`, `id_size`, `id_sp`, `soluo
 (9, 1, 7, 10, 99),
 (15, 1, 2, 11, 99),
 (16, 1, 3, 11, 0),
-(17, 2, 2, 12, 11);
+(17, 2, 2, 12, 11),
+(21, 1, 2, 7, 3),
+(22, 1, 3, 7, 5),
+(23, 2, 2, 7, 7),
+(24, 3, 4, 7, 4),
+(25, 2, 3, 8, 10),
+(26, 1, 4, 8, 10),
+(27, 1, 3, 8, 10),
+(28, 1, 7, 11, 1),
+(29, 1, 3, 15, 10),
+(30, 1, 2, 15, 10),
+(31, 2, 7, 15, 1),
+(32, 2, 4, 15, 1),
+(33, 3, 3, 15, 10),
+(34, 4, 4, 16, 1),
+(35, 1, 4, 16, 10),
+(36, 4, 2, 17, 5),
+(37, 1, 3, 17, 7),
+(38, 3, 3, 17, 10),
+(39, 3, 4, 18, 1),
+(40, 2, 3, 18, 4),
+(41, 2, 4, 18, 10),
+(42, 4, 7, 7, 40);
 
 -- --------------------------------------------------------
 
@@ -339,9 +389,9 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`id_tk`, `name_tk`, `pass`, `image_tk`, `full_name`, `chucvu`, `email`, `phone`, `dia_chi`, `lock`) VALUES
-(1, 'Admin1', '123', 'Ảnh chụp màn hình 2023-11-15 090604.png', 'Cao Xuân Phương', 1, '123', 1332, '123', 0),
-(4, 'phuong', '123', 'author3.webp', 'Phuong Cao', 0, '1132456', 985679042, '23456', 0),
-(5, 'phuong', '1234', NULL, ' Cao Xuân Phương', 0, 'phuonglun66666@gmail.com', NULL, '123', 1);
+(1, 'ADMIN', '123456', '4.webp', 'NGUYỄN HỮU TUẤN ANH', 1, 'anhnhtph41946@fpt.edu.vn', 985679042, 'Xã Thanh Hà', 0),
+(4, 'Tuananh0812', '123456', '358029119_10159477036007078_7939670024004642255_n.jpg', 'Tuấn Anh', 0, 'anhthu09112k5@gmail.com', 985679042, 'Nguyên Xá, Cầu Diễn, Q.Bắc Từ Liêm, Hà Nội', 0),
+(5, 'Tuananh01', 'f08a4c2c', NULL, 'NGUYỄN HỮU TUẤN ANH', 0, 'anhnhtph41946@fpt.edu.vn', NULL, '123', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -380,7 +430,8 @@ ALTER TABLE `don_hang`
   ADD PRIMARY KEY (`id_don`),
   ADD KEY `id_sp` (`id_sp`),
   ADD KEY `id_ctd` (`id_ctd`),
-  ADD KEY `mau_sac` (`mau_sac`);
+  ADD KEY `mau_sac` (`mau_sac`),
+  ADD KEY `kich_co` (`kich_co`);
 
 --
 -- Chỉ mục cho bảng `gio_hang`
@@ -433,13 +484,13 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT cho bảng `binh_luan`
 --
 ALTER TABLE `binh_luan`
-  MODIFY `id_bl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_bl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `chitiet_donhang`
 --
 ALTER TABLE `chitiet_donhang`
-  MODIFY `id_ctdon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_ctdon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `color`
@@ -451,13 +502,13 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
-  MODIFY `id_dm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_dm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `don_hang`
 --
 ALTER TABLE `don_hang`
-  MODIFY `id_don` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_don` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT cho bảng `gio_hang`
@@ -469,19 +520,19 @@ ALTER TABLE `gio_hang`
 -- AUTO_INCREMENT cho bảng `img_sp`
 --
 ALTER TABLE `img_sp`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_sp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham_bienthe`
 --
 ALTER TABLE `sanpham_bienthe`
-  MODIFY `id_spbt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_spbt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT cho bảng `size`
@@ -493,7 +544,7 @@ ALTER TABLE `size`
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id_tk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_tk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -511,7 +562,8 @@ ALTER TABLE `binh_luan`
 --
 ALTER TABLE `don_hang`
   ADD CONSTRAINT `don_hang_ibfk_3` FOREIGN KEY (`id_sp`) REFERENCES `sanpham` (`id_sp`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `don_hang_ibfk_4` FOREIGN KEY (`id_ctd`) REFERENCES `chitiet_donhang` (`id_ctdon`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `don_hang_ibfk_4` FOREIGN KEY (`kich_co`) REFERENCES `size` (`id_size`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `don_hang_ibfk_5` FOREIGN KEY (`mau_sac`) REFERENCES `color` (`id_color`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `gio_hang`

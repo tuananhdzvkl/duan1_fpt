@@ -32,7 +32,7 @@
                 <td><?= $key + 1 ?></td>
                 <td><?= $value['name_sp'] ?></td>
                 <td><img src="../assets/uploads/<?= $value['image_sp'] ?>" alt="" width="100"></td>
-                <td><?= $value['gia'] ?></td>
+                <td><?= number_format($value['gia'], 0, '.', ',') ?> vnđ</td>
                 <td><?= $value['so_luong'] ?></td>
                 <td><?= $value['mau_sac'] ?></td>
                 <td><?= $value['kich_co'] ?></td>
@@ -46,10 +46,13 @@
                     }
 
                     ?></td>
-                <td><?php
-                    $tong = $value['so_luong'] * $value['gia'];
-                    echo $tong;
-                    ?></td>
+                    <td>
+                        <?php
+                            $tong = $value['so_luong'] * $value['gia'];
+                            echo number_format($tong, 0, '.', ',') . ' vnđ';
+                        ?>
+                    </td>
+
               </tr>
             <?php endforeach ?>
 

@@ -11,7 +11,7 @@
             <div class="about-widget-wrap">
               <div class="widget-logo-area">
                 <a href="index.html">
-                  <img class="logo-main" src="assets/img/logo.png" width="100" height="30" alt="Logo" />
+                  <img class="logo-main" src="assets/img/photos/logo.jpg" width="100" height="30" alt="Logo" />
                 </a>
               </div>
               <p class="desc">Lorem ipsum dolor sit amet consl adipisi elit, sed do eiusmod templ incididunt ut labore</p>
