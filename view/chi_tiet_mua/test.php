@@ -140,139 +140,211 @@ body{margin-top:20px;}
 
 
 <div class="container">
-    <!-- Nội dung chính -->
+   <h2>Chi Tiết Đơn Mua</h2>
     <div class="row">
         <div class="col-lg-8">
             <!-- Chi tiết -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="mb-3 d-flex justify-content-between">
-                        <div>
-                            <span class="me-3">22-11-2021</span>
-                            <span class="me-3">#16123222</span>
-                            <span class="me-3">Visa -1234</span>
-                            <span class="badge rounded-pill bg-info">ĐANG VẬN CHUYỂN</span>
-                        </div>
-                        <div class="d-flex">
-                            
-                            <div class="dropdown">
-                                <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Sửa</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-printer"></i> In</a></li>
-                                </ul>
+            <?php foreach ($donhang as $key => $value) : ?>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="mb-3 d-flex justify-content-between">
+                            <div>
+                                <!-- Giả định về các biến -->
+                                <span class="me-3"><strong><?= $value['thoi_gian'] ?></strong></span>
+                                <span class="me-3"><strong><?= $value['ma_don'] ?></strong></span>
+                                <span >
+                                    <?php
+                                        $trang_thai = $value['trang_thai'];
+
+                                        echo "<p class='btn ";
+
+                                        if ($trang_thai == 0) {
+                                            echo "btn-warning btn-sm'>Chờ xác nhận";
+                                        } elseif ($trang_thai == 1) {
+                                            echo "btn-info btn-sm'>Đã xác nhận";
+                                        } elseif ($trang_thai == 2) {
+                                            echo "btn-primary btn-sm'>Đang giao hàng";
+                                        } elseif ($trang_thai == 3) {
+                                            echo "btn-success btn-sm'>Đã nhận hàng";
+                                        } else {
+                                            echo "btn-danger btn-sm'>Đã hủy";
+                                        }
+
+                                        echo "</p>";
+                                    ?>
+                                </span>
                             </div>
+                            <!-- <div class="d-flex">
+                                <div class="dropdown">
+                                    <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Sửa</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-printer"></i> In</a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
                         </div>
+                        <table class="table table-borderless">
+                            <tbody>
+                                <!-- Các dòng chi tiết đơn hàng -->
+                                <?php foreach ($sanpham_lq as $sanpham) : ?>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex mb-2">
+                                                <div class="flex-shrink-0">
+                                                    <!-- Giả định về ảnh sản phẩm -->
+                                                    <img src="assets/uploads/<?= $sanpham['image_sp'] ?>" alt="" width="35" class="img-fluid">
+                                                </div>
+                                                <div class="flex-lg-grow-1 ms-3">
+                                                    <h6 class="small mb-0"><a href="#" class="text-reset"><?= $sanpham['name_sp'] ?></a></h6>
+                                                    
+                                                    <?php
+                                                        $mau_sac = $sanpham['mau_sac'];
+
+                                                        echo '<span class="small">Màu: ';
+
+                                                        switch ($mau_sac) {
+                                                            case '1':
+                                                                echo '<span style="color: red;">Đỏ</span>';
+                                                                break;
+                                                            case '2':
+                                                                echo '<span style="color: red;">Vàng</span>';
+                                                                break;
+                                                            case '3':
+                                                                echo '<span style="color: red;">Trắng</span>';
+                                                                break;
+                                                            case '4':
+                                                                echo '<span style="color: red;">Xanh</span>';
+                                                                break;
+                                                            default:
+                                                                echo 'Không xác định';
+                                                                break;
+                                                        }
+
+                                                        echo '</span>';
+                                                    ?>
+
+
+                                                    <?php
+                                                    $kich_co = $sanpham['kich_co'];
+
+                                                    echo '<span class="small" style="margin-left: 10px;">Size: ';
+
+                                                    switch ($kich_co) {
+                                                        case '1':
+                                                            echo '<span style="color: red;">S</span>';
+                                                            break;
+                                                        case '2':
+                                                            echo '<span style="color: red;">M</span>';
+                                                            break;
+                                                        case '3':
+                                                            echo '<span style="color: red;">L</span>';
+                                                            break;
+                                                        case '4':
+                                                            echo '<span style="color: red;">XL</span>';
+                                                            break;
+                                                        default:
+                                                            echo 'Không xác định';
+                                                            break;
+                                                    }
+
+                                                    echo '</span>';
+                                                    ?>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>(x<?= $sanpham['so_luong'] ?>)</td>
+                                        <td class="text-end"><?= number_format($sanpham['gia'], 2) ?> VNĐ</td>
+                                    </tr>
+                                <?php endforeach ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Giảm Giá</td>
+                                    <td class="text-danger text-end"><?= number_format($sanpham['giam_gia']) ?>% </td>
+                                </tr>
+                                <!-- Các dòng tổng cộng, vận chuyển, giảm giá, tổng cộng -->
+                                <!-- <tr>
+                                    <td colspan="2">Tổng Cộng</td>  
+                                    <td class="text-end"><?= number_format($value['thanh_tien'], 2) ?> VNĐ</td>
+                                </tr> -->
+                                <!-- <tr>
+                                    <td colspan="2">Vận Chuyển</td>
+                                    <td class="text-end"><?= number_format($value['van_chuyen'], 2) ?> VNĐ</td>
+                                </tr> -->
+                                
+                                <tr class="fw-bold">
+                                    <td colspan="2">TỔNG CỘNG</td>
+                                    <td class="text-end"><?= number_format($value['thanh_tien'], 2) ?> VNĐ</td>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex mb-2">
-                                        <div class="flex-shrink-0">
-                                            <img src="https://www.bootdey.com/image/280x280/87CEFA/000000" alt=""
-                                                width="35" class="img-fluid">
-                                        </div>
-                                        <div class="flex-lg-grow-1 ms-3">
-                                            <h6 class="small mb-0"><a href="#" class="text-reset">Tai Nghe Không
-                                                    Dây với Chống Ồn Tru Bass Bluetooth HiFi</a></h6>
-                                            <span class="small">Màu: Đen</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td class="text-end">$79.99</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex mb-2">
-                                        <div class="flex-shrink-0">
-                                            <img src="https://www.bootdey.com/image/280x280/FF69B4/000000" alt=""
-                                                width="35" class="img-fluid">
-                                        </div>
-                                        <div class="flex-lg-grow-1 ms-3">
-                                            <h6 class="small mb-0"><a href="#" class="text-reset">Đồng Hồ Thông Minh IP68
-                                                    Chống Nước GPS và Hỗ Trợ Bluetooth</a></h6>
-                                            <span class="small">Màu: Trắng</span>
-                                            <span class="small" style="margin-left:10px;">Size: S</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td class="text-end">$79.99</td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="2">Tổng Cộng</td>
-                                <td class="text-end">$159,98</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">Vận Chuyển</td>
-                                <td class="text-end">$20.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">Giảm Giá (Mã: NEWYEAR)</td>
-                                <td class="text-danger text-end">-$10.00</td>
-                            </tr>
-                            <tr class="fw-bold">
-                                <td colspan="2">TỔNG CỘNG</td>
-                                <td class="text-end">$169,98</td>
-                            </tr>
-                        </tfoot>
-                    </table>
                 </div>
-            </div>
+
+
             <!-- Thanh toán -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h3 class="h6">Phương Thức Thanh Toán</h3>
-                            <p>Visa -1234 <br>
-                                Tổng: $169,98 <span class="badge bg-success rounded-pill">ĐÃ THANH TOÁN</span></p>
-                        </div>
-                        <div class="col-lg-6">
-                            <h3 class="h6">Địa Chỉ Thanh Toán</h3>
-                            <address>
-                                <strong>John Doe</strong><br>
-                                1355 Market St, Suite 900<br>
-                                San Francisco, CA 94103<br>
-                                <abbr title="Phone">ĐT:</abbr> (123) 456-7890
-                            </address>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="h6">Phương Thức Thanh Toán</h3>
+                                <p>
+                                    <?php
+                                        if ($value['thanh_toan'] == 0) {
+                                            echo "<p class='btn btn-primary btn-sm'>Thanh Toán Online</p>";
+                                        } else {
+                                            echo " <p class='btn btn-success btn-sm'>Thanh Toán Khi Nhận Hàng</p>";
+                                        }
+                                    ?>
+                                    <br>
+                                    <strong>Tổng: <?= number_format($value['thanh_tien'], 2) ?> VNĐ</strong> 
+                                </p>
+                            </div>
+                            <?php endforeach ?>
+                            <?php foreach ($donhang as $sp) : ?>
+                                <div class="col-lg-6">
+                                    <h3 class="h6">Địa Chỉ Thanh Toán</h3>
+                                    <address>
+                                        <strong><?= $sp['full_name'] ?></strong><br>
+                                        <?= $sp['dia_chi']?><br>
+                                        <abbr title="Phone">SĐT:</abbr> <?= $sp['phone']?>
+                                    </address>
+                                </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
         <div class="col-lg-4">
             <!-- Ghi chú của Khách hàng -->
             <div class="card mb-4">
                 <div class="card-body">
-                    <h3 class="h6">Ghi Chú của Khách Hàng</h3>
-                    <p>Sed enim, faucibus litora velit vestibulum habitasse. Cras lobortis cum sem aliquet mauris rutrum.
-                        Sollicitudin. Morbi, sem tellus vestibulum porttitor.</p>
+                    <h3 class="h6">Ghi Chú</h3>
+                    <p><?= $sp['ghichu']?></p>
                 </div>
             </div>
             <div class="card mb-4">
                 <!-- Thông tin Vận Chuyển -->
                 <div class="card-body">
                     <h3 class="h6">Thông Tin Vận Chuyển</h3>
-                    <strong>FedEx</strong>
-                    <span><a href="#" class="text-decoration-underline" target="_blank">FF1234567890</a> <i
+                    <strong>Mã vận chuyển: </strong>
+                    <span><a href="#" class="text-decoration-underline" target="_blank"><?= $sp['faxNumber'] ?></a> <i
                             class="bi bi-box-arrow-up-right"></i> </span>
                     <hr>
                     <h3 class="h6">Địa Chỉ</h3>
                     <address>
-                        <strong>John Doe</strong><br>
-                        1355 Market St, Suite 900<br>
-                        San Francisco, CA 94103<br>
-                        <abbr title="Phone">ĐT:</abbr> (123) 456-7890
+                        <strong><?= $sp['full_name'] ?></strong><br>
+                        <?= $sp['dia_chi']?><br>
+                        <abbr title="Phone">SĐT:</abbr> <?= $sp['phone']?>
                     </address>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<?php endforeach ?>

@@ -15,9 +15,11 @@
               <th>Full name</th>
               <th>Điện Thoại</th>
               <th>Địa Chỉ</th>
+              <th>Ghi Chú</th>
               <th>Tổng Tiền</th>
               <th>Ngày Mua Hàng</th>
               <th>Phương Thức</th>
+              <th>Số Fax</th>
               <th>Trạng Thái</th>
               <th>Chức Năng</th>
 
@@ -30,15 +32,19 @@
 
                 <td><?= $value['ma_don'] ?></td>
                 <td><strong><?= $value['full_name'] ?></strong></td>
-                <td>0<?= $value['phone'] ?></td>
+                <td><?= $value['phone'] ?></td>
                 <td><?= $value['dia_chi'] ?></td>
+                <td><?= $value['ghichu'] ?></td>
                 <td style="color:red; font-weight:500"><?= number_format($value['thanh_tien'], 0, '.', ',') ?> vnđ</td>
-                <td><?php
+                <td>
+                  <?php
                     $dateTime = new DateTime($value['thoi_gian']);
                     // Chuyển đổi sang định dạng khác (ví dụ: dd/mm/yyyy)
                     $newFormat = $dateTime->format('h:i A - d-m-Y ');
                     echo $newFormat;
-                    ?></td>
+                  ?>
+                </td>
+                
                 <td>
                   <?php
                   if ($value['thanh_toan'] == 0) {
@@ -48,6 +54,7 @@
                   }
                   ?>
                 </td>
+                <td><?= $value['faxNumber'] ?></td>
                 <td><?php
                     if ($value['trang_thai'] == 0) {
                       echo "<p class='btn btn-warning'>đang chờ xác nhận</p>";
@@ -56,7 +63,7 @@
                     } elseif ($value['trang_thai'] == 2) {
                       echo "<p class='btn btn-primary'>Đang giao hàng </p>";
                     } elseif ($value['trang_thai'] == 3) {
-                      echo " <p class='btn btn-success'>Đã Đã Nhận Hàng</p>";
+                      echo " <p class='btn btn-success'>Đã Nhận Hàng</p>";
                     } else {
                       echo "<p class='btn btn-danger'>Đã Hủy</p>";
                     }

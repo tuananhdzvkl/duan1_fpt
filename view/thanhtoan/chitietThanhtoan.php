@@ -161,6 +161,12 @@
                       <input id="email" type="text" name="email" class="form-control" required>
                     </div>
                   </div>
+                  <div class="col-md-12">
+                      <div class="form-group mb--0">
+                        <label for="ghichu">Ghi chú đơn hàng (optional)</label>
+                        <textarea id="ghichu" name="ghichu" class="form-control" rows="7" placeholder="Ghi chú về đơn đặt hàng của bạn, ví dụ: ghi chú đặc biệt khi giao hàng."></textarea>
+                      </div>
+                  </div>
 
 
                 </div>

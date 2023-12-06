@@ -59,54 +59,96 @@
                 break;
             case 'thanhtoan':
                 if (isset($_POST['dathang']) && ($_POST['dathang'] != "")) {
+                    // Function to generate a random string
                     function generateRandomString($length = 3)
-                        {
-                            $characters = '0123456789';
-                            $randomString = '';
-    
-                            for ($i = 0; $i < $length; $i++) {
-                                $randomString .= $characters[rand(0, strlen($characters) - 1)];
-                            }
-    
-                            return $randomString;
+                    {
+                        $characters = '0123456789';
+                        $randomString = '';
+                    
+                        for ($i = 0; $i < $length; $i++) {
+                            $randomString .= $characters[rand(0, strlen($characters) - 1)];
                         }
-                        if (isset($_SESSION['username'])) {
-                            $id_tk = $_SESSION['username']['id_tk'];
-                        } else {
-                            $id_tk = 0;
-                        }
+                    
+                        return $randomString;
+                    }
+                    
+                    // Check if the form is submitted for payment
+                    if (isset($_POST['dathang']) && !empty($_POST['dathang'])) {
+                        // Get user ID if logged in, otherwise set to 0
+                        $id_tk = isset($_SESSION['username']) ? $_SESSION['username']['id_tk'] : 0;
+                    
+                        // Get form data
                         $diachi = $_POST['customInput'];
                         $name = $_POST['name'];
                         $phone = $_POST['sdt'];
+                        $ghichu = $_POST['ghichu'];
                         $thanhtoan = $_POST['payment_method'];
-    
                         $tong_tien = $_POST['tong'];
+                    
+                        // Generate a random order number
                         $ma_don = generateRandomString(3);
                         $don_ma = "#Don" . $ma_don;
-                        date_default_timezone_set('Asia/Ho_Chi_Minh');
-    
-                        $thoigian = date('Y-m-d H:i:s');
-                        $id_don =  add_bill($id_tk, $diachi, $name, $phone, $thanhtoan,  $don_ma, $thoigian, $tong_tien);
-                        // echo $diachi, $name, $phone, $thanhtoan,  $don_ma ,$thoigian ,$tong_tien;
-                        foreach ($_SESSION['cart'] as $item) {
-                            $id_sp =    $item['id'];
-                            $so_luong =    $item['quantity'];
-                            $id_mau =    $item['mau'];
-                            $id_size =    $item['size'];
-                            add_bill_ct($id_sp,  $so_luong, $id_mau, $id_size,  $id_don);
+
+                        // 65 is ASCII code for 'A', and 90 is ASCII code for 'Z'
+                        $char1 = chr(rand(65, 90));
+                        $char2 = chr(rand(65, 90));
+                        $digits = "";
+                        for ($i = 0; $i < 10; $i++) {
+                            $digits .= rand(0, 9);
                         }
+
+                        // Combine characters and digits to form the fax number
+                        $faxNumber = $char1 . $char2 . $digits;
+                    
+                        // Get the current date and time
+                        date_default_timezone_set('Asia/Ho_Chi_Minh');
+                        $thoigian = date('Y-m-d H:i:s');
+                    
+                        // Add a new order to the database
+                        $id_don = add_bill($id_tk, $diachi, $name, $phone, $ghichu, $thanhtoan,  $don_ma, $thoigian, $tong_tien, $faxNumber);
+                    
+                        // Add order details for each item in the cart
+                        foreach ($_SESSION['cart'] as $item) {
+                            $id_sp = $item['id'];
+                            $so_luong = $item['quantity'];
+                            $id_mau = $item['mau'];
+                            $id_size = $item['size'];
+                            add_bill_ct($id_sp, $so_luong, $id_mau, $id_size, $id_don);
+                        }
+                    
+                        // Clear the shopping cart
                         unset($_SESSION["cart"]);
-    
-    
+                    
+                        // Set up error reporting
+                        error_reporting(E_ALL);
+                        ini_set('display_errors', 1);
+                    
+                        // Check the payment method
                         if ($thanhtoan == 0) {
+                            // Handle Momo payment
                             include "view/xulymomo.php";
                         } else {
-    
-                            include "view/thanhtoan/thanhtoan_khinhan.php";
+                            // Redirect to the order details page
+                            echo "<script>window.location.href ='?act=chitietmua&id_ctdon=$id_don'</script>";
+                            exit(); // Ensure that the script stops after the redirect
                         }
                     }
-    
-                    break;
+                    
+                 
+                }
+                break;
+
+            case 'chitietmua':
+                $id = $_GET['id_ctdon'];
+                $ctdon = chitietmua_ctdon($id);
+                $donhang = loadd_bill_ct($id);
+                $sanpham_lq = loadd_bill_lq_ct($id);
+                // echo "<pre>";
+                // var_dump($sanpham_lq,$donhang);
+                // echo"</pre>";
+                include "view/chi_tiet_mua/test.php";   
+            break;
+
             case 'CTthanhtoan':
                 if (!empty($_SESSION['cart'])) {
                     $cart = $_SESSION['cart'];
@@ -156,10 +198,7 @@
                 }
                 include "view/giohang/cart.php";
                 break;
-            case 'chitietmua':
-                
-                include "view/chi_tiet_mua/test.php";
-                break;
+            
             case 'xoaallgio':
 
                 if (isset($_SESSION["cart"])) {
