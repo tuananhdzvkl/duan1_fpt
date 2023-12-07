@@ -122,14 +122,14 @@
                         // Set up error reporting
                         error_reporting(E_ALL);
                         ini_set('display_errors', 1);
-                    
+                        
                         // Check the payment method
                         if ($thanhtoan == 0) {
                             // Handle Momo payment
                             include "view/xulymomo.php";
                         } else {
                             // Redirect to the order details page
-                            echo "<script>window.location.href ='?act=chitietmua&id_ctdon=$id_don'</script>";
+                            echo "<script>window.location.href ='?act=lichsumua'</script>";
                             exit(); // Ensure that the script stops after the redirect
                         }
                     }

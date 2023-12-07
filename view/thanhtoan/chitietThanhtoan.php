@@ -2,6 +2,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="assets/js/location.js"></script>
 <form class="" method="POST" action="?act=thanhtoan">
   <main class="main-content">
@@ -271,7 +272,24 @@
                       </div>
                     </div>
                   </div>
-                  <input type="submit" name="dathang" class="btn-theme" value="Đặt hàng">
+                  
+                    <input type="submit" name="dathang" class="btn-theme" value="Đặt hàng" onclick="order();">
+
+                    <!-- JavaScript to handle the form submission and show/hide the alert -->
+                    <script>
+                      function order() {
+                        // Replace this with your actual form submission logic
+
+                        // Show a success alert using SweetAlert
+                        Swal.fire({
+                          icon: 'success',
+                          title: 'Đặt hàng thành công!',
+                          showConfirmButton: false,
+                          timer: 14000 // Auto close after 1.5 seconds
+                        });
+                      }
+                    </script>
+
                 </div>
               </div>
             </div>
