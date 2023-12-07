@@ -37,3 +37,14 @@ function chitietmua_ctdon($id_don)
   return $hi;
 }
 
+function load_all_bill($kyw='', $id)
+{
+  $sql = "SELECT * FROM `chitiet_donhang` WHERE id_tk = $id";
+  if ($kyw != '') {
+      $sql .= " AND `trang_thai` = '$kyw'";
+  }
+  $sql .= " GROUP BY id_ctdon DESC";
+  
+  $hi = pdo_query($sql);
+  return $hi;
+}

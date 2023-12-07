@@ -134,10 +134,52 @@ body{margin-top:20px;}
 .bg-faded, .bg-secondary {
     background-color: #f5f5f5 !important;
 }
+
+
+.panel-order .row {
+	border-bottom: 1px solid #ccc;
+}
+.panel-order .row:last-child {
+	border: 0px;
+}
+.panel-order .row .col-md-1  {
+	text-align: center;
+	padding-top: 15px;
+}
+.panel-order .row .col-md-1 img {
+	width: 50px;
+	max-height: 50px;
+}
+.panel-order .row .row {
+	border-bottom: 0;
+}
+.panel-order .row .col-md-11 {
+	border-left: 1px solid #ccc;
+}
+.panel-order .row .row .col-md-12 {
+	padding-top: 7px;
+	padding-bottom: 7px; 
+}
+.panel-order .row .row .col-md-12:last-child {
+	font-size: 11px; 
+	color: #555;  
+	background: #efefef;
+}
+.panel-order .btn-group {
+	margin: 0px;
+	padding: 0px;
+}
+.panel-order .panel-body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.panel-order .panel-deading {
+	margin-bottom: 0;
+}                    
 </style>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
 
 <div class="container">
    <h2>Chi Tiết Đơn Mua</h2>
@@ -172,24 +214,16 @@ body{margin-top:20px;}
 
                                         echo "</p>";
                                     ?>
+                                    
                                 </span>
                             </div>
-                            <!-- <div class="d-flex">
-                                <div class="dropdown">
-                                    <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Sửa</a></li>
-                                        <li><a class="dropdown-item" href="#"><i class="bi bi-printer"></i> In</a></li>
-                                    </ul>
-                                </div>
-                            </div> -->
+                            
                         </div>
                         <table class="table table-borderless">
                             <tbody>
                                 <!-- Các dòng chi tiết đơn hàng -->
                                 <?php foreach ($sanpham_lq as $sanpham) : ?>
+                                    
                                     <tr>
                                         <td>
                                             <div class="d-flex mb-2">
@@ -262,28 +296,47 @@ body{margin-top:20px;}
                                 <?php endforeach ?>
                             </tbody>
                             <tfoot>
+                                
                                 <tr>
-                                    <td colspan="2">Giảm Giá</td>
-                                    <td class="text-danger text-end"><?= number_format($sanpham['giam_gia']) ?>% </td>
+                                    <td colspan="2">Voucher</td>
+                                    <td class="text-danger text-end"><?= isset($discountAmount) ? $discountAmount . ' %' : 'Chưa áp dụng' ?><tr class="cart-subtotal">                  
                                 </tr>
-                                <!-- Các dòng tổng cộng, vận chuyển, giảm giá, tổng cộng -->
-                                <!-- <tr>
-                                    <td colspan="2">Tổng Cộng</td>  
-                                    <td class="text-end"><?= number_format($value['thanh_tien'], 2) ?> VNĐ</td>
-                                </tr> -->
-                                <!-- <tr>
-                                    <td colspan="2">Vận Chuyển</td>
-                                    <td class="text-end"><?= number_format($value['van_chuyen'], 2) ?> VNĐ</td>
-                                </tr> -->
                                 
                                 <tr class="fw-bold">
                                     <td colspan="2">TỔNG CỘNG</td>
                                     <td class="text-end"><?= number_format($value['thanh_tien'], 2) ?> VNĐ</td>
                                 </tr>
+                                
                             </tfoot>
+                            
                         </table>
+                        <hr>
+                                <!-- Add condition to display buttons based on order status -->
+                                <tr class="fw-bold">
+                                    <h3 colspan="2" class="h6">
+                                        <?php
+                                        if ($value['trang_thai'] == 2) {
+                                            echo 'Xác Nhận Nhận Hàng';
+                                        } else {
+                                            echo 'Xử Lý Đơn Hàng';
+                                        }
+                                        ?>
+                                    </h3>
+                                    <p class="text-end">
+                                        <?php
+                                            if ($value['trang_thai'] == 2) {
+                                                echo '<button class="btn btn-success btn-sm">Đã nhận hàng</button>';
+                                                echo '<button class="btn btn-danger btn-sm ms-2">Hoàn trả hàng</button>'; // Added margin to the second button
+                                            } else {
+                                                echo '<button class="btn btn-danger btn-sm">Hủy đơn hàng</button>';
+                                            }
+                                        ?>
+                                    </p>
+                                </tr>  
                     </div>
                 </div>
+                
+                
 
 
             <!-- Thanh toán -->
@@ -348,3 +401,5 @@ body{margin-top:20px;}
     </div>
 </div>
 <?php endforeach ?>
+
+

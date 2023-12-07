@@ -197,10 +197,10 @@ if (empty($dataDb)) {
                       ?>
                     <?php endforeach ?>
                         <tr class="actions">
-                            <td class="border-0" colspan="8">
+                            <td class="border-0" colspan="10">
                                 <button type="submit" class="update-cart">Cập nhật giỏ hàng</button>
                                 <button type="button" class="clear-cart" onclick="confirmAndDeleteCart()">Dọn dẹp giỏ hàng</button>
-                                <button type="button" class="clear-cart" onclick="redirectToCheckout()">Mua Ngay</button>
+                                <button type="button" class="clear-cart"  onclick="redirectToCheckout()">Mua Ngay</button>
                                 <a href="?act=shop" class="btn-theme btn-flat">Tiếp tục mua sắm</a>
                                   <script>
                                     function confirmAndDeleteCart() {

@@ -74,9 +74,9 @@
                                           <i class='fas fa-user fa-sm fa-fw mr-2 text-gray-400'></i>
                                           Profile
                                       </a>
-                                      <a class='dropdown-item' href='?act=chitietmua'>
+                                      <a class='dropdown-item' href='?act=lichsumua'>
                                           <i class='fa-solid fa-truck-fast'></i>
-                                          Order Details
+                                          Order History
                                       </a>";
                                       if ($_SESSION['username']['chucvu'] == 1) {
                                           echo "<a class='dropdown-item' href='admin/index.php'>
@@ -174,7 +174,7 @@
                               <li class="has-submenu1"><a href="index.php?act=home"><span>Trang Chủ</span></a></li>
 
                               <li class="has-submenu position-static">
-                                  <a href=""><span>Danh mục</span></a>
+                                <a href="index.php?act=shop"><span>Sản Phẩm</span></a>
                                   <ul class="submenu-nav submenu-nav-mega1">
                                       <?php
                                       // Assuming LoadAll_DM() returns an array of categories
@@ -187,7 +187,7 @@
                               </li>
 
                               <li>
-                                  <a href="index.php?act=shop"><span>Sản Phẩm</span></a>
+                                  <!-- <a href="index.php?act=shop"><span>Sản Phẩm</span></a> -->
                                   <!-- You may populate this submenu with dynamic data if needed -->
                                   <!-- <ul class="submenu-nav submenu-nav-mega1">
                                       <?php

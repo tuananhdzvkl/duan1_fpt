@@ -137,16 +137,31 @@
                  
                 }
                 break;
+            case 'lichsumua':
+                $mau1 = LoadAll_color();
+                $size1 = LoadAll_size();
+                if (isset($_GET['bill'])) {
+                    $keyw = $_GET['bill'];
+                } else {
+                    $keyw = "";
+                }
+               // echo $keyw ; 
+                $id = $_SESSION['username']['id_tk'];
+                $don = load_all_bill($keyw,$id);
+                include "view/thanhtoan/lichsumua.php";
+            break;
 
             case 'chitietmua':
-                $id = $_GET['id_ctdon'];
+                $mau1 = LoadAll_color();
+                $size1 = LoadAll_size();
+                $id = $_GET['id_don'];
                 $ctdon = chitietmua_ctdon($id);
                 $donhang = loadd_bill_ct($id);
                 $sanpham_lq = loadd_bill_lq_ct($id);
                 // echo "<pre>";
                 // var_dump($sanpham_lq,$donhang);
                 // echo"</pre>";
-                include "view/chi_tiet_mua/test.php";   
+                include "view/thanhtoan/chitietdonhang.php";   
             break;
 
             case 'CTthanhtoan':
