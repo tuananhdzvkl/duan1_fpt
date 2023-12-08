@@ -48,3 +48,9 @@ function load_sanpham_all_dm($id)
   $sp =   pdo_query($sql);
   return $sp;
 }
+
+function tong_danhmuc(){
+  $sql = "SELECT COUNT(id_dm) as Tong FROM danhmuc";
+  $dm = pdo_query($sql);
+  return $dm;
+}

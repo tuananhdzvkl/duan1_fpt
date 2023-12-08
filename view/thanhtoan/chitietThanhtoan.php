@@ -4,7 +4,9 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="assets/js/location.js"></script>
-<form class="" method="POST" action="?act=thanhtoan">
+<form  method="POST" action="?act=thanhtoan">
+
+  </script>
   <main class="main-content">
     <!--== Start Page Header Area Wrapper ==-->
     <div class="page-header-area" data-bg-img="assets/img/photos/slider_4.webp">
@@ -278,17 +280,34 @@
                     <!-- JavaScript to handle the form submission and show/hide the alert -->
                     <script>
                       function order() {
-                        // Replace this with your actual form submission logic
+                          // Assuming some condition to check if the form submission was successful
+                          var isPaymentSuccessful = true; // Replace this with your actual condition
 
-                        // Show a success alert using SweetAlert
-                        Swal.fire({
-                          icon: 'success',
-                          title: 'Đặt hàng thành công!',
-                          showConfirmButton: false,
-                          timer: 14000 // Auto close after 1.5 seconds
-                        });
-                      }
+                          if (isPaymentSuccessful) {
+                            Swal.fire({
+                              icon: 'success',
+                              title: 'Thanh toán thành công',
+                              showConfirmButton: false,
+                              timer: 3000
+                            }).then(function() {
+                              // Redirect to the success page after displaying the success message
+                              window.location.href = "?act=lichsumua";
+                            });
+                          } else {
+                            Swal.fire({
+                              icon: 'error',
+                              title: 'Thanh toán thất bại',
+                              showConfirmButton: false,
+                              timer: 3000
+                            }).then(function() {
+                              // Redirect to the home page after displaying the error message
+                              window.location.href = "?act=home";
+                            });
+                          }
+                        }
+
                     </script>
+                    
 
                 </div>
               </div>

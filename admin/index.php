@@ -13,6 +13,7 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
   include("../model/donhang.php");
   include("include/header.php");
   $danhmuc = LoadAll_DM();
+
   $isthongbao = '';
   $thongbao = '';
   if (isset($_GET['act']) && $_GET['act'] != "") {
@@ -369,16 +370,28 @@ if (isset($_SESSION['username']) && ($_SESSION['username']['chucvu'] == 1)) {
         echo "  <script>alert('Cập Nhật Thành Công') </script> ";
         echo "  <script>window.location.href ='index.php?act=donhang'</script> ";
         break;
-      case 'bieudo1':
+     
+        
+      case 'bieudo2':
         $listthongke = loadall_thongke();
         $thongke =  thongke_ngay();
+        include "thongke/list2.php";
+        break;
+      
+      case 'thongke':
+        $data_ngay = thongke_ngay();
+        $thongke_tuan = thongke_tuan();  
+        $data_thang = thongke_thang();
+        $thongke_nam = thongke_nam();
+        // $listthongke = loadall_thongke();  
+        // $thongke = thongke_ngay();
         include "thongke/list.php";
         break;
-        case 'bieudo2':
-          $listthongke = loadall_thongke();
-          $thongke =  thongke_ngay();
-          include "thongke/list2.php";
-          break;
+      
+   
+      
+      
+     
       default:
         echo "  <script>window.location.href ='index.php'</script> ";
         break;

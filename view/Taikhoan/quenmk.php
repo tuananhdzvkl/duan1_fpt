@@ -131,7 +131,36 @@
                     ?>
                     <span>Nhập địa chỉ email của bạn để đặt lại mật khẩu</span>
                     <input type="email" name="forgot_email" value="<?php echo isset($email) ? $email : ''; ?>" placeholder="Email" required>
-                    <input type="submit" name="forgot_password" value="Gửi yêu cầu" style="background-color: red; color: white;">
+                    <input type="submit" name="forgot_password" value="Gửi yêu cầu" style="background-color: red; color: white;" onclick="submit();">
+                    <script>
+                      function submit() {
+                          // Assuming some condition to check if the form submission was successful
+                          var isPaymentSuccessful = true; // Replace this with your actual condition
+
+                          if (isPaymentSuccessful) {
+                            Swal.fire({
+                              icon: 'success',
+                              title: 'Gửi yêu cầu thành công',
+                              showConfirmButton: false,
+                              timer: 3000
+                            }).then(function() {
+                              // Redirect to the success page after displaying the success message
+                              window.location.href = "?act=quenmk";
+                            });
+                          } else {
+                            Swal.fire({
+                              icon: 'error',
+                              title: 'Gửi yêu cầu thất bại',
+                              showConfirmButton: false,
+                              timer: 3000
+                            }).then(function() {
+                              // Redirect to the home page after displaying the error message
+                              window.location.href = "?act=login";
+                            });
+                          }
+                        }
+
+                    </script>
                 </form>
             </div>
         <?php else : ?>
@@ -184,7 +213,7 @@
                     <p>Nếu bạn quên mật khẩu, hãy làm theo các bước theo form hướng dẫn để lấy lại mật khẩu của bạn.</p>
                     <button onclick="redirectToLogin()" class="hidden">Quay Lại</button>
                     <script>
-function redirectToLogin() {
+                        function redirectToLogin() {
                             window.location.href = "?act=login";
                         }
                     </script>

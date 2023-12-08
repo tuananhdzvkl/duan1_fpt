@@ -27,7 +27,7 @@ function sendEmail($to, $subject, $message) {
         $mail->Password = 'fawv uptv lsqf qxou'; // Replace with your SMTP password
 
         // Set email details
-        $mail->setFrom('phuonglun66666@gmail.com', 'TPT SHORE');
+        $mail->setFrom('phuonglun66666@gmail.com', 'ASCENSION');
         $mail->addAddress($to);
         $mail->Subject = $subject;
         $mail->Body = $message;

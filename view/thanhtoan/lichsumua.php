@@ -8,6 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
+    body{
+        font-family: sans-serif;
+    }
     h3{
         color: #007bff; /* Màu chữ cho tiêu đề h2 */
         margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
@@ -154,11 +157,12 @@
                                     background-color: #000; /* Màu sắc của đường ngang */
                                 }
                             </style>
-                            <tr class="fw-bold">
-                                <td colspan="2">TỔNG CỘNG:</td>
-                                <td class="text-end"><?= number_format($tong_tien) ?> VNĐ</td>
-                            </tr>
-
+                           <strong>
+                                <tr class="fw-bold">
+                                    <td colspan="2">TỔNG CỘNG:</td>
+                                    <td class="text-end" style="" ><?= number_format($tong_tien) ?> VNĐ</td>
+                                </tr>
+                           </strong>
                             <a class="btn btn-info btn-sm" style="margin-left: 13pc;" href="?act=chitietmua&id_don=<?= $id_ctd ?>">Chi Tiết</a>
                         </div>
 

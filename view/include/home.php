@@ -310,11 +310,11 @@
           <div class="divider-thumb-content">
             <div class="thumb">
               <a href="shop.html">
-                <img src="assets/img/shop/banner/1.webp" width="570" height="350" alt="Image-HasTech">
+                <img src="assets/img/shop/gucci.jpg" width="570" height="350" alt="Image-HasTech">
               </a>
             </div>
             <div class="content">
-              <h2 class="title">Sports Shoes</h2>
+              <h2 class="title">Fashion</h2>
               <p class="desc">Up To 30% Off All Shoes & Products</p>
               <a class="btn-theme" href="?act=shop">Shop Now</a>
             </div>
@@ -324,7 +324,7 @@
           <div class="divider-thumb-content">
             <div class="thumb">
               <a href="shop.html">
-                <img src="assets/img/shop/banner/2.webp" width="570" height="700" alt="Image-HasTech">
+                <img src="assets/img/shop/banner/noel.avif" width="570" height="650" alt="Image-HasTech">
               </a>
             </div>
           </div>

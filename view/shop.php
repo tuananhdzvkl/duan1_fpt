@@ -323,7 +323,7 @@
                 </div>
               </div> -->
             
-              <div class="shop-sidebar-color">
+              <!-- <div class="shop-sidebar-color">
                   <h4 class="sidebar-title">Color</h4>
                   <div class="sidebar-color">
                       <ul class="color-list">
@@ -343,7 +343,7 @@
                         
                       </ul>
                   </div>
-              </div>
+              </div> -->
 
 
               <div class="shop-sidebar-size">

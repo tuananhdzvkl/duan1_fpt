@@ -55,7 +55,7 @@
                     <button class="hidden" id="login">Đổi mật khẩu</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>TPT Shore Xin Chào </h1>
+                    <h1>ASCENSION Xin Chào </h1>
                     <p>Nếu chưa có tài khoản hãy đăng ký với thông tin cá nhân của bạn để sử dụng tất cả các tính năng của trang web</p>
                     <button class="hidden" id="register">Đăng Ký</button>
                 </div>

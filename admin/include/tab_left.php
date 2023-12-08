@@ -20,7 +20,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="index.php?act=bangdieukhien">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Bảng điều khiển </span></a>
             </li>
@@ -161,7 +161,7 @@
                 <div id="thongke" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Chức năng:</h6>
-                        <a class="collapse-item" href="?act=bieudo1">Biểu Đồ 1</a>
+                        <a class="collapse-item" href="?act=thongke">Biểu Đồ 1</a>
                         <a class="collapse-item" href="?act=bieudo2">Biểu Đồ 2</a>
 
                     </div>

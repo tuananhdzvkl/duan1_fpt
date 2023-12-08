@@ -7,11 +7,52 @@ function loadall_thongke()
     $listtk = pdo_query($sql);
     return $listtk;
 }
+
 function thongke_ngay()
 {
-    $sql = "SELECT don_hang.id_ctd , SUM(thanh_tien) as Tong , SUM(don_hang.so_luong)
-     AS so_luong , thoi_gian , trang_thai FROM `chitiet_donhang`  JOIN don_hang  
-     ON chitiet_donhang.id_ctdon = don_hang.id_ctd  WHERE trang_thai = 3 GROUP BY don_hang.id_ctd;";
-    $thongke = pdo_query($sql);
-    return $thongke;
+    $sql = "SELECT SUM(thanh_tien) AS tong, DATE_FORMAT(thoi_gian, '%d-%m-%Y') AS ngay,
+            MIN(thoi_gian) AS start_time, MAX(thoi_gian) AS end_time
+    FROM `chitiet_donhang`
+    WHERE thoi_gian >= DATE_FORMAT(CURDATE(), '%Y-%m-01') AND thoi_gian <= CURDATE()
+    GROUP BY DATE_FORMAT(thoi_gian, '%d-%m-%Y')
+    ORDER BY DATE_FORMAT(thoi_gian, '%d-%m-%Y')";
+    return pdo_query($sql);
 }
+
+
+function thongke_tuan()
+{
+    $sql = "SELECT SUM(thanh_tien) AS tong, CONCAT(YEAR(thoi_gian), '-', WEEK(thoi_gian)) AS tuan,
+            MIN(thoi_gian) AS start_time, MAX(thoi_gian) AS end_time
+    FROM `chitiet_donhang`
+    WHERE thoi_gian >= DATE_FORMAT(CURDATE(), '%Y-%m-01') AND thoi_gian <= CURDATE()
+    GROUP BY CONCAT(YEAR(thoi_gian), '-', WEEK(thoi_gian))
+    ORDER BY CONCAT(YEAR(thoi_gian), '-', WEEK(thoi_gian));";
+    return pdo_query($sql);
+}
+
+function thongke_thang()
+{
+    $sql = "SELECT SUM(thanh_tien) AS tong, DATE_FORMAT(thoi_gian, '%m-%Y') AS thang,
+            MIN(thoi_gian) AS start_time, MAX(thoi_gian) AS end_time
+    FROM `chitiet_donhang`
+    WHERE YEAR(thoi_gian) = YEAR(CURDATE())
+    GROUP BY DATE_FORMAT(thoi_gian, '%m-%Y')
+    ORDER BY DATE_FORMAT(thoi_gian, '%m-%Y');
+    ";
+    return pdo_query($sql);
+}
+
+
+function thongke_nam()
+{
+    $sql = "SELECT SUM(thanh_tien) AS tong, YEAR(thoi_gian) AS nam,
+            MIN(thoi_gian) AS start_time, MAX(thoi_gian) AS end_time
+    FROM `chitiet_donhang`
+    GROUP BY YEAR(thoi_gian)
+    ORDER BY YEAR(thoi_gian);
+    ";
+    return pdo_query($sql);
+}
+
+

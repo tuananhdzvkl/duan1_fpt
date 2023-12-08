@@ -175,7 +175,7 @@
                       $('.inc').click(function() {
                         if (mau_sac != null || size_s != null) {
                           var currentValue = parseInt(quantityInput.val());
-                          soluong = parseInt(currentValue+1);
+                          soluong = parseInt(currentValue + 1);
                           console.log(soluong);
                           checkAndUpdateQuantity(currentValue + 1);
                         } else {
@@ -186,13 +186,13 @@
                       $('.dec').click(function() {
                         if (mau_sac != null || size_s != null) {
                           var currentValue = parseInt(quantityInput.val());
-                         
+
                           if (currentValue > 1) {
-                            soluong = parseInt(currentValue-1);
+                            soluong = parseInt(currentValue - 1);
                             //console.log(soluong);
                             checkAndUpdateQuantity(currentValue - 1);
                           } else {
-                            soluong = 1 ; 
+                            soluong = 1;
                             alert('Số Lượng Sản Phẩm Không Nhỏ Hơn 1')
                           }
                         } else {
@@ -205,7 +205,7 @@
                         // Gửi yêu cầu Ajax để kiểm tra số lượng
                         $.ajax({
                           type: 'POST',
-                          url: 'model/kiemtrasl.php', // Thay đổi đường dẫn phù hợp
+                          url: 'model/check_sluong.php', // Thay đổi đường dẫn phù hợp
                           data: {
                             newQuantity: newQuantity,
                             mau: mau_sac,
@@ -217,9 +217,9 @@
                               // Nếu số lượng hợp lệ, cập nhật giá trị
                               quantityInput.val(newQuantity);
                             } else {
-                           
+
                               let hihi = newQuantity - 1;
-                              soluong = hihi ; 
+                              soluong = hihi;
                               alert('Hiện tại Trong Kho Còn: ' + hihi + ' Sản phẩm');
                             }
                           }
@@ -233,7 +233,7 @@
                       $('.color-list li').removeClass('active');
                       // Thêm class 'active' cho màu được chọn
                       $(this).addClass('active');
-
+                      resetOldData()
                       // Rest of your code...
                     });
                     $(document).on('click', '.size-list li', function() {
@@ -241,7 +241,7 @@
                       $('.size-list li').removeClass('active');
                       // Thêm class 'active' cho màu được chọn
                       $(this).addClass('active');
-
+                      resetOldData()
 
                     });
 
@@ -268,10 +268,10 @@
                             mau_sac = selectedColor;
                             size_s = selectedSizeId;
                             idsp = id_san_pham;
-                           // soluong = 1;
-                           console.log(soluong);
+                            // soluong = 1;
+                            //console.log(soluong);
                             //console.log(id_san_pham);
-                            ////console.log(size);
+                            console.log(size);
                           } else {
 
                             alert("Hiện Tại Size này Đang Hết Hàng");
@@ -279,36 +279,14 @@
                         }
                       );
                     });
-                    $(document).on('click', '.color-list li', function() {
-                      var selectedColor = $(this).val();
-                      var selectedSizeId = $('.size-list li.active').attr('value');
-                      var id_san_pham = $(".product-single-info").children(".id_sp").val();
 
-                      // Check màu thuộc size
-                      $.post(
-                        "model/check_size.php", {
-                          id_sp: id_san_pham,
-                          color: selectedColor,
-                          size: selectedSizeId,
-                        },
-                        function(data) {
-                          var isSizeBelongsToSize = JSON.parse(data);
-                          if (isSizeBelongsToSize) {
-                            mau_sac = selectedColor;
-                            size_s = selectedSizeId;
-                            idsp = id_san_pham;
-                           // soluong = 1;
-                             console.log(soluong);
-                            // console.log(size_s);
-                            //  console.log(id_san_pham);
-                            // Nếu màu thuộc size, kiểm tra số lượng
-
-                          } else {
-                            alert("Hiện Tại Màu này Đang Hết Hàng");
-                          }
-                        }
-                      );
-                    });
+                    function resetOldData() {
+                      mau_sac = null;
+                      size_s = null;
+                      idsp = null;
+                      soluong = 1;
+                      // Thêm bất kỳ đoạn mã đặt lại dữ liệu khác nếu cần
+                    }
                   </script>
 
 
