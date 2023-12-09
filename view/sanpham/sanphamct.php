@@ -21,6 +21,7 @@
   <!--== End Page Header Area Wrapper ==-->
 
   <!--== Start Product Single Area Wrapper ==-->
+  <!--== Start Product Single Area Wrapper ==-->
   <section class="product-area product-single-area">
     <div class="container">
       <div class="row">
@@ -155,7 +156,7 @@
 
 
                       } else {
-                        alert('Vui Lòng Chọn Màu Săc , Size')
+                        alert(thongbao);
                       }
 
 
@@ -167,7 +168,14 @@
                     let size_s = null;
                     let idsp = null;
                     let soluong = 1;
-
+                    let thongbao = null;
+                    if (mau_sac == null && size_s == null) {
+                      thongbao = 'Vui Lòng Chọn Màu Săc , Size';
+                    } else if (mau_sac == null) {
+                      thongbao = 'Vui Lòng Chọn Màu Săc';
+                    } else {
+                      thongbao = 'Vui Lòng Chọn Kích Thước';
+                    }
                     //var id_san_pham = $(".product-single-info").children(".id_sp").val();
                     $(document).ready(function() {
 
@@ -179,7 +187,7 @@
                           console.log(soluong);
                           checkAndUpdateQuantity(currentValue + 1);
                         } else {
-                          alert('Vui Lòng Chọn Màu Săc , Size')
+                          alert(thongbao);
                         }
                       });
 
@@ -196,7 +204,7 @@
                             alert('Số Lượng Sản Phẩm Không Nhỏ Hơn 1')
                           }
                         } else {
-                          alert('Vui Lòng Chọn Màu Săc , Size')
+                          alert(thongbao);
                         }
                       });
 
@@ -205,7 +213,7 @@
                         // Gửi yêu cầu Ajax để kiểm tra số lượng
                         $.ajax({
                           type: 'POST',
-                          url: 'model/check_sluong.php', // Thay đổi đường dẫn phù hợp
+                          url: 'model/kiemtrasl.php', // Thay đổi đường dẫn phù hợp
                           data: {
                             newQuantity: newQuantity,
                             mau: mau_sac,
@@ -215,6 +223,7 @@
                           success: function(response) {
                             if (response === 'valid') {
                               // Nếu số lượng hợp lệ, cập nhật giá trị
+                              
                               quantityInput.val(newQuantity);
                             } else {
 
@@ -233,7 +242,7 @@
                       $('.color-list li').removeClass('active');
                       // Thêm class 'active' cho màu được chọn
                       $(this).addClass('active');
-                      resetOldData()
+                    //  resetOldData()
                       // Rest of your code...
                     });
                     $(document).on('click', '.size-list li', function() {
@@ -241,7 +250,7 @@
                       $('.size-list li').removeClass('active');
                       // Thêm class 'active' cho màu được chọn
                       $(this).addClass('active');
-                      resetOldData()
+                    //  resetOldData()
 
                     });
 
@@ -343,6 +352,8 @@
     </div>
     </div>
   </section>
+  <!--== End Product Single Area Wrapper ==-->
+
   <!--== End Product Single Area Wrapper ==-->
 
   <!--== Start Product Area Wrapper ==-->

@@ -225,11 +225,11 @@
                                     if ($trang_thai == 0) {
                                         echo "btn-warning btn-sm'>Chờ xác nhận";
                                     } elseif ($trang_thai == 1) {
-                                        echo "btn-info btn-sm'>Đã xác nhận";
+                                        echo "btn-success btn-sm'>Đã xác nhận";
                                     } elseif ($trang_thai == 2) {
                                         echo "btn-primary btn-sm'>Đang giao hàng";
                                     } elseif ($trang_thai == 3) {
-                                        echo "btn-success btn-sm'>Đã nhận hàng";
+                                        echo "btn-info btn-sm'>Đã nhận hàng";
                                     } else {
                                         echo "btn-danger btn-sm'>Đã hủy";
                                     }
@@ -254,28 +254,25 @@
                                                 </div>
                                                 <div class="flex-lg-grow-1 ms-3">
                                                     <h6 class="small mb-0"><?= $sanpham['name_sp'] ?></h6>
-                                                    <span class="small">Màu: <span style="color: red;"> 
-                                                        <?php
-                                                            foreach ($mau1 as $key => $mau) {
-                                                                if ($mau['id_color'] == $sanpham['mau_sac']) {
-                                                                    echo $mau['name_color'];
-                                                                }
-                                                            }
-                                                        ?>
-                                                    </span> </span>
 
 
-                                                    <span class="small" style="margin-left: 10px;">Kích Cỡ: 
-                                                        <span style="color: red;"> 
-                                                            <?php
-                                                                foreach ($size1 as $key => $mau) {
-                                                                    if ($mau['id_size'] == $sanpham['kich_co']) {
-                                                                        echo $mau['name_size'];
-                                                                    }
-                                                                }
-                                                            ?>
-                                                        </span> 
-                                                    </span>
+
+                                                    <span class="small">Màu: <span style="color: red;"> <?php
+                                                                                                        foreach ($mau1 as $key => $mau) {
+                                                                                                            if ($mau['id_color'] == $sanpham['mau_sac']) {
+                                                                                                                echo $mau['name_color'];
+                                                                                                            }
+                                                                                                        }
+                                                                                                        ?></span> </span>
+
+
+                                                    <span class="small" style="margin-left: 10px;">Kích Cỡ: <span style="color: red;"> <?php
+                                                                                                                                        foreach ($size1 as $key => $mau) {
+                                                                                                                                            if ($mau['id_size'] == $sanpham['kich_co']) {
+                                                                                                                                                echo $mau['name_size'];
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                        ?></span> </span>
 
                                                 </div>
                                             </div>
@@ -305,21 +302,16 @@
                         <!-- Add condition to display buttons based on order status -->
                         <tr class="fw-bold">
                             <h3 colspan="2" class="h6">
-                                <?php
-                                if ($value['trang_thai'] == 2) {
-                                    echo 'Xác Nhận Nhận Hàng';
-                                } else {
-                                    echo 'Xử Lý Đơn Hàng';
-                                }
-                                ?>
+
                             </h3>
                             <p class="text-end">
                                 <?php
-                                if ($value['trang_thai'] == 2) {
-                                    echo '<button class="btn btn-success btn-sm">Đã nhận hàng</button>';
-                                    echo '<button class="btn btn-danger btn-sm ms-2">Hoàn trả hàng</button>'; // Added margin to the second button
+                                if ($value['trang_thai'] == 0  || $value['trang_thai'] == 1) {
+                                    echo '<button class="btn btn-danger btn-sm ms-2" onclick="huyDon(' . $_GET['id_don'] . ',1)">Hủy Đơn Hàng</button>';
+                                } elseif ($value['trang_thai'] == 2) {
+                                    echo '<button class="btn btn-info btn-sm ms-2" onclick="huyDon(' . $_GET['id_don'] . ',2)">Đã Nhận Hàng</button>';
                                 } else {
-                                    echo '<button class="btn btn-danger btn-sm">Hủy đơn hàng</button>';
+                                    echo 'Không thể hủy đơn hàng với trạng thái hiện tại.';
                                 }
                                 ?>
                             </p>
@@ -385,3 +377,30 @@
     </div>
 </div>
 <?php endforeach ?>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function huyDon(idDonHang, id) {
+        // console.log(idDonHang,id);
+        $.ajax({
+            type: 'POST',
+            url: 'model/xulyhuydon.php', // Thay đổi đường dẫn tới file xử lý hủy đơn
+            data: {
+                id_don_hang: idDonHang,
+                key: id
+
+            },
+            success: function(response) {
+                // Xử lý phản hồi từ máy chủ nếu cần
+                //  console.log(response);
+                alert(response);
+                location.reload();
+                // Cập nhật giao diện người dùng nếu cần
+                // Ví dụ: Ẩn nút hủy đơn sau khi hủy thành công
+                // $('.btn-danger').hide();
+            },
+            error: function(error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
