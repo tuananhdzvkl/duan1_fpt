@@ -114,8 +114,8 @@
 
                   <div class="col-md-12">
                     <div class="form-group" style="margin-top:10px;">
-                      <label for="province">Tỉnh/Thành phố <abbr class="required" title="required">*</abbr></label>
-                      <select id="province" name="province" class="form-control" required>
+                      <label for="province_codename_1">Tỉnh/Thành phố <abbr class="required" title="required">*</abbr></label>
+                      <select id="province_codename_1" name="province_codename_1" class="form-control" required>
                         <option>Chọn tỉnh thành</option>
                       </select>
                     </div>
@@ -123,8 +123,8 @@
 
                   <div class="col-md-12">
                     <div class="form-group" style="margin-top:10px;">
-                      <label for="district">Quận/Huyện <abbr class="required" title="required">*</abbr></label>
-                      <select id="district" name="district" class="form-control">
+                      <label for="district_codename_1">Quận/Huyện <abbr class="required" title="required">*</abbr></label>
+                      <select id="district_codename_1" name="district_codename_1" class="form-control">
                         <option>Chọn quận/huyện</option>
                       </select>
                     </div>
@@ -132,8 +132,8 @@
 
                   <div class="col-md-12">
                     <div class="form-group" style="margin-top:10px;">
-                      <label for="ward">Xã/Phường <abbr class="required" title="required">*</abbr></label>
-                      <select id="ward" name="ward" class="form-control" required>
+                      <label for="ward_codename_1">Xã/Phường <abbr class="required" title="required">*</abbr></label>
+                      <select id="ward_codename_1" name="ward_codename_1" class="form-control" required>
                         <option>Chọn xã/phường</option>
                       </select>
                     </div>

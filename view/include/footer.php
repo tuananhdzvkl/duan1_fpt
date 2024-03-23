@@ -10,7 +10,7 @@
           <div class="widget-item">
             <div class="about-widget-wrap">
               <div class="widget-logo-area">
-                <a href="index.html">
+                <a href="?act=home">
                   <img class="logo-main" src="assets/img/photos/logo.jpg" width="100" height="30" alt="Logo" />
                 </a>
               </div>

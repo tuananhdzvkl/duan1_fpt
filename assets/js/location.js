@@ -1,101 +1,68 @@
-const host = "https://provinces.open-api.vn/api/";
+fetch('https://raw.githubusercontent.com/tuananhdzvkl/apiLocationVN/main/dataLocation.json')
+    .then(response => response.json())
+    .then(data => {
+        const provinceSelect1 = document.getElementById('province_codename_1');
+        const districtSelect1 = document.getElementById('district_codename_1');
+        const wardSelect1 = document.getElementById('ward_codename_1');
 
-var callAPI = (api, select) => {
-    return axios.get(api)
-        .then((response) => {
-            renderData(response.data, select);
+        // Function to create option element
+        const createOption = (value, text) => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = text;
+            return option;g
+        };
+
+        // Populate province select
+        data.forEach(entry => {
+            if (!provinceSelect1.querySelector(`option[value="${entry.province_codename}"]`)) {
+                provinceSelect1.appendChild(createOption(entry.province_codename, entry.province_name));
+
+            }
         });
-}
 
-var callApiDistrict = (api) => {
-    return axios.get(api)
-        .then((response) => {
-            renderData(response.data.districts, "district");
+        // Function to populate district select based on selected province
+        const populateDistrict = (provinceSelect, districtSelect) => {
+            const selectedProvinceCodename = provinceSelect.value;
+            districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+            data.forEach(entry => {
+                if (entry.province_codename === selectedProvinceCodename) {
+                    if (!districtSelect.querySelector(`option[value="${entry.district_codename}"]`)) {
+                        districtSelect.appendChild(createOption(entry.district_codename, entry.district_name));
+                    }
+                }
+            });
+            districtSelect.disabled = false;
+            wardSelect.innerHTML = '<option value="">Phường/Xã/Thị Trấn</option>';
+            wardSelect.disabled = true;
+        };
+
+        // Event listeners for province select
+        provinceSelect1.addEventListener('change', () => {
+            populateDistrict(provinceSelect1, districtSelect1);
         });
-}
 
-var callApiWard = (api) => {
-    return axios.get(api)
-        .then((response) => {
-            renderData(response.data.wards, "ward");
+
+        // Function to populate ward select based on selected district
+        const populateWard = (districtSelect, wardSelect) => {
+            const selectedDistrictCodename = districtSelect.value;
+            wardSelect.innerHTML = '<option value="">Chọn xã/phường/thị trấn</option>';
+            data.forEach(entry => {
+                if (entry.district_codename === selectedDistrictCodename) {
+                    if (!wardSelect.querySelector(`option[value="${entry.ward_codename}"]`)) {
+                        wardSelect.appendChild(createOption(entry.ward_codename, entry.ward_name));
+                    }
+                }
+            });
+            wardSelect.disabled = false;
+        };
+
+        // Event listeners for district select
+        districtSelect1.addEventListener('change', () => {
+            populateWard(districtSelect1, wardSelect1);
         });
-}
 
-var renderData = (array, select) => {
-    let placeholder = '';
-    let optionText = '';
-
-    switch (select) {
-        case 'province':
-            placeholder = 'Chọn tỉnh thành';
-            optionText = 'Chọn tỉnh thành';
-            break;
-        case 'district':
-            placeholder = 'Chọn quận/huyện';
-            optionText = 'Chọn quận/huyện';
-            break;
-        case 'ward':
-            placeholder = 'Chọn xã/phường';
-            optionText = 'Chọn xã/phường';
-            break;
-        default:
-            break;
-    }
-
-    let row = `<option disable value="">${placeholder}</option>`;
-    array.forEach(element => {
-        row += `<option value="${element.code}">${element.name}</option>`;
+    })
+    .catch(error => {
+        console.error('Error fetching or parsing data: ', error);
     });
-    $("#" + select).html(row);
-
-    // Update the first option text
-    $("#" + select + " option:first-child").text(optionText);
-}
-
-
-$(document).ready(function() {
-    // Load initial data
-    callAPI(host + "?depth=1", "province");
-
-    $("#province").change(() => {
-        const provinceCode = $("#province").val();
-        if (provinceCode) {
-            callApiDistrict(host + "p/" + provinceCode + "?depth=2");
-        }
-    });
-
-    $("#district").change(() => {
-        const districtCode = $("#district").val();
-        if (districtCode) {
-            callApiWard(host + "d/" + districtCode + "?depth=2");
-        }
-    });
-
-    $("#ward").change(() => {
-        printResult();
-        showHideInput();
-    });
-
-    function showHideInput() {
-        const provinceName = $("#province option:selected").text();
-        const districtName = $("#district option:selected").text();
-        const wardName = $("#ward option:selected").text();
-        const diachi = $("#diachi").val();
-        if (provinceName && districtName && wardName) {
-            const selectedInfo = `${diachi} - ${wardName} - ${districtName} -${provinceName}  `;
-            $("#customInput").val(selectedInfo).show();
-        } else {
-            $("#customInput").hide();
-        }
-    }
-
-    var printResult = () => {
-        if ($("#district").val() != "" && $("#province").val() != "" &&
-            $("#ward").val() != "") {
-            let result = $("#province option:selected").text() +
-                " | " + $("#district option:selected").text() + " | " +
-                $("#ward option:selected").text();
-            $("#result").text(result)
-        }
-    }
-});

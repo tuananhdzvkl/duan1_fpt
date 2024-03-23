@@ -174,7 +174,7 @@
                     $mau = array_column($cart, 'mau');
                     $size = array_column($cart, 'size');
                     // var_dump($productId, $mau, $size);
-                    // Chuyển đôi mảng  thành một cuỗi để thực hiện truy vấn
+                    // Chuyển đôi mảng  thành một  bcuỗi để thực hiện truy vấn
                     $idList = implode(',', $productId);
                     $mauList = "'" . implode("','", $mau) . "'";
                     $sizeList = "'" . implode("','", $size) . "'";

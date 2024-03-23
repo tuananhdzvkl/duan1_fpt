@@ -13,38 +13,41 @@ function execPostRequest($url, $data)
     );
     curl_setopt($ch, CURLOPT_TIMEOUT, 5);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
-    // execute post
+
     $result = curl_exec($ch);
-    // close connection
+
+    if ($result === false) {
+        // Handle cURL error
+        die('cURL Error: ' . curl_error($ch));
+    }
+
     curl_close($ch);
     return $result;
 }
 
 $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
-$partnerCode = 'MOMOBKUN20180529';
-$accessKey = 'klm05TvNBzhg7h7j';
-$secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
+$partnerCode = 'MOMO';
+$partnerName = 'ASCENSION';
+$requestType = 'captureMoMoWallet';
+$accessKey = 'F8BBA842ECF85';
+$secretKey = 'K951B6PE1waDMi640xX08PD3vg6EkVlz';
 $orderInfo = "Thanh toán qua ATM";
 $amount = "100000";
-$orderId = time() . "";
+$orderId = time(); // Use timestamp as orderId
 $redirectUrl = "http://localhost:3000/index.php?act=CTthanhtoan";
 $ipnUrl = "http://localhost:3000/index.php?act=CTthanhtoan";
 $extraData = "";
 
-$requestId = time() . "";
-$requestType = "payWithATM";
-$extraData = ($_POST["extraData"] ?? "");
-
-// Before signing HMAC SHA256 signature
-$rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
+// Calculate signature
+$rawHash = "partnerCode={$partnerCode}&accessKey={$accessKey}&requestId={$orderId}&amount={$amount}&orderId={$orderId}&orderInfo={$orderInfo}&returnUrl={$redirectUrl}&notifyUrl={$ipnUrl}&extraData={$extraData}";
 $signature = hash_hmac("sha256", $rawHash, $secretKey);
 
 $data = array(
     'partnerCode' => $partnerCode,
-    'partnerName' => "Test",
-    "storeId" => "MomoTestStore",
-    'requestId' => $requestId,
+    'partnerName' => $partnerName,
+    'storeId' => 'MomoTestStore',
+    'requestId' => $orderId,
     'amount' => $amount,
     'orderId' => $orderId,
     'orderInfo' => $orderInfo,
@@ -68,6 +71,7 @@ if (isset($jsonResult['payUrl'])) {
     echo "Error: 'payUrl' not found in the response";
 }
 ?>
+
 
 <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="view/giohang/xulymomo.php">
     <img style="margin-left: 15px;" src="../assets/img/icons/momo.png"  width="70" height="90" alt="image">

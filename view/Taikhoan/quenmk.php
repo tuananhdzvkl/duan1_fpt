@@ -132,35 +132,7 @@
                     <span>Nhập địa chỉ email của bạn để đặt lại mật khẩu</span>
                     <input type="email" name="forgot_email" value="<?php echo isset($email) ? $email : ''; ?>" placeholder="Email" required>
                     <input type="submit" name="forgot_password" value="Gửi yêu cầu" style="background-color: red; color: white;" onclick="submit();">
-                    <script>
-                      function submit() {
-                          // Assuming some condition to check if the form submission was successful
-                          var isPaymentSuccessful = true; // Replace this with your actual condition
-
-                          if (isPaymentSuccessful) {
-                            Swal.fire({
-                              icon: 'success',
-                              title: 'Gửi yêu cầu thành công',
-                              showConfirmButton: false,
-                              timer: 3000
-                            }).then(function() {
-                              // Redirect to the success page after displaying the success message
-                              window.location.href = "?act=quenmk";
-                            });
-                          } else {
-                            Swal.fire({
-                              icon: 'error',
-                              title: 'Gửi yêu cầu thất bại',
-                              showConfirmButton: false,
-                              timer: 3000
-                            }).then(function() {
-                              // Redirect to the home page after displaying the error message
-                              window.location.href = "?act=login";
-                            });
-                          }
-                        }
-
-                    </script>
+                   
                 </form>
             </div>
         <?php else : ?>
@@ -173,7 +145,7 @@
 </style>
 
 
-<div class="form-container verification">
+<!-- <div class="form-container verification">
     <form class="verification-form" method="post">
         <h1>Xác nhận yêu cầu</h1>
         <span>Nhập mã xác nhận để đặt lại mật khẩu</span>
@@ -184,7 +156,7 @@
         </div>
         <input class="submit-button" type="submit" name="reset_password" value="Send Code">
     </form>
-</div>
+</div> -->
 
 <!-- <script>
     function moveToNext(currentInput, nextInputName) {
